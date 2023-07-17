@@ -5,13 +5,11 @@ layout: home
 <div class="container-fluid">
   <div class="row p-3">
     <div class="col-md-8 p-3 mx-auto">
-      <h2 class="gtitle4 text-left ps-3">BECOME A PARTNER</h2>
+      <h2 class="gtitle2 text-left ps-3">Make a donation today</h2>
       <h5 class="gtext text-dark border-0 text-left p-3">
-        Our partners get special rights e.g. they receive financial
-        accountability for every penny spent if they so desire/ request, how it
-        was spent and what it accomplished. Our partners also receive periodic
-        updates on work progress and they are entitled to receive all our
-        released episodes at no cost.
+        Our partners get special rights e.g. they receive periodic updates on
+        work progress and they are entitled to receive all our released episodes
+        at no charge, unless they would like to offer us a special gift.
       </h5>
 
       <!----------------------------------------------CAROUSEL------------------------------------------->
@@ -19,7 +17,7 @@ layout: home
         <h5 class="gtitle5 text-dark border-0 text-center">
           Please fill in this form & we shall contact you. Thank you.
         </h5>
-        <form class="needs-validation" novalidate>
+        <form>
           <div class="row g-3">
             <div class="col-sm-6">
               <input
@@ -29,7 +27,6 @@ layout: home
                 placeholder="First Name"
                 value=""
                 required />
-              <div class="invalid-feedback">Please enter your First Name</div>
             </div>
 
             <div class="col-sm-6">
@@ -40,21 +37,16 @@ layout: home
                 placeholder="Last Name"
                 value=""
                 required />
-              <div class="invalid-feedback">Please enter your Last Name</div>
             </div>
 
             <div class="col-12">
-              <div class="input-group has-validation">
-                <span class="input-group-text">+</span>
+              <div>
                 <input
                   type="text"
                   class="form-control"
-                  id="username"
+                  id="phone"
                   placeholder="phone"
                   required />
-                <div class="invalid-feedback">
-                  Your Phone/ Email is required.
-                </div>
               </div>
             </div>
 
@@ -64,15 +56,26 @@ layout: home
                 class="form-control"
                 id="email"
                 placeholder="Your Email Address" />
-              <div class="invalid-feedback">
-                Please enter a valid email address .
+            </div>
+
+            <div class="w-md-50">
+              <div class="mb-3">
+                Donate Equipment/ Money?
+
+                <select class="select p-1 w-md-50" required>
+                  <option value="item" type="invalid" disabled>
+                    Donate money or equipment ?
+                  </option>
+                  <option value="money">Money</option>
+                  <option value="equipment">Equipment</option>
+                </select>
               </div>
             </div>
 
             <h4 class="mb-3">Choose period:</h4>
 
             <div class="my-3">
-              <div class="form-check text-left">
+              <div class="text-left">
                 <input
                   id="annual"
                   value="annual"
@@ -113,7 +116,7 @@ layout: home
                 <div class="mb-3">
                   Currency
 
-                  <select class="w-100 select" required>
+                  <select class="w-100 select p-1" required>
                     <option value="Choose Currency" type="invalid" disabled>
                       Choose Currency
                     </option>
@@ -121,23 +124,22 @@ layout: home
                     <option value="USD">USD</option>
                   </select>
                 </div>
-
-                <div class="invalid-feedback">
-                  Please fill in the amount you would like to give.
-                </div>
               </div>
 
-              <div class="input-group has-validation">
+              <div class="">
                 <input
                   type="text"
                   class="form-control"
                   id="username"
-                  placeholder="Enter the amount"
+                  placeholder="Enter the amount/ equipment name"
                   required />
-                <div class="invalid-feedback">
-                  Please fill in the amount you would like to give.
-                </div>
               </div>
+            </div>
+
+            <div>
+              <h2
+                class="invalid-feedback p-2 h4 text-center"
+                id="invalid-feedback"></h2>
             </div>
 
             <p class="py-3">
@@ -145,12 +147,73 @@ layout: home
                 type="reset"
                 class="btn btn-secondary btn-lg"
                 value="Clear" />
-              <button class="w-50 btn btn-primary btn-lg" type="submit">
+              <button class="w-50 btn btn-primary btn-lg" onclick="partner()">
                 Submit
               </button>
             </p>
           </div>
         </form>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+          function partner() {
+            const name = document.getElementById("firstname").value;
+            const phone = document.getElementById("phone").value;
+            const paymentMethod =
+              document.getElementById("paymentMethod").value;
+            const errormessage =
+              document.getElementById("invalid-feedback").value;
+
+            // Verify inputs
+            if (name.trim() === "" || phone.trim() === "") {
+              Swal.fire({
+                title: "Validation Error",
+                text: "Name and Phone are required",
+                icon: "error",
+                confirmButtonText: "OK",
+              });
+              document.getElementById("invalid-feedback").textContent =
+                "Please fill in all required fields";
+            } else {
+              // Send data to SheetDB
+              const day = new Date();
+              const options = {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+              };
+              const formattedDay = day.toLocaleDateString("en-US", options);
+              const formData = new FormData();
+              formData.append("name", name);
+              formData.append("phone", phone);
+              formData.append("paywith", paymentMethod);
+              formData.append("date_sent", formattedDay);
+
+              fetch("https://sheetdb.io/api/v1/xkwxymn6sqggm", {
+                method: "POST",
+                body: formData,
+              })
+                .then((response) => response.json())
+                .then((data) => {
+                  // Handle success response
+                  console.log("Data sent to SheetDB:", data);
+                  Swal.fire(
+                    "Success",
+                    "Your order has been placed!",
+                    "success"
+                  );
+                })
+                .catch((error) => {
+                  // Handle error
+                  console.error("Error sending data to SheetDB:", error);
+                  Swal.fire(
+                    "Error",
+                    "Failed to place the order. Please try again.",
+                    "error"
+                  );
+                });
+            }
+          }
+        </script>
       </div>
 
       <!----------------------------------------------CAROUSEL------------------------------------------>
