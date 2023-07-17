@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+      <html class="no-js" lang="zxx">
+        <head>
+          <meta charset="utf-8">
+          <meta http-equiv="x-ua-compatible" content="ie=edge">
+          <title>Grealm-studio</title>
+          <meta name="description" content="Grealm studio, 3D animation in Africa, Education in Africa, Christian illustrations and drawings in Africa">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+               <link rel="stylesheet" href="{{site.baseurl}}/plugins/bootstrap/bootstrap.min.css">
+             <link rel="stylesheet" href="{{site.baseurl}}/css/style.css">
+          <link rel="stylesheet" href="{{site.baseurl}}/css/style2.css">
+          <link rel="stylesheet" href="{{site.baseurl}}/css/carousel.css">
+      
+          <style>
+            /* Always set the map height explicitly to define the size of the div
+             * element that contains the map. */
+            #map_canvas {
+              height: 100%;
+            }
+            /* Optional: Makes the sample page fill the window. */
+          </style>
+          <script src="{{site.baseurl}}/plugins/modernizr.min.js"></script>
+        </head>
+        <body class="gbody">
+          <header>{%include nav2.html navclass='navtop'%}</header>
+                 <div class="container-fluid">
+        
+      {{content}}
+    </div>
+
+    {%include footer.html %}
+  </body>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  </html>

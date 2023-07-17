@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="zxx">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Grealm-studio</title>
+    <meta
+      name="description"
+      content="Grealm studio, 3D animation in Africa, Education in Africa, Christian illustrations and drawings in Africa" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="/plugins/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style2.css" />
+    <link rel="stylesheet" href="/css/carousel.css" />
+    <link rel="stylesheet" href="/css/progressbar.css" />
+
+    <script
+      src="https://kit.fontawesome.com/6e95959b6b.js"
+      crossorigin="anonymous"></script>
+
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+             * element that contains the map. */
+      #map_canvas {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+    </style>
+  </head>
+  <body class="gbody">
+    <header><nav class="bg-light row m-0 gtitle">
+  <div class="col-md-6">
+    <h1 class="text-center pt-5">G-Realm Studio</h1>
+  </div>
+
+  <div class="col-md-6">
+    <h1 class="text-center pt-5">
+      <button class="btn gbutton dropdown">
+        <a
+          class="dropdown-toggle"
+          href="#"
+          id="dropdown01"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="fa-solid fa-bars text-light"></i>
+          Menu</a
+        >
+        <ul class="dropdown-menu" aria-labelledby="dropdown01">
+          <li>
+            <a class="dropdown-item" href="3dpacks.html"
+              ><i class="fa-solid fa-cube text-warning"></i> 3D Animations</a
+            >
+          </li>
+
+          <li class="text-light">
+            <a class="dropdown-item" href="reading.html">
+              <i class="fa-solid fa-book-open-reader text-warning"></i>
+              Reading lessons</a
+            >
+          </li>
+
+          <li>
+            <a class="dropdown-item" href="partner.html">
+              <i class="fa-solid fa-circle-dollar-to-slot text-warning"></i>
+              Support</a
+            >
+          </li>
+
+          <li>
+            <a class="dropdown-item" href="index.html">
+              <i class="fa-solid fa-home text-warning"></i>
+              home</a
+            >
+          </li>
+        </ul>
+      </button>
+    </h1>
+  </div>
+</nav>
+</header>
+    <div class="container-fluid">    <div class="container-fluid p-lg-3 m-0">
+ 
+<div class="row p-3  ">
+
+
+<div class="col-md-6">
+  
+  
+  <h2 class="gtitle2 text-center p-1">BUY G-REALM <span class="text-primary">3D BIBLE</span>  PACK</h2>
+  <h4 class="text-center gbutton p-1">
+    Featuring Superbook
+  </h4>
+  <p class="text-center p-md-5 my-3">
+    <img src="images/3dpack.jpg" alt="" class="img-fluid">
+   
+  </p>
+  <p class="text-center">
+   Contains <span class="yellowbg p-1">50 Full HD Videos</span>  of 3D Animations full of life from the Bible for kids to learn the Word of GOD the fun way yet staying on the Truth. 
+ <br><br>  <span class="text-danger">Enjoy High Quality Video & Sound fit for large screens and loud speakers.</span>
+  </p>
+
+     <h2 class="my-5 text-center">
+      <button class="btn-primary btn w-50 text-center" onclick="window.location.href='3dpacks.html'">See Movie titles</button> <button class="btn-danger btn w-25 text-center" onclick="showOrderForm()">BUY</button>
+
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+        function showOrderForm() {
+          Swal.fire({
+            title: 'Place an Order',
+            html: `
+              <form id="orderForm">
+                <h3 class="text-danger p-1 yellowbg fw-bold">UgX 50,000</h3><br>
+                <input type="text" id="name" class="form-control borderedinput text-center" placeholder="Your Name" required><br>
+                
+                
+                <input type="text" id="phone"  class="form-control borderedinput text-center"  placeholder="Your Phone/ Email" required><br>
+                
+                <select id="paymentMethod"  class="form-control  borderedinput text-center" >
+                  <option >Payment Method</option>
+                  <option value="mobile_money">Mobile Money</option>
+                  <option value="credit_card">Credit Card</option>
+                  <option value="cash">Cash</option>
+                </select><br><br>
+              </form>
+            `,
+            confirmButtonText: 'Place Order',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            preConfirm: () => {
+              const name = document.getElementById('name').value;
+              const phone = document.getElementById('phone').value;
+              const paymentMethod = document.getElementById('paymentMethod').value;
+
+                  
+              // Verify inputs
+              if (name.trim() === '' || phone.trim() === '') {
+                Swal.showValidationMessage('Name and Phone are required');
+              } else {
+                // Send data to SheetDB
+                const day = new Date();
+const options = { day: '2-digit', month: 'short', year: 'numeric' };
+const formattedDay = day.toLocaleDateString('en-US', options);
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('phone', phone);
+                formData.append('paywith', paymentMethod);
+                formData.append('date_sent', formattedDay);
+      
+                fetch('https://sheetdb.io/api/v1/xkwxymn6sqggm', {
+                  method: 'POST',
+                  body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                  // Handle success response
+                  console.log('Data sent to SheetDB:', data);
+                  Swal.fire('Success', 'Your order has been placed!', 'success');
+                })
+                .catch(error => {
+                  // Handle error
+                  console.error('Error sending data to SheetDB:', error);
+                  Swal.fire('Error', 'Failed to place the order. Please try again.', 'error');
+                });
+              }
+            }
+          });
+        }
+      </script>
+      
+      
+     </h2>         
+      </div>
+
+
+<div class="col-md-6">
+  <h2 class="gtitle">Watch Sample</h2>
+  <video class="w-100 my-auto" controls>
+    <source src="videos/sample.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+</div>
+     
+
+
+</div>
+
+<script>
+  window.addEventListener('load', function() {
+  setTimeout(function() {
+    Swal.fire({
+      
+      html: `
+
+      <h2 class="gtitle">Buy the 3D Bible Pack</h2>
+             <div class="m-1">
+           
+              <video class="img-fluid my-auto" controls>
+      <source src="videos/3dbible.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+              <div class="m-2">
+                <button class="btn-danger btn w-50 text-center" onclick="showOrderForm()">BUY</button>
+
+                </div>
+              
+              </div>
+            `,
+      timer: 150000, // Popup will close after 5 seconds
+      allowOutsideClick: true,
+      allowEscapeKey: true,
+      showCloseButton: true,
+      showConfirmButton: false,
+      icon: 'none'
+    });
+  }, 3500); // Delay the popup for 35 seconds (35000 milliseconds)
+});
+
+</script>
+
+
+<div class="container-fluid row m-0 mb-5">
+  <div class="col-md-12 m-0 p-1">
+    <h3 class="gtitle2 p-3">OUR MISSION</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <ol>
+          <li class="py-3">
+            <p class="gtext justify-content">
+              To custom make Christian and Spirit-Filled but African 3D & 2D
+              animations and illustrations for Bible Stories and Bible lessons
+              for children in Africa to relate with and enjoy learning the word
+              and the ways of God. We also promote content of other people who
+              do similar work.
+            </p>
+          </li>
+          <li class="pb-3">
+            <p class="gtext justify-content">
+              To custom make excellent original Education Media Content (videos,
+              audios, docs) & Education Technology (software & hardware)
+              specifically to help the African children learn better and become
+              very literate & highly skilled.
+            </p>
+          </li>
+        </ol>
+      </div>
+      <div class="col-md-6"><div class="row py-5 text-center p-md-5 m-0">
+  <h2 class="gtitle3 gbutton text-center m-0">G-Realm Logo</h2>
+  <div class="text-center m-0">
+    <img src="images/logo.png" class="img-fluid w-50 m-0" alt="" />
+  </div>
+</div>
+</div>
+    </div>
+
+    <div>
+      <h2 class="gtitle2">
+        FUNDING GOALS: <span class="text-primary">JUN-DEC 2023 </span>
+      </h2>
+      <div id="countdown-wrap">
+        <div id="goals-wrap">
+          <div id="goal">
+            $20,000
+            <p class="text-success">GOAL</p>
+          </div>
+        </div>
+        <div id="glass">
+          <div id="progress"></div>
+        </div>
+
+        <div class="goal-stat">
+          <!-- STEP 2 ||||||||||||||||||||||||||||||||||||||-->
+          <!--|||||||||||||||||| CHANGE ||||||||||||||||||||-->
+
+          <span class="goal-number">$17.29</span>
+
+          <!--|||||||||||||||||| AMOUNT ||||||||||||||||||||-->
+          <!--||||||||||||||||||||||||||||||||||||||||||||||-->
+          <!-- If you've done step 1, you are done :)
+          otherwise step 1 is at the top, scroll up! -->
+
+          <span class="goal-label">RAISED</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+</div>
+   
+</div>
+</div>
+
+    <footer>
+  <p class="text-center">
+    <button class="btn gbutton2" onclick="window.location.href='#top' ">
+      Back to top
+    </button>
+  </p>
+  <p class="text-center">Tel: +256 773913902 , Email: grealmkids@gmail.com</p>
+</footer>
+
+  </body>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+</html>

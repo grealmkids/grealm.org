@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="zxx">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Grealm-studio</title>
+    <meta
+      name="description"
+      content="Grealm studio, 3D animation in Africa, Education in Africa, Christian illustrations and drawings in Africa" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="/plugins/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style2.css" />
+    <link rel="stylesheet" href="/css/carousel.css" />
+    <link rel="stylesheet" href="/css/progressbar.css" />
+
+    <script
+      src="https://kit.fontawesome.com/6e95959b6b.js"
+      crossorigin="anonymous"></script>
+
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+             * element that contains the map. */
+      #map_canvas {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+    </style>
+  </head>
+  <body class="gbody">
+    <header><nav class="bg-light row m-0 gtitle">
+  <div class="col-md-6">
+    <h1 class="text-center pt-5">G-Realm Studio</h1>
+  </div>
+
+  <div class="col-md-6">
+    <h1 class="text-center pt-5">
+      <button class="btn gbutton dropdown">
+        <a
+          class="dropdown-toggle"
+          href="#"
+          id="dropdown01"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="fa-solid fa-bars text-light"></i>
+          Menu</a
+        >
+        <ul class="dropdown-menu" aria-labelledby="dropdown01">
+          <li>
+            <a class="dropdown-item" href="3dpacks.html"
+              ><i class="fa-solid fa-cube text-warning"></i> 3D Animations</a
+            >
+          </li>
+
+          <li class="text-light">
+            <a class="dropdown-item" href="reading.html">
+              <i class="fa-solid fa-book-open-reader text-warning"></i>
+              Reading lessons</a
+            >
+          </li>
+
+          <li>
+            <a class="dropdown-item" href="partner.html">
+              <i class="fa-solid fa-circle-dollar-to-slot text-warning"></i>
+              Support</a
+            >
+          </li>
+
+          <li>
+            <a class="dropdown-item" href="index.html">
+              <i class="fa-solid fa-home text-warning"></i>
+              home</a
+            >
+          </li>
+        </ul>
+      </button>
+    </h1>
+  </div>
+</nav>
+</header>
+    <div class="container-fluid"><div class="container-fluid">
+  <div class="row p-3">
+    <div class="col-md-8 p-3 mx-auto">
+      <h2 class="gtitle4 text-left ps-3">BECOME A PARTNER</h2>
+      <h5 class="gtext text-dark border-0 text-left p-3">
+        Our partners get special rights e.g. they receive financial
+        accountability for every penny spent if they so desire/ request, how it
+        was spent and what it accomplished. Our partners also receive periodic
+        updates on work progress and they are entitled to receive all our
+        released episodes at no cost.
+      </h5>
+
+      <!----------------------------------------------CAROUSEL------------------------------------------->
+      <div class="m-md-3 p-3 p-md-3 bg-grey">
+        <h5 class="gtitle5 text-dark border-0 text-center">
+          Please fill in this form & we shall contact you. Thank you.
+        </h5>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                placeholder="First Name"
+                value=""
+                required />
+              <div class="invalid-feedback">Please enter your First Name</div>
+            </div>
+
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                id="lastName"
+                placeholder="Last Name"
+                value=""
+                required />
+              <div class="invalid-feedback">Please enter your Last Name</div>
+            </div>
+
+            <div class="col-12">
+              <div class="input-group has-validation">
+                <span class="input-group-text">+</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  placeholder="phone"
+                  required />
+                <div class="invalid-feedback">
+                  Your Phone/ Email is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Your Email Address" />
+              <div class="invalid-feedback">
+                Please enter a valid email address .
+              </div>
+            </div>
+
+            <h4 class="mb-3">Choose period:</h4>
+
+            <div class="my-3">
+              <div class="form-check text-left">
+                <input
+                  id="annual"
+                  value="annual"
+                  name="paymentMethod"
+                  type="radio"
+                  class="form-check-input"
+                  checked
+                  required />
+                <label class="form-check-label" for="credit">Annually</label>
+              </div>
+              <div class="form-check text-left">
+                <input
+                  id="monthly"
+                  value="monthly"
+                  name="paymentMethod"
+                  type="radio"
+                  class="form-check-input"
+                  required />
+                <label class="form-check-label" for="debit">Monthly</label>
+              </div>
+
+              <div class="form-check text-left">
+                <input
+                  id="once"
+                  value="once"
+                  name="paymentMethod"
+                  type="radio"
+                  class="form-check-input"
+                  required />
+                <label class="form-check-label" for="debit"
+                  >One time donation</label
+                >
+              </div>
+            </div>
+
+            <div class="container-fluid row">
+              <div class="input-group has-validation w-md-50">
+                <div class="mb-3">
+                  Currency
+
+                  <select class="w-100 select" required>
+                    <option value="Choose Currency" type="invalid" disabled>
+                      Choose Currency
+                    </option>
+                    <option value="UGX">UGX</option>
+                    <option value="USD">USD</option>
+                  </select>
+                </div>
+
+                <div class="invalid-feedback">
+                  Please fill in the amount you would like to give.
+                </div>
+              </div>
+
+              <div class="input-group has-validation">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  placeholder="Enter the amount"
+                  required />
+                <div class="invalid-feedback">
+                  Please fill in the amount you would like to give.
+                </div>
+              </div>
+            </div>
+
+            <p class="py-3">
+              <input
+                type="reset"
+                class="btn btn-secondary btn-lg"
+                value="Clear" />
+              <button class="w-50 btn btn-primary btn-lg" type="submit">
+                Submit
+              </button>
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <!----------------------------------------------CAROUSEL------------------------------------------>
+    </div>
+  </div>
+</div>
+</div>
+
+    <footer>
+  <p class="text-center">
+    <button class="btn gbutton2" onclick="window.location.href='#top' ">
+      Back to top
+    </button>
+  </p>
+  <p class="text-center">Tel: +256 773913902 , Email: grealmkids@gmail.com</p>
+</footer>
+
+  </body>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+</html>

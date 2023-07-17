@@ -1,0 +1,208 @@
+.gbody {
+  background-color: rgb(250, 243, 233);
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 16px !important;
+}
+
+.gmiddle {
+  background-color: rgb(236, 224, 198) !important;
+}
+
+.grealmtext {
+  color: rgb(219, 135, 24);
+}
+
+.gtitle {
+  color: rgb(179, 131, 68);
+  border-bottom: 1px solid rgb(179, 131, 68);
+  padding-bottom: 20px;
+}
+.carousel-item {
+  height: 300px;
+}
+.btn-primary {
+  background-color: rgb(45, 97, 173);
+}
+
+.btn-primary:hover {
+  background-color: rgb(39, 91, 168);
+}
+.gtitle1 {
+  font-style: normal;
+  color: rgb(109, 104, 99);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: medium;
+}
+
+.gtitle2 {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgb(109, 104, 99);
+}
+
+.gtitle3 {
+  color: rgb(114, 91, 60);
+  border-bottom: 1px solid rgb(179, 131, 68);
+  border-top: 1px solid rgb(179, 131, 68);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: rgb(229, 212, 190);
+}
+.yellowbg {
+  background-color: rgb(250, 247, 96);
+}
+
+.gtitle4 {
+  color: rgb(114, 91, 60);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: rgb(165, 250, 91);
+}
+
+.gtitle5 {
+  border-bottom: 1px solid rgb(228, 179, 123);
+  padding: 10px;
+  color: rgb(228, 179, 123);
+}
+.gtitle6 {
+  color: rgb(255, 255, 255);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: rgb(161, 2, 135);
+}
+.gtitle7 {
+  color: rgb(255, 255, 255);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: rgb(11, 73, 207);
+}
+
+.gtitleb {
+  color: rgb(255, 255, 255);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: rgb(34, 34, 34);
+}
+.gtitle8 {
+  color: rgb(255, 255, 255);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: rgb(207, 11, 93);
+}
+
+.gtitle9 {
+  color: rgb(255, 255, 255);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: rgb(207, 11, 11);
+}
+.text-left {
+  text-align: left !important;
+}
+
+.bg-grey {
+  background-color: rgb(226, 226, 225) !important;
+}
+.table {
+  font-family: Georgia, "Times New Roman", Times, serif !important;
+}
+
+.table tr td {
+  text-align: left !important;
+}
+
+footer {
+  color: rgb(114, 91, 60);
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.gtext {
+  color: rgb(109, 104, 99);
+  font-size: large;
+}
+
+.float-right {
+  float: right;
+  clear: left;
+}
+
+.sbutton {
+  /** background-color: rgb(91, 161, 70) !important; */
+  background-color: rgb(233, 37, 174) !important;
+  color: rgb(252, 252, 252) !important;
+}
+.gbutton {
+  background-color: rgb(91, 161, 70) !important;
+  color: rgb(255, 255, 255) !important;
+}
+.gbutton a {
+  color: rgb(255, 255, 255) !important;
+  text-decoration: none;
+}
+.gbutton1 {
+  background-color: rgb(184, 128, 64) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.gbutton1 a {
+  color: rgb(255, 255, 255) !important;
+  text-decoration: none;
+}
+
+.gbutton2 {
+  background-color: rgb(31, 120, 155) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.gbutton2 a {
+  color: rgb(255, 255, 255) !important;
+  text-decoration: none;
+}
+
+.sbutton a {
+  color: rgb(255, 255, 255) !important;
+  text-decoration: none;
+}
+
+.dropdown-menu a {
+  color: rgb(255, 255, 255) !important;
+  font-size: 120%;
+  border-bottom: 1px solid rgb(201, 187, 142);
+}
+
+.dropdown-menu a:hover {
+  color: antiquewhite !important;
+  font-size: 150%;
+  border-bottom: 1px solid rgb(201, 187, 142);
+  background-color: rgba(131, 123, 117, 0.9) !important;
+}
+
+.dropdown-menu {
+  margin: 10px auto;
+  background-color: rgb(109, 102, 96) !important;
+}
+.carousel-indicators button {
+  z-index: 0 !important;
+}
+@media (max-width: 600px) {
+  .gtitle1 {
+    display: none;
+  }
+  .gbody {
+    text-align: center !important;
+  }
+
+  .sbutton {
+  }
+}
+
+@media (min-width: 1200px) {
+  .dropdown-menu a:hover {
+    font-size: 180% !important;
+  }
+}
+
+.borderedinput {
+  border: 0 !important;
+  border-bottom: 2px solid #373737 !important;
+}

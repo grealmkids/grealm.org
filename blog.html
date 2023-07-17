@@ -1,0 +1,40 @@
+---
+layout: blog-post
+title: "Blog"
+desc: "Read our recent happenings related to our business and English cottages on the blog."
+---
+
+<main class="gutter-1 pad-t-2 pad-b max-length" role="main">
+  <h1 class="text-center lapocolor2 push-0 exa pt-5">Most recent Blogs</h1>
+  <p class=" h4 px-0 py-1 mx-0 fw-light text-center">
+   Catch up with the latest innovations in Data Technologies.
+    <on class=""></on>
+  </p>
+  <div class="row">
+    {% for post in site.posts limit:3%}
+    <div class="col-lg-4 my-3 bg-light">
+      <div class="p-3 articleitem">
+        <article class="">
+          {% include patterns/cards/post.html data=post %}
+        </article>
+        
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+
+<!-----------------------------LOWER LIST----------------------------------------->
+<h1 class="text-left lapocolor ps-5 pt-5">Other Blogs</h1>
+<div class="row container ps-5 text-warning text-left py-5 ">
+  {% for posts in site.posts %}
+    <h3 class="allposts h4">
+     {% include patterns/cards/posts.html data=posts %}
+    </h3>
+   
+      
+    {% endfor %}
+ 
+</div>
+<!----------------------------------END LOWER LIST-------------------------------->
+</main>

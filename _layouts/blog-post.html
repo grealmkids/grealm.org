@@ -1,0 +1,28 @@
+---
+layout: blog-item
+---
+
+<main class="p-0 push2 text-left p-md-5">
+<div class="container-fluid ">
+  <p class="ib push-1-2 py-3">
+    <a href="/blog/" class="btn btn-success back">← See other articles</a>
+  </p>
+  <h1 class=" text-left">{{page.title}}</h1>
+  <p class="text-dark push2p   text-left">
+    <i> Written by <strong class="fw-light lapocolor2"> {{page.author}}</strong> </i>
+    <i class="ms-3">
+      On: <strong class="fw-light text-warning  lapocolor2"> {{page.written-on}}</strong>
+    </i>
+  </p>
+
+</div>
+  <h1 class="border-top py-3"></h1>
+  <div class="container-fluid text-dark">
+    {{content}}
+  </div>
+
+  <p class="ib push-1-2 py-3">
+    <a href="/blog/" class="btn btn-success back">← See other articles</a>
+  </p>
+
+</main>

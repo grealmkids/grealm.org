@@ -1,0 +1,16 @@
+current directory: G:/Documents/CLIENTS' WORK/ANDERSON/LAPO WEBSITE/LAPOWEBSITE_ONLINE1/lapowebsite/vendor/cache/ruby/2.7.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+C:/Ruby27-x64/bin/ruby.exe -I C:/Ruby27-x64/lib/ruby/2.7.0 -r ./siteconf20210827-7192-bjnb40.rb extconf.rb
+creating Makefile
+
+current directory: G:/Documents/CLIENTS' WORK/ANDERSON/LAPO WEBSITE/LAPOWEBSITE_ONLINE1/lapowebsite/vendor/cache/ruby/2.7.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+make "DESTDIR=" clean
+
+current directory: G:/Documents/CLIENTS' WORK/ANDERSON/LAPO WEBSITE/LAPOWEBSITE_ONLINE1/lapowebsite/vendor/cache/ruby/2.7.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+make "DESTDIR="
+generating ruby_http_parser-x64-mingw32.def
+compiling ruby_http_parser.c
+/bin/sh: -c: line 1: unexpected EOF while looking for matching `''
+/bin/sh: -c: line 2: syntax error: unexpected end of file
+make: *** [Makefile:245: ruby_http_parser.o] Error 2
+
+make failed, exit code 2
