@@ -210,3 +210,8 @@ footer {
   background-color: #b71111 !important;
   color: rgb(255, 255, 255) !important;
 }
+
+#valid-feedback {
+  background-color: #0bb108 !important;
+  color: rgb(255, 255, 255) !important;
+}
