@@ -102,20 +102,18 @@
               <input
                 type="text"
                 class="form-control"
-                id="firstName"
+                id="firstname"
                 placeholder="First Name"
-                value=""
-                required />
+                value="" />
             </div>
 
             <div class="col-sm-6">
               <input
                 type="text"
                 class="form-control"
-                id="lastName"
+                id="lastname"
                 placeholder="Last Name"
-                value=""
-                required />
+                value="" />
             </div>
 
             <div class="col-12">
@@ -124,8 +122,7 @@
                   type="text"
                   class="form-control"
                   id="phone"
-                  placeholder="phone"
-                  required />
+                  placeholder="phone" />
               </div>
             </div>
 
@@ -141,7 +138,7 @@
               <div class="mb-3">
                 Donate Equipment/ Money?
 
-                <select class="select p-1 w-md-50" required>
+                <select class="select p-1 w-md-50" id="item">
                   <option value="item" type="invalid" disabled>
                     Donate money or equipment ?
                   </option>
@@ -154,39 +151,19 @@
             <h4 class="mb-3">Choose period:</h4>
 
             <div class="my-3">
-              <div class="text-left">
-                <input
-                  id="annual"
-                  value="annual"
-                  name="paymentMethod"
-                  type="radio"
-                  class="form-check-input"
-                  checked
-                  required />
-                <label class="form-check-label" for="credit">Annually</label>
-              </div>
-              <div class="form-check text-left">
-                <input
-                  id="monthly"
-                  value="monthly"
-                  name="paymentMethod"
-                  type="radio"
-                  class="form-check-input"
-                  required />
-                <label class="form-check-label" for="debit">Monthly</label>
-              </div>
+              <div class="input-group has-validation w-md-50">
+                <div class="mb-3">
+                  Frequency of donation
 
-              <div class="form-check text-left">
-                <input
-                  id="once"
-                  value="once"
-                  name="paymentMethod"
-                  type="radio"
-                  class="form-check-input"
-                  required />
-                <label class="form-check-label" for="debit"
-                  >One time donation</label
-                >
+                  <select class="w-100 select p-1" id="frequency">
+                    <option value="Choose Currency" type="invalid" disabled>
+                      Frequency of donation
+                    </option>
+                    <option value="annually">Annually</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="once">Once</option>
+                  </select>
+                </div>
               </div>
             </div>
 
@@ -195,7 +172,7 @@
                 <div class="mb-3">
                   Currency
 
-                  <select class="w-100 select p-1" required>
+                  <select class="w-100 select p-1" id="currency">
                     <option value="Choose Currency" type="invalid" disabled>
                       Choose Currency
                     </option>
@@ -209,9 +186,8 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="username"
-                  placeholder="Enter the amount/ equipment name"
-                  required />
+                  id="amount"
+                  placeholder="Enter the amount/ equipment name" />
               </div>
             </div>
 
@@ -226,7 +202,10 @@
                 type="reset"
                 class="btn btn-secondary btn-lg"
                 value="Clear" />
-              <button class="w-50 btn btn-primary btn-lg" onclick="partner()">
+              <button
+                type="button"
+                class="w-50 btn btn-primary btn-lg"
+                onclick="partner()">
                 Submit
               </button>
             </p>
@@ -235,60 +214,67 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
           function partner() {
-            const name = document.getElementById("firstname").value;
+            const firstname = document.getElementById("firstname").value;
+            const lastname = document.getElementById("lastname").value;
             const phone = document.getElementById("phone").value;
-            const paymentMethod =
-              document.getElementById("paymentMethod").value;
-            const errormessage =
-              document.getElementById("invalid-feedback").value;
+            const email = document.getElementById("email").value;
+            const item = document.getElementById("item").value;
+            const frequency = document.getElementById("frequency").value;
+            const currency = document.getElementById("currency").value;
+            const amount = document.getElementById("amount").value;
+            var errormessage = document.getElementById("invalid-feedback");
 
             // Verify inputs
-            if (name.trim() === "" || phone.trim() === "") {
-              Swal.fire({
-                title: "Validation Error",
-                text: "Name and Phone are required",
-                icon: "error",
-                confirmButtonText: "OK",
-              });
-              document.getElementById("invalid-feedback").textContent =
-                "Please fill in all required fields";
+            if (
+              firstname.trim() === "" ||
+              lastname.trim() === "" ||
+              phone.trim() === "" ||
+              email.trim() === "" ||
+              item.trim() === "" ||
+              frequency.trim() === "" ||
+              currency.trim() === "" ||
+              amount.trim() === ""
+            ) {
+              errormessage.innerHTML = "Please fill in all fields";
+              errormessage.style.display = "block";
             } else {
-              // Send data to SheetDB
-              const day = new Date();
-              const options = {
-                day: "2-digit",
-                month: "short",
-                year: "numeric",
-              };
-              const formattedDay = day.toLocaleDateString("en-US", options);
-              const formData = new FormData();
-              formData.append("name", name);
-              formData.append("phone", phone);
-              formData.append("paywith", paymentMethod);
-              formData.append("date_sent", formattedDay);
+              errormessage.style.display = "none";
 
-              fetch("https://sheetdb.io/api/v1/xkwxymn6sqggm", {
+              // Create the payload
+              const data = {
+                firstname,
+                lastname,
+                phone,
+                email,
+                item,
+                frequency,
+                currency,
+                amount,
+                date_entered: new Date().toISOString().split("T")[0],
+              };
+
+              // Send data to SheetDB API
+              fetch("https://sheetdb.io/api/v1/stq696jmkh543", {
                 method: "POST",
-                body: formData,
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
               })
                 .then((response) => response.json())
-                .then((data) => {
-                  // Handle success response
-                  console.log("Data sent to SheetDB:", data);
-                  Swal.fire(
-                    "Success",
-                    "Your order has been placed!",
-                    "success"
-                  );
+                .then((result) => {
+                  // Handle the API response here
+                  console.log(result);
+
+                  errormessage.style.backgroundColor = "#00FF00 !important";
+                  errormessage.innerHTML =
+                    "Thank you. Our team will contact you shortly";
+                  errormessage.style.display = "block";
+                  // You can display a success message or perform other actions as needed
                 })
                 .catch((error) => {
-                  // Handle error
-                  console.error("Error sending data to SheetDB:", error);
-                  Swal.fire(
-                    "Error",
-                    "Failed to place the order. Please try again.",
-                    "error"
-                  );
+                  // Handle any errors that occur during the API request
+                  console.error(error);
                 });
             }
           }
