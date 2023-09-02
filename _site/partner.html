@@ -65,8 +65,8 @@
           <li>
             <a class="dropdown-item" href="partner.html">
               <i class="fa-solid fa-circle-dollar-to-slot text-warning"></i>
-              Donate
-            </a>
+              Support</a
+            >
           </li>
 
           <li>
@@ -84,11 +84,13 @@
     <div class="container-fluid"><div class="container-fluid">
   <div class="row p-3">
     <div class="col-md-8 p-3 mx-auto">
-      <h2 class="gtitle2 text-left ps-3">Make a donation today</h2>
+      <h2 class="gtitle4 text-left ps-3">BECOME A PARTNER</h2>
       <h5 class="gtext text-dark border-0 text-left p-3">
-        Our partners get special rights e.g. they receive periodic updates on
-        work progress and they are entitled to receive all our released episodes
-        at no charge, unless they would like to offer us a special gift.
+        Our partners get special rights e.g. they receive financial
+        accountability for every penny spent if they so desire/ request, how it
+        was spent and what it accomplished. Our partners also receive periodic
+        updates on work progress and they are entitled to receive all our
+        released episodes at no cost.
       </h5>
 
       <!----------------------------------------------CAROUSEL------------------------------------------->
@@ -96,33 +98,42 @@
         <h5 class="gtitle5 text-dark border-0 text-center">
           Please fill in this form & we shall contact you. Thank you.
         </h5>
-        <form>
+        <form class="needs-validation" novalidate>
           <div class="row g-3">
             <div class="col-sm-6">
               <input
                 type="text"
                 class="form-control"
-                id="firstname"
+                id="firstName"
                 placeholder="First Name"
-                value="" />
+                value=""
+                required />
+              <div class="invalid-feedback">Please enter your First Name</div>
             </div>
 
             <div class="col-sm-6">
               <input
                 type="text"
                 class="form-control"
-                id="lastname"
+                id="lastName"
                 placeholder="Last Name"
-                value="" />
+                value=""
+                required />
+              <div class="invalid-feedback">Please enter your Last Name</div>
             </div>
 
             <div class="col-12">
-              <div>
+              <div class="input-group has-validation">
+                <span class="input-group-text">+</span>
                 <input
                   type="text"
                   class="form-control"
-                  id="phone"
-                  placeholder="phone" />
+                  id="username"
+                  placeholder="phone"
+                  required />
+                <div class="invalid-feedback">
+                  Your Phone/ Email is required.
+                </div>
               </div>
             </div>
 
@@ -132,38 +143,47 @@
                 class="form-control"
                 id="email"
                 placeholder="Your Email Address" />
-            </div>
-
-            <div class="w-md-50">
-              <div class="mb-3">
-                Donate Equipment/ Money?
-
-                <select class="select p-1 w-md-50" id="item">
-                  <option value="item" type="invalid" disabled>
-                    Donate money or equipment ?
-                  </option>
-                  <option value="money">Money</option>
-                  <option value="equipment">Equipment</option>
-                </select>
+              <div class="invalid-feedback">
+                Please enter a valid email address .
               </div>
             </div>
 
             <h4 class="mb-3">Choose period:</h4>
 
             <div class="my-3">
-              <div class="input-group has-validation w-md-50">
-                <div class="mb-3">
-                  Frequency of donation
+              <div class="form-check text-left">
+                <input
+                  id="annual"
+                  value="annual"
+                  name="paymentMethod"
+                  type="radio"
+                  class="form-check-input"
+                  checked
+                  required />
+                <label class="form-check-label" for="credit">Annually</label>
+              </div>
+              <div class="form-check text-left">
+                <input
+                  id="monthly"
+                  value="monthly"
+                  name="paymentMethod"
+                  type="radio"
+                  class="form-check-input"
+                  required />
+                <label class="form-check-label" for="debit">Monthly</label>
+              </div>
 
-                  <select class="w-100 select p-1" id="frequency">
-                    <option value="Choose Currency" type="invalid" disabled>
-                      Frequency of donation
-                    </option>
-                    <option value="annually">Annually</option>
-                    <option value="monthly">Monthly</option>
-                    <option value="once">Once</option>
-                  </select>
-                </div>
+              <div class="form-check text-left">
+                <input
+                  id="once"
+                  value="once"
+                  name="paymentMethod"
+                  type="radio"
+                  class="form-check-input"
+                  required />
+                <label class="form-check-label" for="debit"
+                  >One time donation</label
+                >
               </div>
             </div>
 
@@ -172,7 +192,7 @@
                 <div class="mb-3">
                   Currency
 
-                  <select class="w-100 select p-1" id="currency">
+                  <select class="w-100 select" required>
                     <option value="Choose Currency" type="invalid" disabled>
                       Choose Currency
                     </option>
@@ -180,24 +200,23 @@
                     <option value="USD">USD</option>
                   </select>
                 </div>
+
+                <div class="invalid-feedback">
+                  Please fill in the amount you would like to give.
+                </div>
               </div>
 
-              <div class="">
+              <div class="input-group has-validation">
                 <input
                   type="text"
                   class="form-control"
-                  id="amount"
-                  placeholder="Enter the amount/ equipment name" />
+                  id="username"
+                  placeholder="Enter the amount"
+                  required />
+                <div class="invalid-feedback">
+                  Please fill in the amount you would like to give.
+                </div>
               </div>
-            </div>
-
-            <div>
-              <h2
-                class="invalid-feedback p-2 h4 text-center"
-                id="invalid-feedback"></h2>
-              <h2
-                class="valid-feedback p-2 h4 text-center"
-                id="valid-feedback"></h2>
             </div>
 
             <p class="py-3">
@@ -205,89 +224,12 @@
                 type="reset"
                 class="btn btn-secondary btn-lg"
                 value="Clear" />
-              <button
-                type="button"
-                class="w-50 btn btn-primary btn-lg"
-                onclick="partner()">
+              <button class="w-50 btn btn-primary btn-lg" type="submit">
                 Submit
               </button>
             </p>
           </div>
         </form>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-          function partner() {
-            const firstname = document.getElementById("firstname").value;
-            const lastname = document.getElementById("lastname").value;
-            const phone = document.getElementById("phone").value;
-            const email = document.getElementById("email").value;
-            const item = document.getElementById("item").value;
-            const frequency = document.getElementById("frequency").value;
-            const currency = document.getElementById("currency").value;
-            const amount = document.getElementById("amount").value;
-            var errormessage = document.getElementById("invalid-feedback");
-            var successmessage = document.getElementById("valid-feedback");
-
-            // Verify inputs
-            if (
-              firstname.trim() === "" ||
-              lastname.trim() === "" ||
-              phone.trim() === "" ||
-              email.trim() === "" ||
-              item.trim() === "" ||
-              frequency.trim() === "" ||
-              currency.trim() === "" ||
-              amount.trim() === ""
-            ) {
-              successmessage.innerHTML =
-                "Successful. Our team will contact you shortly";
-              successmessage.style.display = "none";
-              errormessage.innerHTML = "Please fill in required all fields";
-              errormessage.style.display = "block";
-            } else {
-              errormessage.style.display = "none";
-
-              // Create the payload
-              const data = {
-                firstname,
-                lastname,
-                phone,
-                email,
-                item,
-                frequency,
-                currency,
-                amount,
-                date_entered: new Date().toISOString().split("T")[0],
-              };
-
-              // Send data to SheetDB API
-              fetch("https://sheetdb.io/api/v1/stq696jmkh543", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-              })
-                .then((response) => response.json())
-                .then((result) => {
-                  // Handle the API response here
-                  console.log(result);
-
-                  errormessage.innerHTML =
-                    "Thank you. Our team will contact you shortly";
-                  errormessage.style.display = "none";
-                  successmessage.innerHTML =
-                    "Successful. Our team will contact you shortly";
-                  successmessage.style.display = "block";
-                  // You can display a success message or perform other actions as needed
-                })
-                .catch((error) => {
-                  // Handle any errors that occur during the API request
-                  console.error(error);
-                });
-            }
-          }
-        </script>
       </div>
 
       <!----------------------------------------------CAROUSEL------------------------------------------>

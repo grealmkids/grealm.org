@@ -9,13 +9,12 @@ layout: home
 <div class="col-md-6">
   
   
-  <h2 class="gtitle2 text-center p-1">BUY G-REALM <span class="text-primary">3D BIBLE</span>  PACK</h2>
+  <h2 class="gtitle2 text-center p-1">BUY G-REALM 3D PACK</h2>
   <h4 class="text-center gbutton p-1">
     Featuring Superbook
   </h4>
   <p class="text-center p-md-5 my-3">
     <img src="images/3dpack.jpg" alt="" class="img-fluid">
-   
   </p>
   <p class="text-center">
    Contains <span class="yellowbg p-1">50 Full HD Videos</span>  of 3D Animations full of life from the Bible for kids to learn the Word of GOD the fun way yet staying on the Truth. 
@@ -114,13 +113,12 @@ const formattedDay = day.toLocaleDateString('en-US', options);
       
       html: `
 
-      <h2 class="gtitle">Buy the 3D Bible Pack</h2>
+      <h2 class="gtitle">Buy the G-Realm Pack</h2>
              <div class="m-1">
-           
-              <video class="img-fluid my-auto" controls>
-      <source src="videos/3dbible.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-    </video>
+              <img src="images/gbox.png" class="img-fluid" width="320px">
+
+              <h1 class="yellowbg p-2 my-3 gtitle2 text-dark"><span class="text-primary p fw-thin">UGX</span> 50,000 <span class="text-primary h6">only</span></h1>
+             
               <div class="m-2">
                 <button class="btn-danger btn w-50 text-center" onclick="showOrderForm()">BUY</button>
 
@@ -128,19 +126,18 @@ const formattedDay = day.toLocaleDateString('en-US', options);
               
               </div>
             `,
-      timer: 150000, // Popup will close after 5 seconds
+      timer: 15000, // Popup will close after 5 seconds
       allowOutsideClick: true,
       allowEscapeKey: true,
       showCloseButton: true,
       showConfirmButton: false,
       icon: 'none'
     });
-  }, 3500); // Delay the popup for 35 seconds (35000 milliseconds)
+  }, 3000); // Delay the popup for 30 seconds (30000 milliseconds)
 });
 
 </script>
 
-{%include vision.html%}
 
 {%include mission.html%}
 
