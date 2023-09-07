@@ -64,7 +64,7 @@ layout: home
           </div>
           <div class="col-md-5 text-center py-3">
             <h2 class="text-center border-bottom">PRICE</h2>
-            <h4 class="text-center yellowbg py-3 mb-3">10 $</h4>
+            <h4 class="text-center yellowbg py-3 mb-3">UgX 30,000</h4>
             <p>
               For the entire album<br />
               <span class="gtitle"> (12 songs) </span>
@@ -72,18 +72,18 @@ layout: home
 
             <button
               class="btn-lg btn-danger border-0 w-50"
-              onclick="showOrderForm()">
+              onclick="buyReadingForm()">
               BUY
             </button>
 
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script>
-              function showOrderForm() {
+              function buyReadingForm() {
                 Swal.fire({
                   title: "Place an Order",
                   html: `
                     <form id="orderForm">
-                      <h3 class="text-danger p-1 yellowbg fw-bold">UgX 50,000</h3><br>
+                      <h3 class="text-danger p-1 yellowbg fw-bold">UgX 30,000</h3><br>
                       <input type="text" id="name" class="form-control borderedinput text-center" placeholder="Your Name" required><br>
                       
                       
@@ -162,8 +162,39 @@ layout: home
         </div>
         <div class="col-md-3">
           <p class="mt-5 pt-5 text-center">
-            <button class="btn-lg btn-dark border-0 w-100">Watch Sample</button>
+            <button class="btn-lg btn-dark border-0 w-100" onclick="reading()">
+              Watch Sample
+            </button>
           </p>
+          <script>
+            function reading() {
+              Swal.fire({
+                html: `
+
+      <h2 class="gtitle">Photoshoot</h2>
+      <h4 class="yellowbg p-2 my-3 gtitle2 text-dark">After recording album</h4>
+             <div class="m-1">
+              <video class="w-100 my-auto" controls>
+    <source src="videos/reading.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+             
+             
+              <div class="m-2">
+                <button class="btn-danger btn w-50 text-center" onclick="buyReadingForm()">BUY</button>
+
+                </div>
+              
+              </div>
+            `,
+                allowOutsideClick: true,
+                allowEscapeKey: true,
+                showCloseButton: true,
+                showConfirmButton: false,
+                icon: "none",
+              });
+            }
+          </script>
         </div>
       </div>
     </div>

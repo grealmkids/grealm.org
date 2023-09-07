@@ -186,37 +186,7 @@ const formattedDay = day.toLocaleDateString('en-US', options);
 
 </div>
 
-<script>
-  window.addEventListener('load', function() {
-  setTimeout(function() {
-    Swal.fire({
-      
-      html: `
 
-      <h2 class="gtitle">Buy the G-Realm Pack</h2>
-             <div class="m-1">
-              <img src="images/gbox.png" class="img-fluid" width="320px">
-
-              <h1 class="yellowbg p-2 my-3 gtitle2 text-dark"><span class="text-primary p fw-thin">UGX</span> 50,000 <span class="text-primary h6">only</span></h1>
-             
-              <div class="m-2">
-                <button class="btn-danger btn w-50 text-center" onclick="showOrderForm()">BUY</button>
-
-                </div>
-              
-              </div>
-            `,
-      timer: 15000, // Popup will close after 5 seconds
-      allowOutsideClick: true,
-      allowEscapeKey: true,
-      showCloseButton: true,
-      showConfirmButton: false,
-      icon: 'none'
-    });
-  }, 3000); // Delay the popup for 30 seconds (30000 milliseconds)
-});
-
-</script>
 
 
 <div class="container-fluid row m-0 mb-5">
@@ -289,7 +259,11 @@ const formattedDay = day.toLocaleDateString('en-US', options);
 
 
 
-
+<p class="my-5 text-center">
+  <a class="btn btn-primary" href="equipment.html">
+       See full list of requirements</a
+  >
+</p>
 
 
 
