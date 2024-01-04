@@ -15,7 +15,6 @@
 .gtitle {
   color: rgb(179, 131, 68);
   border-bottom: 1px solid rgb(179, 131, 68);
-  padding-bottom: 20px;
 }
 .carousel-item {
   height: 300px;
@@ -205,4 +204,36 @@ footer {
 .borderedinput {
   border: 0 !important;
   border-bottom: 2px solid #373737 !important;
+}
+
+.audioicon {
+  border-radius: 10px;
+  text-decoration: none;
+  margin: 0;
+}
+
+.audiotitle {
+  background-color: #d2433c;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 0px 40px 40px 0px;
+  text-decoration: none;
+  margin: 0;
+}
+.audiobtn:hover {
+  background-color: #5d5d5d;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 30px;
+}
+.audiobtn {
+  background-color: #c4c4c4;
+  color: #282828;
+  text-decoration: none;
+  border-radius: 30px;
+  border: 0;
+}
+
+.fundingprogress {
+  font-size: 16px !important;
 }

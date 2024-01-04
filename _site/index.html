@@ -32,12 +32,8 @@
   </head>
   <body class="gbody">
     <header><nav class="bg-light row m-0 gtitle">
-  <div class="col-md-6">
-    <h1 class="text-center pt-5">G-Realm Studio</h1>
-  </div>
-
-  <div class="col-md-6">
-    <h1 class="text-center pt-5">
+  <div class="col-md-12">
+    <h1 class="text-center py-1">
       <button class="btn gbutton dropdown">
         <a
           class="dropdown-toggle"
@@ -51,7 +47,8 @@
         <ul class="dropdown-menu" aria-labelledby="dropdown01">
           <li>
             <a class="dropdown-item" href="3dpacks.html"
-              ><i class="fa-solid fa-cube text-warning"></i> 3D Animations</a
+              ><i class="fa-solid fa-cube text-warning"></i> 3D Bible
+              Collection</a
             >
           </li>
 
@@ -68,6 +65,18 @@
               Support</a
             >
           </li>
+          <li>
+            <a class="dropdown-item" href="audio.html">
+              <i class="fa-solid fa-play text-warning"></i>
+              Audio Productions</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="gallery.html">
+              <i class="fa-solid fa-image text-warning"></i>
+              Picture Gallery</a
+            >
+          </li>
 
           <li>
             <a class="dropdown-item" href="index.html">
@@ -81,10 +90,11 @@
   </div>
 </nav>
 </header>
-    <div class="container-fluid">    <div class="container-fluid p-lg-3 m-0">
+    <div class="container-fluid">    <div class="container-fluid  m-0">
  
-<div class="row p-3  ">
+<div class="row ">
 
+  <!----------------
 
 <div class="col-md-6">
   
@@ -182,7 +192,8 @@ const formattedDay = day.toLocaleDateString('en-US', options);
   </video>
 </div>
      
-
+------------------>
+<h2 class="gtitle2 gtitle3  text-center m-0 p-3">G-REALM KIDS' STUDIO</h2>
 
 </div>
 
@@ -191,17 +202,26 @@ const formattedDay = day.toLocaleDateString('en-US', options);
 
 <div class="container-fluid row m-0 mb-5">
   <div class="col-md-12 m-0 p-1">
-    <h3 class="gtitle2 p-3">OUR MISSION</h3>
     <div class="row">
+      <div class="col-md-6"><div class="row py-5 text-center p-md-5 m-0">
+  <div class="text-center m-0">
+    <video width="100%" controls>
+      <source src="videos/reading.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+</div>
       <div class="col-md-6">
+        <h3 class="gtitle2 p-3">OUR MISSION</h3>
         <ol>
           <li class="py-3">
             <p class="gtext justify-content">
               To custom make Christian and Spirit-Filled but African 3D & 2D
               animations and illustrations for Bible Stories and Bible lessons
               for children in Africa to relate with and enjoy learning the word
-              and the ways of God. We also promote content of other people who
-              do similar work.
+              of God and the ways of God. We also promote content of other
+              people who do similar work.
             </p>
           </li>
           <li class="pb-3">
@@ -214,44 +234,29 @@ const formattedDay = day.toLocaleDateString('en-US', options);
           </li>
         </ol>
       </div>
-      <div class="col-md-6"><div class="row py-5 text-center p-md-5 m-0">
-  <h2 class="gtitle3 gbutton text-center m-0">G-Realm Logo</h2>
-  <div class="text-center m-0">
-    <img src="images/logo.png" class="img-fluid w-50 m-0" alt="" />
-  </div>
-</div>
-</div>
     </div>
 
-    <div>
-      <h2 class="gtitle2">
-        DONATION GOALS: <span class="text-primary">JUN 2023-DEC 2024 </span>
+    <div class="container-fluid m-0 p-0">
+      <h2 class="gtitle2 text-center">
+        FUNDING GOALS: <span class="text-primary">Jan 2024-DEC 2024 </span>
       </h2>
-      <div id="countdown-wrap">
-        <div id="goals-wrap">
-          <div id="goal">
-            $150,000
-            <p class="text-success">GOAL</p>
-          </div>
-        </div>
-        <div id="glass">
-          <div id="progress"></div>
-        </div>
+      <h4 class="bg-dark p-0 m-0 fundingprogress">
+        <p class="p-0 m-0 p-1">
+          <span class="text-warning mr-3 p">Raised $17.9</span>
+          <span class="text-light p"> out of $500,000 </span>
+        </p>
+      </h4>
+      <p id="current-date"></p>
+      <script>
+        function showDate() {
+          var currentDate = new Date();
+          var dateString = currentDate.toDateString();
+          document.getElementById("current-date").innerText =
+            "Current Date: " + dateString;
+        }
 
-        <div class="goal-stat">
-          <!-- STEP 2 ||||||||||||||||||||||||||||||||||||||-->
-          <!--|||||||||||||||||| CHANGE ||||||||||||||||||||-->
-
-          <span class="goal-number">$17.29</span>
-
-          <!--|||||||||||||||||| AMOUNT ||||||||||||||||||||-->
-          <!--||||||||||||||||||||||||||||||||||||||||||||||-->
-          <!-- If you've done step 1, you are done :)
-          otherwise step 1 is at the top, scroll up! -->
-
-          <span class="goal-label">RAISED</span>
-        </div>
-      </div>
+        showDate(); // Call the function to display the date immediately
+      </script>
     </div>
   </div>
 </div>
@@ -267,9 +272,12 @@ const formattedDay = day.toLocaleDateString('en-US', options);
 
 
 
+
+
 </div>
    
 </div>
+
 </div>
 
     <footer>

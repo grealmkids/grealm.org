@@ -1,0 +1,135 @@
+---
+layout: home
+---
+
+<!-- Include SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<div class="container-fluid m-0">
+  <div class="row">
+    <h2 class="gtitle2 gtitle3 text-center m-0 p-3">OUR AUDIO SAMPLES</h2>
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <div class="m-md-3">
+          <h2 class="gtitle2">Reading</h2>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/soundo.mp3', 'Sound o')">
+            <span class="p-3">Sound "o" </span>
+          </button>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/sounda.mp3', 'Sound a')">
+            <span class="p-3">Sound "a" </span>
+          </button>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/soundee.mp3', 'Sound ee')">
+            <span class="p-3">Sound "ee" </span>
+          </button>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/soundu.mp3', 'Sound u')">
+            <span class="p-3">Sound "u" </span>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="m-md-3">
+          <h2 class="gtitle2">Others</h2>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/bababa.mp3', 'I care for my body')">
+            <span class="p-3">I care for my body </span>
+          </button>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/germination.mp3', 'Sound a')">
+            <span class="p-3">Sound "a" </span>
+          </button>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/bababa.mp3', 'Sound ee')">
+            <span class="p-3">Sound "ee" </span>
+          </button>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/soundaa.mp3', 'Sound u')">
+            <span class="p-3">Sound "u" </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var currentAudio;
+  var audioPlayer;
+
+  function toggleAudio(audioSrc, soundDescription) {
+    if (!currentAudio || currentAudio.src !== audioSrc) {
+      playAudio(audioSrc, soundDescription);
+    } else {
+      pauseAudio();
+    }
+  }
+
+  function playAudio(audioSrc, soundDescription) {
+    Swal.fire({
+      title: "Audio Player",
+      html: `<p>${soundDescription}</p>
+             <div id="sound-visual" style="height: 20px; width: 100%; background-color: #aadddd;"></div>
+             <audio controls id="audio-player" src="${audioSrc}" onplay="startVisual()" onpause="stopVisual()">
+               Your browser does not support the audio element.
+             </audio>`,
+      showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonColor: "#1a1a1a",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Stop Playing",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        stopAudio();
+        Swal.fire("Audio Stopped", "", "success");
+      }
+    });
+  }
+
+  function pauseAudio() {
+    if (currentAudio) {
+      currentAudio.pause();
+      stopVisual();
+    }
+  }
+
+  function startVisual() {
+    audioPlayer = document.getElementById("audio-player");
+    var visualElement = document.getElementById("sound-visual");
+
+    // Add animation or other visual effects when audio is playing
+    visualElement.style.backgroundColor = "green";
+
+    // Update the visual effects based on the audio playback progress
+    audioPlayer.addEventListener("timeupdate", function () {
+      var progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+      visualElement.style.width = progress + "%";
+    });
+  }
+
+  function stopVisual() {
+    var visualElement = document.getElementById("sound-visual");
+
+    // Reset visual effects when audio is paused/stopped
+    visualElement.style.backgroundColor = "#41a4a4";
+    visualElement.style.width = "0";
+  }
+
+  function stopAudio() {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio = null;
+      stopVisual();
+    }
+  }
+</script>

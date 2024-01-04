@@ -1,16 +1,17 @@
 <div class="container-fluid row m-0 mb-5">
   <div class="col-md-12 m-0 p-1">
-    <h3 class="gtitle2 p-3">OUR MISSION</h3>
     <div class="row">
+      <div class="col-md-6">{%include logopart.html%}</div>
       <div class="col-md-6">
+        <h3 class="gtitle2 p-3">OUR MISSION</h3>
         <ol>
           <li class="py-3">
             <p class="gtext justify-content">
               To custom make Christian and Spirit-Filled but African 3D & 2D
               animations and illustrations for Bible Stories and Bible lessons
               for children in Africa to relate with and enjoy learning the word
-              and the ways of God. We also promote content of other people who
-              do similar work.
+              of God and the ways of God. We also promote content of other
+              people who do similar work.
             </p>
           </li>
           <li class="pb-3">
@@ -23,38 +24,29 @@
           </li>
         </ol>
       </div>
-      <div class="col-md-6">{%include logopart.html%}</div>
     </div>
 
-    <div>
-      <h2 class="gtitle2">
-        DONATION GOALS: <span class="text-primary">JUN 2023-DEC 2024 </span>
+    <div class="container-fluid m-0 p-0">
+      <h2 class="gtitle2 text-center">
+        FUNDING GOALS: <span class="text-primary">Jan 2024-DEC 2024 </span>
       </h2>
-      <div id="countdown-wrap">
-        <div id="goals-wrap">
-          <div id="goal">
-            $150,000
-            <p class="text-success">GOAL</p>
-          </div>
-        </div>
-        <div id="glass">
-          <div id="progress"></div>
-        </div>
+      <h4 class="bg-dark p-0 m-0 fundingprogress">
+        <p class="p-0 m-0 p-1">
+          <span class="text-warning mr-3 p">Raised $17.9</span>
+          <span class="text-light p"> out of $500,000 </span>
+        </p>
+      </h4>
+      <p id="current-date"></p>
+      <script>
+        function showDate() {
+          var currentDate = new Date();
+          var dateString = currentDate.toDateString();
+          document.getElementById("current-date").innerText =
+            "Current Date: " + dateString;
+        }
 
-        <div class="goal-stat">
-          <!-- STEP 2 ||||||||||||||||||||||||||||||||||||||-->
-          <!--|||||||||||||||||| CHANGE ||||||||||||||||||||-->
-
-          <span class="goal-number">$17.29</span>
-
-          <!--|||||||||||||||||| AMOUNT ||||||||||||||||||||-->
-          <!--||||||||||||||||||||||||||||||||||||||||||||||-->
-          <!-- If you've done step 1, you are done :)
-          otherwise step 1 is at the top, scroll up! -->
-
-          <span class="goal-label">RAISED</span>
-        </div>
-      </div>
+        showDate(); // Call the function to display the date immediately
+      </script>
     </div>
   </div>
 </div>

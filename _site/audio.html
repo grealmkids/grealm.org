@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="zxx">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Grealm-studio</title>
+    <meta
+      name="description"
+      content="Grealm studio, 3D animation in Africa, Education in Africa, Christian illustrations and drawings in Africa" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="/plugins/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style2.css" />
+    <link rel="stylesheet" href="/css/carousel.css" />
+    <link rel="stylesheet" href="/css/progressbar.css" />
+
+    <script
+      src="https://kit.fontawesome.com/6e95959b6b.js"
+      crossorigin="anonymous"></script>
+
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+             * element that contains the map. */
+      #map_canvas {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+    </style>
+  </head>
+  <body class="gbody">
+    <header><nav class="bg-light row m-0 gtitle">
+  <div class="col-md-12">
+    <h1 class="text-center py-1">
+      <button class="btn gbutton dropdown">
+        <a
+          class="dropdown-toggle"
+          href="#"
+          id="dropdown01"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="fa-solid fa-bars text-light"></i>
+          Menu</a
+        >
+        <ul class="dropdown-menu" aria-labelledby="dropdown01">
+          <li>
+            <a class="dropdown-item" href="3dpacks.html"
+              ><i class="fa-solid fa-cube text-warning"></i> 3D Bible
+              Collection</a
+            >
+          </li>
+
+          <li class="text-light">
+            <a class="dropdown-item" href="reading.html">
+              <i class="fa-solid fa-book-open-reader text-warning"></i>
+              Reading lessons</a
+            >
+          </li>
+
+          <li>
+            <a class="dropdown-item" href="partner.html">
+              <i class="fa-solid fa-circle-dollar-to-slot text-warning"></i>
+              Support</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="audio.html">
+              <i class="fa-solid fa-play text-warning"></i>
+              Audio Productions</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="gallery.html">
+              <i class="fa-solid fa-image text-warning"></i>
+              Picture Gallery</a
+            >
+          </li>
+
+          <li>
+            <a class="dropdown-item" href="index.html">
+              <i class="fa-solid fa-home text-warning"></i>
+              home</a
+            >
+          </li>
+        </ul>
+      </button>
+    </h1>
+  </div>
+</nav>
+</header>
+    <div class="container-fluid"><!-- Include SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<div class="container-fluid m-0">
+  <div class="row">
+    <h2 class="gtitle2 gtitle3 text-center m-0 p-3">OUR AUDIO SAMPLES</h2>
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <div class="m-md-3">
+          <h2 class="gtitle2">Reading</h2>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/soundo.mp3', 'Sound o')">
+            <span class="p-3">Sound "o" </span>
+          </button>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/sounda.mp3', 'Sound a')">
+            <span class="p-3">Sound "a" </span>
+          </button>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/soundee.mp3', 'Sound ee')">
+            <span class="p-3">Sound "ee" </span>
+          </button>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/soundu.mp3', 'Sound u')">
+            <span class="p-3">Sound "u" </span>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="m-md-3">
+          <h2 class="gtitle2">Others</h2>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/bababa.mp3', 'I care for my body')">
+            <span class="p-3">I care for my body </span>
+          </button>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/germination.mp3', 'Sound a')">
+            <span class="p-3">Sound "a" </span>
+          </button>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/bababa.mp3', 'Sound ee')">
+            <span class="p-3">Sound "ee" </span>
+          </button>
+          <button
+            class="p-0 m-0 audiobtn mt-3"
+            onclick="toggleAudio('audio/soundaa.mp3', 'Sound u')">
+            <span class="p-3">Sound "u" </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var currentAudio;
+  var audioPlayer;
+
+  function toggleAudio(audioSrc, soundDescription) {
+    if (!currentAudio || currentAudio.src !== audioSrc) {
+      playAudio(audioSrc, soundDescription);
+    } else {
+      pauseAudio();
+    }
+  }
+
+  function playAudio(audioSrc, soundDescription) {
+    Swal.fire({
+      title: "Audio Player",
+      html: `<p>${soundDescription}</p>
+             <div id="sound-visual" style="height: 20px; width: 100%; background-color: #aadddd;"></div>
+             <audio controls id="audio-player" src="${audioSrc}" onplay="startVisual()" onpause="stopVisual()">
+               Your browser does not support the audio element.
+             </audio>`,
+      showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonColor: "#1a1a1a",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Stop Playing",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        stopAudio();
+        Swal.fire("Audio Stopped", "", "success");
+      }
+    });
+  }
+
+  function pauseAudio() {
+    if (currentAudio) {
+      currentAudio.pause();
+      stopVisual();
+    }
+  }
+
+  function startVisual() {
+    audioPlayer = document.getElementById("audio-player");
+    var visualElement = document.getElementById("sound-visual");
+
+    // Add animation or other visual effects when audio is playing
+    visualElement.style.backgroundColor = "green";
+
+    // Update the visual effects based on the audio playback progress
+    audioPlayer.addEventListener("timeupdate", function () {
+      var progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+      visualElement.style.width = progress + "%";
+    });
+  }
+
+  function stopVisual() {
+    var visualElement = document.getElementById("sound-visual");
+
+    // Reset visual effects when audio is paused/stopped
+    visualElement.style.backgroundColor = "#41a4a4";
+    visualElement.style.width = "0";
+  }
+
+  function stopAudio() {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio = null;
+      stopVisual();
+    }
+  }
+</script>
+</div>
+
+    <footer>
+  <p class="text-center">
+    <button class="btn gbutton2" onclick="window.location.href='#top' ">
+      Back to top
+    </button>
+  </p>
+  <p class="text-center">Tel: +256 773913902 , Email: grealmkids@gmail.com</p>
+</footer>
+
+  </body>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+</html>
