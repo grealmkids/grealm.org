@@ -237,3 +237,21 @@ footer {
 .fundingprogress {
   font-size: 16px !important;
 }
+
+.productpic {
+  max-height: 200px;
+}
+.btn-whatsapp {
+  background-color: #00aa1a;
+  color: #ffffff;
+}
+.productheader {
+  font-weight: lighter;
+  color: #ffffff;
+  background: rgba(247, 118, 19, 0.8) url("/images/bg/cartographer.png") !important;
+  font-family: cursive;
+}
+
+.gbutton:hover {
+  font-size: 21px;
+}

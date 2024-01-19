@@ -14,7 +14,6 @@
       href="/plugins/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/style2.css" />
-    <link rel="stylesheet" href="/css/carousel.css" />
     <link rel="stylesheet" href="/css/progressbar.css" />
 
     <script
@@ -46,23 +45,16 @@
         >
         <ul class="dropdown-menu" aria-labelledby="dropdown01">
           <li>
-            <a class="dropdown-item" href="3dpacks.html"
-              ><i class="fa-solid fa-cube text-warning"></i> 3D Bible
-              Collection</a
-            >
-          </li>
-
-          <li class="text-light">
-            <a class="dropdown-item" href="reading.html">
-              <i class="fa-solid fa-book-open-reader text-warning"></i>
-              Reading lessons</a
+            <a class="dropdown-item" href="products.html"
+              ><i class="fa-solid fa-shopping-cart text-warning"></i>
+              Products</a
             >
           </li>
 
           <li>
             <a class="dropdown-item" href="partner.html">
               <i class="fa-solid fa-circle-dollar-to-slot text-warning"></i>
-              Support</a
+              Donate</a
             >
           </li>
           <li>
@@ -95,12 +87,88 @@
   <div class="row">
     <div class="col-md-3">
       <div class="m-2 bg-light shadow">
-        <img src="images/bible/holybible.jpg" alt="" class="img-fluid" />
-        <p class="p-3">The Original King James Version</p>
-        <h2 class="text-danger p-0 ps-3">UgX 35,000</h2>
-        <p class="ps-3 pb-5">
-          <button class="btn btn-lg btn-danger w-50">BUY</button>
-        </p>
+        <button
+          class="btn-lg btn-whatsapp border-0 mb-3"
+          onclick="showOrderForm()">
+          Order Now
+        </button>
+        <p class="text-center">Or call +256781 584927</p>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+          function showOrderForm() {
+            Swal.fire({
+              title: "Place an Order",
+              html: `
+            <form id="orderForm">
+              <h3 class="text-danger p-1 yellowbg fw-bold">--------</h3><br>
+              <input type="text" id="name" class="form-control borderedinput text-center" placeholder="Your Name" required><br>
+              
+              
+              <input type="text" id="phone"  class="form-control borderedinput text-center"  placeholder="Your Phone/ Email" required><br>
+              
+              <select id="paymentMethod"  class="form-control  borderedinput text-center" >
+                <option >Payment Method</option>
+                <option value="mobile_money">Mobile Money</option>
+                <option value="credit_card">Credit Card</option>
+                <option value="cash">Cash</option>
+              </select><br><br>
+            </form>
+          `,
+              confirmButtonText: "Place Order",
+              showCancelButton: true,
+              cancelButtonText: "Cancel",
+              preConfirm: () => {
+                const name = document.getElementById("name").value;
+                const phone = document.getElementById("phone").value;
+                const paymentMethod =
+                  document.getElementById("paymentMethod").value;
+
+                // Verify inputs
+                if (name.trim() === "" || phone.trim() === "") {
+                  Swal.showValidationMessage("Name and Phone are required");
+                } else {
+                  // Send data to SheetDB
+                  const day = new Date();
+                  const options = {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                  };
+                  const formattedDay = day.toLocaleDateString("en-US", options);
+                  const formData = new FormData();
+                  formData.append("name", name);
+                  formData.append("phone", phone);
+                  formData.append("paywith", paymentMethod);
+                  formData.append("date_sent", formattedDay);
+
+                  fetch("https://sheetdb.io/api/v1/xkwxymn6sqggm", {
+                    method: "POST",
+                    body: formData,
+                  })
+                    .then((response) => response.json())
+                    .then((data) => {
+                      // Handle success response
+                      console.log("Data sent to SheetDB:", data);
+                      Swal.fire(
+                        "Success",
+                        "Your order has been placed!",
+                        "success"
+                      );
+                    })
+                    .catch((error) => {
+                      // Handle error
+                      console.error("Error sending data to SheetDB:", error);
+                      Swal.fire(
+                        "Error",
+                        "Failed to place the order. Please try again.",
+                        "error"
+                      );
+                    });
+                }
+              },
+            });
+          }
+        </script>
       </div>
     </div>
   </div>

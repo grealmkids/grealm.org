@@ -1,0 +1,304 @@
+---
+layout: productdetails
+---
+
+<h2 class="gtitle2 gtitle3 text-center m-0 p-3">3D BIBLE + 3D GOSPEL SONGS</h2>
+<div class="container-fluid mt-sm-3">
+  <div class="row p-3 my-3">
+    <div class="col-md-6">
+      <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner h-100">
+          <div class="carousel-item active text-center">
+            <img
+              src="images/products/advanced3d1.png"
+              alt=""
+              class="img-fluid" />
+          </div>
+          <div class="carousel-item text-center">
+            <img src="images/advanced3d2.png" alt="" class="img-fluid" />
+          </div>
+          <div class="carousel-item text-center">
+            <img src="images/advanced3d3.png" alt="" class="img-fluid" />
+          </div>
+        </div>
+
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"></button>
+          <button
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+      </div>
+
+      <div class="text-center py-0">
+        <h1 class="text-center gtitle2 py-3 mb-1">
+          UGX <span class="text-danger">95,000</span>
+        </h1>
+        <p>
+          <span class="text-danger"> 70 Bible Animations</span>
+          <span class="text-success"> + 30 3D Kids' Gospel Songs </span> +32GB
+          Flash Disk
+        </p>
+
+        <button
+          class="btn-lg btn-whatsapp border-0 mb-3"
+          onclick="showOrderForm()">
+          Order Now
+        </button>
+        <p class="text-center">Or call/whatsapp +256781 584927</p>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+          function showOrderForm() {
+            Swal.fire({
+              title: "Place an Order",
+              html: `
+            <form id="orderForm">
+              <h3 class="text-danger p-1 yellowbg fw-bold">UgX 95,000</h3><br>
+              <input type="text" id="name" class="form-control borderedinput text-center" placeholder="Your Name" required><br>
+              
+              
+              <input type="text" id="phone"  class="form-control borderedinput text-center"  placeholder="Your Phone/ Email" required><br>
+              
+              <select id="paymentMethod"  class="form-control  borderedinput text-center" >
+                <option >Payment Method</option>
+                <option value="mobile_money">Mobile Money</option>
+                <option value="credit_card">Credit Card</option>
+                <option value="cash">Cash</option>
+              </select><br><br>
+            </form>
+          `,
+              confirmButtonText: "Place Order",
+              showCancelButton: true,
+              cancelButtonText: "Cancel",
+              preConfirm: () => {
+                const name = document.getElementById("name").value;
+                const phone = document.getElementById("phone").value;
+                const paymentMethod =
+                  document.getElementById("paymentMethod").value;
+
+                // Verify inputs
+                if (name.trim() === "" || phone.trim() === "") {
+                  Swal.showValidationMessage("Name and Phone are required");
+                } else {
+                  // Send data to SheetDB
+                  const day = new Date();
+                  const options = {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                  };
+                  const formattedDay = day.toLocaleDateString("en-US", options);
+                  const formData = new FormData();
+                  formData.append("name", name);
+                  formData.append("phone", phone);
+                  formData.append("paywith", paymentMethod);
+                  formData.append("date_sent", formattedDay);
+
+                  fetch("https://sheetdb.io/api/v1/xkwxymn6sqggm", {
+                    method: "POST",
+                    body: formData,
+                  })
+                    .then((response) => response.json())
+                    .then((data) => {
+                      // Handle success response
+                      console.log("Data sent to SheetDB:", data);
+                      Swal.fire(
+                        "Success",
+                        "Your order has been placed!",
+                        "success"
+                      );
+                    })
+                    .catch((error) => {
+                      // Handle error
+                      console.error("Error sending data to SheetDB:", error);
+                      Swal.fire(
+                        "Error",
+                        "Failed to place the order. Please try again.",
+                        "error"
+                      );
+                    });
+                }
+              },
+            });
+          }
+        </script>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h1 class="text-dark shadow-lg btn-lg btn p-3 text-left btn-light row">
+        <span class="col-md-6">
+          G-REALM 3D PACK<i class="bg-danger text-white mx-2"> Premium </i>
+          <span class="text-dark">100 in 1</span>
+        </span>
+
+        <span class="col-md-6">
+          <button class="btn-dark btn" onclick="reading1()">
+            See all titles
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-arrow-down-short"
+              viewBox="0 0 16 16">
+              <path
+                fill-rule="evenodd"
+                d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z" />
+            </svg>
+          </button>
+
+          <button class="btn" onclick="close1()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              fill="#e60000"
+              class="bi bi-x-circle-fill"
+              viewBox="0 0 16 16"
+              onclick="close1()">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+            </svg>
+          </button>
+        </span>
+      </h1>
+
+      <!----------------------------------------------CAROUSEL------------------------------------------->
+      <div class="row" id="reading1" style="display: none">
+        <h3 class="p-1 gtitle4 m-0 text-dark text-left ps-3 border-0">
+          3D Movie Titles
+        </h3>
+        <div class="row container-fluid">
+          <div class="col-md-12 row p-3">
+            <div class="bg-light">
+              <ol class="ol text-left">
+                <li class="py-1 pt-3 list-item">
+                  John the Baptist <i class="text-primary">27 mins</i>
+                </li>
+                <li class="py-1 list-item">
+                  Jesus - Full Movie <i class="text-primary">75 mins</i>
+                </li>
+                <li class="py-1 list-item">
+                  Miracles of Jesus <i class="text-primary">27 mins</i>
+                </li>
+                <li class="py-1 list-item">
+                  Elijah and prophets of Baal
+                  <i class="text-primary">27 mins</i>
+                </li>
+                <li class="py-1 list-item">
+                  Isaiah <i class="text-primary">27 mins</i>
+                </li>
+                <li class="py-1 list-item">
+                  Jeremiah <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  Job <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  Road to Damascus <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  Moses <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  Jacob and Esau <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  Ruth <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  Esther <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  Rahab and the walls of Jericho
+                  <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  Elijah and the widow <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  Gideon <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  Peter's Denial <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  Risen <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  The first Christmas <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  The Star <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  The ten commandments <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  The final battle <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  In the beginning <i class="text-primary">27 mins</i>
+                </li>
+
+                <li class="py-1 list-item">
+                  Daniel and the lions <i class="text-primary">27 mins</i>
+                </li>
+                <li class="py-1 list-item">
+                  + 27 <i class="text-primary">More</i>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <h3 class="p-1 gtitle4 m-0 text-dark text-left ps-3 border-0">
+          3D Song Titles
+        </h3>
+        <div class="row container-fluid">
+          <div class="col-md-12 row p-3">
+            <div class="bg-light">
+              <ol class="ol text-left">
+                <li class="py-1 pt-3 list-item">
+                  Walking with Jesus <i class="text-primary">7 mins</i>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!----------------------------------------------CAROUSEL------------------------------------------>
+  </div>
+</div>
+
+<script src="js/reading.js"></script>
