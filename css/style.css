@@ -1,11 +1,11 @@
 .gbody {
-  background-color: rgb(250, 243, 233);
+  background-color: rgb(255, 255, 255);
   font-family: Arial, Helvetica, sans-serif !important;
   font-size: 16px !important;
 }
 
 .gmiddle {
-  background-color: rgb(236, 224, 198) !important;
+  background-color: rgb(255, 255, 255) !important;
 }
 
 .grealmtext {
@@ -35,16 +35,16 @@
 
 .gtitle2 {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  color: rgb(109, 104, 99);
+  color: rgb(31, 182, 11);
 }
 
 .gtitle3 {
-  color: rgb(114, 91, 60);
+  color: rgb(255, 255, 255);
   border-bottom: 1px solid rgb(179, 131, 68);
   border-top: 1px solid rgb(179, 131, 68);
   padding-bottom: 20px;
   padding-top: 20px;
-  background-color: rgb(229, 212, 190);
+  background-color: rgb(244, 45, 144);
 }
 .yellowbg {
   background-color: rgb(250, 247, 96);

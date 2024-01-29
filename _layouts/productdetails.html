@@ -30,6 +30,19 @@
       /* Optional: Makes the sample page fill the window. */
     </style>
   </head>
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-868G1Q7RP8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-868G1Q7RP8");
+  </script>
   <body class="gbody">
     <header>{%include nav.html navclass='navtop'%}</header>
     <div class="container-fluid">{{content}}</div>
