@@ -238,18 +238,30 @@ footer {
   font-size: 16px !important;
 }
 
+.subdescription {
+  font-size: 12px;
+}
 .productpic {
-  max-height: 200px;
 }
 .btn-whatsapp {
   background-color: #00aa1a;
   color: #ffffff;
 }
+.gtitle4p {
+  font-size: 16px;
+}
 .productheader {
   font-weight: lighter;
   color: #ffffff;
-  background: rgba(247, 118, 19, 0.8) url("/images/bg/cartographer.png") !important;
+  background: rgba(28, 143, 2, 0.8) url("/images/bg/black-orchid.png") !important;
   font-family: cursive;
+}
+
+.free {
+  background-color: #fd9902;
+  font-size: 16px;
+  border: 0;
+  color: #ffffff;
 }
 
 .gbutton:hover {
