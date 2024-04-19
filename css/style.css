@@ -45,7 +45,7 @@
   border-top: 1px solid rgb(179, 131, 68);
   padding-bottom: 20px;
   padding-top: 20px;
-  background-color: rgb(244, 45, 144);
+  background-color: rgb(244, 45, 45);
 }
 .yellowbg {
   background-color: rgb(250, 247, 96);
@@ -269,4 +269,8 @@ footer {
 
 .gbutton:hover {
   font-size: 21px;
+}
+
+.text-green {
+  color: #00aa1a;
 }
