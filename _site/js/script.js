@@ -46,3 +46,7 @@ function whatsappUs() {
   window.location.href =
     "https://wa.me/+256781584927?text=Praise God G-Realm kids' Studio! ";
 }
+
+function emailUs() {
+  window.location.href = "mailto:grealmkids@gmail.com";
+}
