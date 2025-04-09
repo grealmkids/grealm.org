@@ -1,0 +1,13 @@
+:root {
+  --primary-color: #0642c2;
+  --green-text: #7dff69;
+}
+
+.footer {
+  color: white !important;
+  background-color: var(--primary-color) !important;
+}
+.footer-link {
+  color: white !important;
+  cursor: pointer;
+}

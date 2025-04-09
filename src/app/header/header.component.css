@@ -26,3 +26,20 @@
   color: #7dff69;
   font-size: 110%;
 }
+
+/* Optional enhancement for dropdown items */
+.services-menu .dropdown-item {
+  border-bottom: 1px solid #242424;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 500;
+  color: #000;
+}
+
+.services-menu .dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.services-menu .dropdown-item i {
+  font-size: 1.3rem;
+}
