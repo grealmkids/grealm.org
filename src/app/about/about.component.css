@@ -1,0 +1,31 @@
+.person {
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  background-color: rgb(1, 38, 124);
+}
+.profile {
+  padding: 20px;
+  background-color: rgb(200, 251, 182);
+  border-radius: 200px 0px 0px 200px;
+}
+.abouttext {
+  font-size: 1.2rem;
+}
+.Godsaid {
+  color: rgb(1, 38, 124);
+}
+
+@media screen and (max-width: 768px) {
+  .profile {
+    padding: 20px;
+    background-color: rgb(200, 251, 182);
+    border-radius: 200px 200px 0px 0px;
+  }
+}
+
+.text-body {
+  background-color: rgb(192, 235, 255);
+}
+.img-bg {
+  background-color: rgb(192, 235, 255);
+}
