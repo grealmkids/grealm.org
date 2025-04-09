@@ -1,0 +1,28 @@
+.logo {
+  height: 32px;
+  width: auto;
+}
+
+.navbar-nav .nav-link {
+  color: white !important;
+  font-weight: 500;
+  margin-left: 15px;
+}
+
+.navbar-nav .nav-link:hover {
+  text-decoration: underline;
+}
+
+.loginbtn {
+  font-weight: 500;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #002169;
+}
+.bg-primary {
+  background-color: #0642c2 !important;
+}
+.bi {
+  color: #7dff69;
+  font-size: 110%;
+}

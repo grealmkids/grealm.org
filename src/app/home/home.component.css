@@ -1,0 +1,67 @@
+.cover-section {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-background {
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.cover-overlay {
+  background-color: rgba(0, 0, 0, 0.71); /* black layer with 0.5 opacity */
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+}
+
+.cover-content {
+  position: relative;
+  height: 100%;
+  z-index: 3;
+  display: flex; /* Use Flexbox */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center the content vertically */
+  align-items: center; /* Center the content horizontally */
+}
+
+.foreground-image {
+  padding-top: 100px;
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.top-text {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  padding: 10px;
+  font-size: 1.5rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10; /* Ensure it stays on top of other elements */
+  text-align: center;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .top-text {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  }
+  .foreground-image {
+    padding-top: 150px;
+    max-width: 100%;
+    max-height: 50%;
+  }
+}
