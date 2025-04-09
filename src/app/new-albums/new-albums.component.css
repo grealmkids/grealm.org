@@ -1,0 +1,26 @@
+.new-albums {
+  h2 {
+    font-weight: 600;
+  }
+
+  .text-pink {
+    color: #ef4fa7;
+  }
+
+  .album-card {
+    background: #e8f9ff;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .album-title {
+      font-weight: 600;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+  }
+}
