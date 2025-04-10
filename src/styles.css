@@ -18,12 +18,12 @@ body {
 }
 
 .btnlarge {
-  background-color: var(--primary-color) !important;
+  background-color: #c20674 !important;
   color: white !important;
   border-radius: 50px !important;
-  font-size: 1.7rem !important;
-  padding-left: 50px !important;
-  padding-right: 50px !important;
+  font-size: 1.2rem !important;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
 }
 
 .text-pink {

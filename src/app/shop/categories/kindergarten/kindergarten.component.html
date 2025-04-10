@@ -1,0 +1,24 @@
+<section class="new-albums text-center py-5">
+  <h2 class="display-2">
+    <span class="text-pink">Kindergarten </span>
+    <span class="text-primary"> Albums</span>
+  </h2>
+
+  <div class="container mx-auto row justify-content-center mt-4">
+    <div class="col-12 col-sm-6 col-md-4" *ngFor="let album of albums">
+      <a
+        [routerLink]="['/albums', album.id]"
+        class="text-decoration-none text-dark"
+      >
+        <div class="album-card mb-4 p-3">
+          <img [src]="album.image" [alt]="album.title" class="img-fluid mb-2" />
+          <h4 class="album-title text-primary text-uppercase">
+            {{ album.title }}
+          </h4>
+          <h5 class="text-pink fw-bold">{{ album.songs }} Songs</h5>
+          <button class="btn btn-primary w-50 fw-bold">DETAILS</button>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
