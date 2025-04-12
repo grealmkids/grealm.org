@@ -1,0 +1,17 @@
+div {
+  margin: 20px;
+}
+
+.album {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+img {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}

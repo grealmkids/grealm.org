@@ -1,3 +1,16 @@
+/* Prevent horizontal overflow globally */
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
 :root {
   --primary-color: #0642c2;
   --green-text: #7dff69;

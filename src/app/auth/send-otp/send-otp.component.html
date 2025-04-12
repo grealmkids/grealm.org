@@ -1,0 +1,10 @@
+<div>
+  <h2>Send OTP</h2>
+  <form (ngSubmit)="sendOtp(form.value)" #form="ngForm">
+    <label for="email">Email:</label>
+    <input id="email" name="email" ngModel required />
+
+    <button type="submit">Send OTP</button>
+  </form>
+  <p>{{ message }}</p>
+</div>

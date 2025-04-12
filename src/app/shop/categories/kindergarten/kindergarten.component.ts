@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AlbumService } from '../../../services/album.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-kindergarten',
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule,RouterLink,HttpClientModule],
   templateUrl: './kindergarten.component.html',
   styleUrl: './kindergarten.component.css'
 })
@@ -15,6 +16,8 @@ export class KindergartenComponent {
   constructor(private albumService: AlbumService) {}
 
   ngOnInit(): void {
-    this.albums = this.albumService.getAllAlbums();
+    this.albumService.getAllAlbums().subscribe(albums => {
+      this.albums = albums;
+    });
   }
 }

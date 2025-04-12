@@ -13,22 +13,28 @@ export const routes: Routes = [
           path: '',
           component: HomeComponent
         },
-        {
-          path: 'albums/:id',
-          component: AlbumDetailComponent
-        },
+      
         {
           path: 'about',
           component: AboutComponent
         },
-        {
-          path: 'shop',
-          component: ShopComponent,
-          children: [
-            { path: '', redirectTo: 'kindergarten', pathMatch: 'full' },
-            { path: 'kindergarten', component: KindergartenComponent },
-            { path: 'bibles', component: BiblesComponent },
-            { path: 'story-books', component: StoryBooksComponent }
-          ]
-        }
+    // app-routing.module.ts or shop-routing.module.ts
+
+  {
+    path: 'shop',
+    component: ShopComponent, // this is the layout
+    children: [
+      { path: '', redirectTo: 'kindergarten', pathMatch: 'full' },
+      { path: 'kindergarten', component: KindergartenComponent },
+      { path: 'bibles', component: BiblesComponent },
+      {
+        path: 'albums/:id',
+        component: AlbumDetailComponent
+      },
+      { path: 'story-books', component: StoryBooksComponent }
+    ]
+  },
+  { path: '', redirectTo: 'shop', pathMatch: 'full' }
+
+
 ];

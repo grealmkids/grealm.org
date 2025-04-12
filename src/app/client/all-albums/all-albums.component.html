@@ -1,0 +1,15 @@
+<div>
+  <h2>All Albums</h2>
+  <div *ngFor="let album of albums" class="album">
+    <h3>{{ album.title }}</h3>
+    <img [src]="album.image" alt="{{ album.title }}" width="100" />
+    <p>Songs: {{ album.songs }}</p>
+    <p>Videos: {{ album.video }}</p>
+    <p>Audio: {{ album.audio }}</p>
+    <p>Coloring Pics: {{ album.coloringPics }}</p>
+    <p>Colored Pics: {{ album.coloredPics }}</p>
+    <p>Price (UGX): {{ album.ugx }}</p>
+    <p>Price (USD): {{ album.usd }}</p>
+    <p>Contents: {{ album.contents.join(", ") }}</p>
+  </div>
+</div>

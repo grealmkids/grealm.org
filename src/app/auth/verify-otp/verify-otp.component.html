@@ -1,0 +1,10 @@
+<div>
+  <h2>Verify OTP</h2>
+  <form (ngSubmit)="verifyOtp(form.value)" #form="ngForm">
+    <label for="otp">OTP:</label>
+    <input id="otp" name="otp" ngModel required />
+
+    <button type="submit">Verify OTP</button>
+  </form>
+  <p>{{ message }}</p>
+</div>

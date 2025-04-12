@@ -1,7 +1,7 @@
 <div class="container py-5" *ngIf="album">
   <h2 class="d-flex justify-content-between">
-    <a [routerLink]="['/']" class="btn btn-dark ms-auto">
-      <i class="bi bi-arrow-left me-2"></i> Home
+    <a [routerLink]="['shop']" class="btn btn-dark ms-auto">
+      <i class="bi bi-arrow-left me-2"></i> Shop
     </a>
   </h2>
 
@@ -79,11 +79,11 @@
   </div>
 
   <div class="mt-4">
-    <a [routerLink]="['/']" class="btn btn-outline-primary">Back to Home</a>
+    <a [routerLink]="['shop']" class="btn btn-outline-primary">Shop</a>
   </div>
 </div>
 
 <div *ngIf="!album" class="text-center py-5">
   <h1 class="alert alert-danger m-3">Album not found.</h1>
-  <a [routerLink]="['/']" class="btn btn-outline-primary">Back to Home</a>
+  <a [routerLink]="['shop']" class="btn btn-outline-primary">Shop</a>
 </div>

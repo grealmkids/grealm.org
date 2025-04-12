@@ -1,0 +1,9 @@
+<div>
+  <h2>Purchased Albums</h2>
+  <ul>
+    <li *ngFor="let album of albums">
+      <h3>{{ album.title }}</h3>
+      <a [href]="album.downloadLink" target="_blank">Download</a>
+    </li>
+  </ul>
+</div>

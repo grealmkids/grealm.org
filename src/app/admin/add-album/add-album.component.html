@@ -1,0 +1,13 @@
+<div>
+  <h2>Add Album</h2>
+  <form (ngSubmit)="addAlbum(form.value)" #form="ngForm">
+    <label for="title">Title:</label>
+    <input id="title" name="title" ngModel required />
+
+    <label for="image">Image URL:</label>
+    <input id="image" name="image" ngModel required />
+
+    <button type="submit">Add Album</button>
+  </form>
+  <p>{{ message }}</p>
+</div>

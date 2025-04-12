@@ -1,0 +1,13 @@
+<div>
+  <h2>Client Login</h2>
+  <form (ngSubmit)="login(form.value)" #form="ngForm">
+    <label for="email">Email:</label>
+    <input id="email" name="email" ngModel required />
+
+    <label for="password">Password:</label>
+    <input id="password" name="password" type="password" ngModel required />
+
+    <button type="submit">Login</button>
+  </form>
+  <p>{{ message }}</p>
+</div>

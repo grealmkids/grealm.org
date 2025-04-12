@@ -1,0 +1,10 @@
+<div>
+  <h2>Delete Album</h2>
+  <form (ngSubmit)="deleteAlbum(albumId.value)" #form="ngForm">
+    <label for="albumId">Album ID:</label>
+    <input id="albumId" #albumId name="albumId" required />
+
+    <button type="submit">Delete Album</button>
+  </form>
+  <p>{{ message }}</p>
+</div>

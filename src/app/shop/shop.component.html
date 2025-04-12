@@ -1,19 +1,25 @@
-<div class="row">
-  <div class="col-md-3">
-    <ul class="list-group">
+<div class="row shop-container">
+  <div class="col-md-3 sidebar p-3">
+    <ul class="list-group custom-sidebar">
       <li class="list-group-item">
-        <a routerLink="kindergarten">Kindergarten Albums</a>
+        <a routerLink="kindergarten">
+          <i class="bi bi-book-half me-2 icon"></i>Kindergarten Albums
+        </a>
       </li>
       <li class="list-group-item">
-        <a routerLink="bibles">Bibles</a>
+        <a routerLink="bibles">
+          <i class="bi bi-journal-richtext me-2 icon"></i>Bibles
+        </a>
       </li>
       <li class="list-group-item">
-        <a routerLink="story-books">Kids' Story Books</a>
+        <a routerLink="story-books">
+          <i class="bi bi-book me-2 icon"></i>Kids' Story Books
+        </a>
       </li>
     </ul>
   </div>
 
-  <div class="col-md-9">
+  <div class="col-md-9 content-area p-4">
     <router-outlet></router-outlet>
   </div>
 </div>

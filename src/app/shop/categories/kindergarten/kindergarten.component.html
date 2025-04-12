@@ -7,7 +7,7 @@
   <div class="container mx-auto row justify-content-center mt-4">
     <div class="col-12 col-sm-6 col-md-4" *ngFor="let album of albums">
       <a
-        [routerLink]="['/albums', album.id]"
+        [routerLink]="['shop/albums', album.id]"
         class="text-decoration-none text-dark"
       >
         <div class="album-card mb-4 p-3">

@@ -1,75 +1,60 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlbumService {
+  private baseUrl = 'http://localhost:5000';
 
-  private albums = [
-    {
-      id: 'domestic-animals',
-      title: 'Domestic Animals',
-      image: '/assets/domesticanimals.jpg',
-      songs: 4,
-      video: 4,
-      audio: 4,
-      coloringPics: 15,
-      coloredPics: 15,
-      ugx: '10,000',
-      usd: 4,
-      contents: [
-        'Domestic Animal Names',
-        'Domestic Animal Sounds',
-        'Domestic Animal Homes',
-        'Domestic Animal Young Ones',
-        '11 Domestic Animals'
-      ]
-    },
-    {
-      id: 'wild-animals',
-      title: 'Wild Animals',
-      image: '/assets/wildanimals.jpg',
-      songs: 4,
-      video: 4,
-      audio: 4,
-      coloringPics: 10,
-      coloredPics: 10,
-      ugx: '10,000',
-      usd: 4,
-      contents: [
-        'Wild Animal Names',
-        'Wild Animal Sounds',
-        'Wild Animal Homes',
-        'Wild vs Domestic',
-        '11 Wild Animals'
-      ]
-    },
-    {
-      id: 'my-body',
-      title: 'My Body',
-      image: '/assets/body.jpg',
-      songs: 8,
-      video: 8,
-      audio: 8,
-      coloringPics: 20,
-      coloredPics: 20,
-      ugx: '15,000',
-      usd: 5,
-      contents: [
-        'My Body Parts',
-        'Head to Toe Song',
-        'Body Functions',
-        'Taking Care of My Body',
-        'Growing Up'
-      ]
-    }
-  ];
+  constructor(private http: HttpClient) {}
 
-  getAllAlbums() {
-    return this.albums;
+  adminLogin(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/api/auth/admin/login`, data);
   }
 
-  getAlbumById(id: string) {
-    return this.albums.find(album => album.id === id);
+  clientLogin(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/api/auth/client/login`, data);
+  }
+
+  sendOtp(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/api/auth/client/send-otp`, data);
+  }
+
+  verifyOtp(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/api/auth/verify-otp`, data);
+  }
+
+  addClient(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/api/admin/add-client`, data);
+  }
+
+  addAlbum(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/api/admin/add-album`, data);
+  }
+
+  getPurchasedAlbums(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/api/client/purchased-albums`);
+  }
+
+  getAllAlbums(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/api/client/albums`);
+  }
+
+  getAlbumById(id: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/api/client/albums/${id}`);
+  }
+
+  createAlbum(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/api/admin/album`, data);
+  }
+
+  updateAlbum(id: string, data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/api/admin/album/${id}`, data);
+  }
+
+  deleteAlbum(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/api/admin/album/${id}`);
   }
 }

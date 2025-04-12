@@ -1,0 +1,30 @@
+<div>
+  <h2>Update Album</h2>
+  <form (ngSubmit)="updateAlbum(albumId.value, form.value)" #form="ngForm">
+    <label for="albumId">Album ID:</label>
+    <input id="albumId" #albumId name="albumId" required />
+
+    <label for="title">Title:</label>
+    <input id="title" name="title" ngModel required />
+
+    <label for="image">Image URL:</label>
+    <input id="image" name="image" ngModel required />
+
+    <button type="submit">Update Album</button>
+  </form>
+
+  <div *ngIf="album">
+    <h3>Album Updated:</h3>
+    <p>ID: {{ album.id }}</p>
+    <p>Title: {{ album.title }}</p>
+    <p>Image: <img [src]="album.image" alt="Album Image" width="100" /></p>
+    <p>Songs: {{ album.songs }}</p>
+    <p>Videos: {{ album.video }}</p>
+    <p>Audio: {{ album.audio }}</p>
+    <p>Coloring Pics: {{ album.coloringPics }}</p>
+    <p>Colored Pics: {{ album.coloredPics }}</p>
+    <p>Price (UGX): {{ album.ugx }}</p>
+    <p>Price (USD): {{ album.usd }}</p>
+    <p>Contents: {{ album.contents.join(", ") }}</p>
+  </div>
+</div>
