@@ -17,11 +17,17 @@ export class AlbumDetailComponent {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    console.log('Album ID from route:', id); // Log the album ID
     if (id) {
-      this.albumService.getAlbumById(id).subscribe(album => {
-        this.album = album;
-        console.log('Fetched album details:', album); // Log the fetched album details
-      });
+      this.albumService.getAlbumById(id).subscribe(
+        album => {
+          this.album = album;
+          console.log('Fetched album details:', album); // Log the fetched album details
+        },
+        error => {
+          console.error('Error fetching album details:', error); // Log any errors
+        }
+      );
     }
   }
 }
