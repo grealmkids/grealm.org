@@ -1,9 +1,23 @@
-<div>
-  <h2>Purchased Albums</h2>
-  <ul>
-    <li *ngFor="let album of albums">
-      <h3>{{ album.title }}</h3>
-      <a [href]="album.downloadLink" target="_blank">Download</a>
-    </li>
-  </ul>
+<div class="container mt-5">
+  <h2 class="text-center">Purchased Albums</h2>
+  <p *ngIf="message" class="text-danger">{{ message }}</p>
+  <p *ngIf="purchasedAlbums.length > 0" class="text-center">
+    You have purchased {{ purchasedAlbums.length }} album(s) so far.
+  </p>
+  <div *ngIf="purchasedAlbums.length > 0; else noAlbums">
+    <ol class="list-group">
+      <li
+        *ngFor="let album of purchasedAlbums; let i = index"
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <h1 class="text-success p-3">{{ i + 1 }}. {{ album.title }}</h1>
+        <button class="btn btn-primary" (click)="downloadAlbum(album.id)">
+          Download
+        </button>
+      </li>
+    </ol>
+  </div>
+  <ng-template class="m-3" #noAlbums>
+    <p class="text-center">No purchased albums found.</p>
+  </ng-template>
 </div>

@@ -16,7 +16,8 @@ import { PurchasedAlbumsComponent } from './client/purchased-albums/purchased-al
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     BrowserModule,
     FormsModule,

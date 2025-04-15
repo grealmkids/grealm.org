@@ -1,10 +1,16 @@
-<div>
-  <h2>Verify OTP</h2>
+<div class="col-md-4 mx-auto mt-5 mb-5">
+  <h2 class="text-center py-5">Verify OTP</h2>
   <form (ngSubmit)="verifyOtp(form.value)" #form="ngForm">
-    <label for="otp">OTP:</label>
-    <input id="otp" name="otp" ngModel required />
+    <input
+      id="otp"
+      class="text-center"
+      placeholder="Enter your Code here"
+      name="otp"
+      ngModel
+      required
+    />
 
-    <button type="submit">Verify OTP</button>
+    <button type="submit">Login</button>
   </form>
   <p>{{ message }}</p>
 </div>

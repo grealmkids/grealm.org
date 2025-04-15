@@ -42,3 +42,10 @@ body {
 .text-pink {
   color: rgb(209, 0, 105) !important;
 }
+.text-success {
+  color: #4ec13c !important;
+}
+.btn-primary {
+  background-color: -var(--primary-color) !important;
+  color: white !important;
+}

@@ -1,0 +1,6 @@
+<div *ngIf="role === 'client'">
+  <app-purchased-albums></app-purchased-albums>
+</div>
+<div *ngIf="role !== 'client'">
+  <p>Welcome to the dashboard. Role-specific content will be added here.</p>
+</div>

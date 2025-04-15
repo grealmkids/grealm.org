@@ -1,0 +1,20 @@
+<div>
+  <h2 class="text-center py-5">Login</h2>
+  <form (ngSubmit)="sendOtp()" class="mb-5">
+    <input
+      type="text"
+      class="text-center"
+      id="emailOrPhone"
+      [(ngModel)]="emailOrPhone"
+      name="emailOrPhone"
+      placeholder="Your registered Email or Phone"
+      required
+    />
+
+    <button type="submit" [disabled]="loading">
+      <span *ngIf="!loading">Send OTP</span>
+      <span *ngIf="loading">Sending...</span>
+    </button>
+  </form>
+  <p>{{ message }}</p>
+</div>

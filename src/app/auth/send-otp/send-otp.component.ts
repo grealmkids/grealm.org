@@ -13,12 +13,21 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class SendOtpComponent {
   message: string = '';
+  loading: boolean = false;
 
   constructor(private albumService: AlbumService) {}
 
   sendOtp(data: any) {
-    this.albumService.sendOtp(data).subscribe(response => {
-      this.message = response.message;
-    });
+    this.loading = true;
+    this.albumService.sendOtp(data).subscribe(
+      response => {
+        this.loading = false;
+        this.message = response.message;
+      },
+      error => {
+        this.loading = false;
+        this.message = 'Failed to send OTP. Please try again later.';
+      }
+    );
   }
 }

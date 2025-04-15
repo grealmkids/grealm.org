@@ -87,3 +87,12 @@
   <h1 class="alert alert-danger m-3">Album not found.</h1>
   <a [routerLink]="['shop']" class="btn btn-outline-primary">Shop</a>
 </div>
+
+<div *ngIf="album">
+  <h2>{{ album.title }}</h2>
+  <p>{{ album.description }}</p>
+  <p><strong>Price:</strong> {{ album.price | currency }}</p>
+</div>
+<div *ngIf="!album">
+  <p>Loading album details...</p>
+</div>

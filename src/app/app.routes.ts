@@ -6,6 +6,9 @@ import { ShopComponent } from './shop/shop.component';
 import { BiblesComponent } from './shop/categories/bibles/bibles.component';
 import { KindergartenComponent } from './shop/categories/kindergarten/kindergarten.component';
 import { StoryBooksComponent } from './shop/categories/story-books/story-books.component';
+import { LoginComponent } from './auth/login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PurchasedAlbumsComponent } from './client/purchased-albums/purchased-albums.component';
 
 export const routes: Routes = [
     
@@ -34,6 +37,11 @@ export const routes: Routes = [
       { path: 'story-books', component: StoryBooksComponent }
     ]
   },
+  { path: 'login', component: LoginComponent },
+  { path: 'verify', loadComponent: () => import('./auth/verify-otp/verify-otp.component').then(m => m.VerifyOtpComponent) },
+  { path: 'dashboard', component: DashboardComponent, children: [
+    { path: 'purchased-albums', component: PurchasedAlbumsComponent }
+  ] },
   { path: '', redirectTo: 'shop', pathMatch: 'full' }
 
 
