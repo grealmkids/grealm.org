@@ -1,5 +1,11 @@
-<div class="row shop-container">
-  <div class="col-md-3 sidebar p-3">
+<p class="p-1">
+  <button class="toggle-sidenav-btn btn btn-dark" (click)="toggleSidenav()">
+    {{ isSidenavVisible ? "Hide Menu" : "Show Menu" }}
+  </button>
+</p>
+
+<div class="shop-layout">
+  <aside class="sidenav" *ngIf="isSidenavVisible">
     <ul class="list-group custom-sidebar">
       <li class="list-group-item">
         <a routerLink="kindergarten">
@@ -17,9 +23,11 @@
         </a>
       </li>
     </ul>
-  </div>
+  </aside>
 
-  <div class="col-md-9 content-area p-4">
-    <router-outlet></router-outlet>
-  </div>
+  <main class="shop-main">
+    <section class="shop-content">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
 </div>

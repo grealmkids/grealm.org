@@ -12,11 +12,24 @@ import { CommonModule } from '@angular/common';
 export class PurchasedAlbumsComponent implements OnInit {
   purchasedAlbums: any[] = [];
   message: string = '';
+  clientDetails: { name: string; email: string } | null = null; // Add a property for client details
 
   constructor(private albumService: AlbumService) {}
 
   ngOnInit(): void {
+    this.fetchClientDetails(); // Fetch client details
     this.fetchPurchasedAlbums();
+  }
+
+  fetchClientDetails(): void {
+    const clientName = localStorage.getItem('clientName'); // Retrieve client name from local storage
+    const clientEmail = localStorage.getItem('clientEmail'); // Retrieve client email from local storage
+
+    if (clientName && clientEmail) {
+      this.clientDetails = { name: clientName, email: clientEmail };
+    } else {
+      this.message = 'Client details not found. Please log in again.';
+    }
   }
 
   fetchPurchasedAlbums(): void {

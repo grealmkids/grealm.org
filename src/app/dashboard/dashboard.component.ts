@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class DashboardComponent implements OnInit {
   role: string | null = null;
+  isSidenavVisible: boolean = false; // Hide sidenav by default
 
   constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
@@ -26,5 +27,9 @@ export class DashboardComponent implements OnInit {
       console.log('Role is not available. Redirecting to login.');
       this.router.navigate(['/login']);
     }
+  }
+
+  toggleSidenav(): void {
+    this.isSidenavVisible = !this.isSidenavVisible;
   }
 }

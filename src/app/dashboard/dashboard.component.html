@@ -1,6 +1,36 @@
-<div *ngIf="role === 'client'">
-  <app-purchased-albums></app-purchased-albums>
-</div>
-<div *ngIf="role !== 'client'">
-  <p>Welcome to the dashboard. Role-specific content will be added here.</p>
+<p class="p-1">
+  <button class="toggle-sidenav-btn btn btn-dark" (click)="toggleSidenav()">
+    {{ isSidenavVisible ? "Hide Menu" : "Show Menu" }}
+  </button>
+</p>
+
+<div class="dashboard-layout">
+  <aside class="sidenav" *ngIf="isSidenavVisible">
+    <div class="sidenav-header">
+      <img src="assets/logo.png" alt="Logo" class="sidenav-logo" />
+      <h2>Dashboard</h2>
+    </div>
+    <nav class="sidenav-menu">
+      <a href="/dashboard" class="sidenav-link">Home</a>
+      <a href="/dashboard/purchased-albums" class="sidenav-link"
+        >Purchased Albums</a
+      >
+      <a href="/dashboard/settings" class="sidenav-link">Settings</a>
+      <a href="/logout" class="sidenav-link">Logout</a>
+    </nav>
+  </aside>
+
+  <main class="dashboard-main">
+    <section class="dashboard-content">
+      <div *ngIf="role === 'client'">
+        <app-purchased-albums></app-purchased-albums>
+      </div>
+      <div *ngIf="role !== 'client'">
+        <p>
+          Welcome to the admin dashboard. Role-specific content will be added
+          here.
+        </p>
+      </div>
+    </section>
+  </main>
 </div>

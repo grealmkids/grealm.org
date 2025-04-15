@@ -4,13 +4,24 @@
   flex-wrap: wrap;
 }
 
+.shop-layout {
+  display: flex;
+}
+
 /* Sidebar styling */
 .sidebar {
   background: linear-gradient(to bottom, #1b1f22, #343a40);
-  border-radius: 20px;
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
   padding: 1.5rem;
   width: 100%;
+}
+
+.sidenav {
+  background: linear-gradient(to bottom, #1b1f22, #343a40);
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  width: 25%;
+  min-height: 100vh;
 }
 
 .custom-sidebar .list-group-item {
@@ -54,10 +65,20 @@
 /* Content area */
 .content-area {
   background-color: #ffffff;
-  border-radius: 20px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   width: 100%;
+}
+
+.shop-main {
+  flex-grow: 1;
+  background-color: #ffffff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.toggle-sidenav-btn {
+  margin-bottom: 1rem;
 }
 
 /* Responsive Styles */
@@ -83,12 +104,19 @@
   }
 
   .sidebar {
-    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .sidenav {
+    width: 100%;
     box-shadow: none;
   }
 
   .content-area {
-    margin-top: 1rem;
-    border-radius: 10px;
+  }
+
+  .shop-main {
   }
 }
+
+/* Removed border-radius from non-button elements */

@@ -11,5 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './shop.component.css'
 })
 export class ShopComponent {
+  isSidenavVisible: boolean = true;
 
+  toggleSidenav(): void {
+    this.isSidenavVisible = !this.isSidenavVisible;
+  }
 }

@@ -29,6 +29,13 @@ export class VerifyOtpComponent {
           if (clientId) {
             localStorage.setItem('clientId', clientId); // Store clientId in local storage
           }
+          const firstname = response.user?.firstname;
+          const lastname = response.user?.lastname;
+          const email = response.user?.email;
+          if (firstname && lastname && email) {
+            localStorage.setItem('clientName', `${firstname} ${lastname}`); // Store full name in local storage
+            localStorage.setItem('clientEmail', email); // Store email in local storage
+          }
           console.log('User role:', role);
           if (role === 'client') {
             console.log('Redirecting to dashboard...');

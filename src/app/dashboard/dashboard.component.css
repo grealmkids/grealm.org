@@ -1,1 +1,74 @@
 /* Placeholder styles for the Dashboard component */
+
+/* General layout styling */
+.dashboard-layout {
+  display: flex;
+  height: 100vh;
+  font-family: "Arial", sans-serif;
+}
+
+/* Sidenav styling */
+.sidenav {
+  width: 250px;
+  background-color: #1e1e1e;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.sidenav-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidenav-logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.sidenav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidenav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.sidenav-link:hover {
+  background-color: #333;
+}
+
+/* Main content styling */
+.dashboard-main {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.dashboard-header p {
+  font-size: 16px;
+  color: #666;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

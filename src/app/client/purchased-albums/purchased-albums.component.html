@@ -1,6 +1,16 @@
+<p
+  *ngIf="clientDetails"
+  class="text-center p-3 bg-light border-bottom border-1 border-dark"
+>
+  Welcome,
+  <span class="text-danger"
+    >{{ clientDetails.name }} ({{ clientDetails.email }})</span
+  >
+</p>
 <div class="container mt-5">
   <h2 class="text-center">Purchased Albums</h2>
   <p *ngIf="message" class="text-danger">{{ message }}</p>
+
   <p *ngIf="purchasedAlbums.length > 0" class="text-center">
     You have purchased {{ purchasedAlbums.length }} album(s) so far.
   </p>
