@@ -1,20 +1,17 @@
 <p class="p-1">
   <button class="toggle-sidenav-btn btn btn-dark" (click)="toggleSidenav()">
-    {{ isSidenavVisible ? "Hide Menu" : "Show Menu" }}
+    <i class="bi bi-list me-2"></i>
+    {{ isSidenavVisible ? "Hide Menu" : "Menu" }}
   </button>
 </p>
 
 <div class="dashboard-layout">
   <aside class="sidenav" *ngIf="isSidenavVisible">
     <div class="sidenav-header">
-      <img src="assets/logo.png" alt="Logo" class="sidenav-logo" />
-      <h2>Dashboard</h2>
+      <img src="assets/3dmenu.png" alt="" class="sidenav-logo" />
     </div>
     <nav class="sidenav-menu">
-      <a href="/dashboard" class="sidenav-link">Home</a>
-      <a href="/dashboard/purchased-albums" class="sidenav-link"
-        >Purchased Albums</a
-      >
+      <a href="/dashboard" class="sidenav-link">Purchased Albums</a>
       <a href="/dashboard/settings" class="sidenav-link">Settings</a>
       <a href="/logout" class="sidenav-link">Logout</a>
     </nav>

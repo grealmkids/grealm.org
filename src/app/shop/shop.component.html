@@ -1,11 +1,14 @@
 <p class="p-1">
   <button class="toggle-sidenav-btn btn btn-dark" (click)="toggleSidenav()">
-    {{ isSidenavVisible ? "Hide Menu" : "Show Menu" }}
+    <i class="bi bi-list me-2"></i>{{ isSidenavVisible ? "Hide Menu" : "Menu" }}
   </button>
 </p>
 
 <div class="shop-layout">
   <aside class="sidenav" *ngIf="isSidenavVisible">
+    <div class="sidenav-header">
+      <img src="assets/3dmenu.png" alt="" class="sidenav-logo" />
+    </div>
     <ul class="list-group custom-sidebar">
       <li class="list-group-item">
         <a routerLink="kindergarten">

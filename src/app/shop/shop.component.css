@@ -15,6 +15,10 @@
   padding: 1.5rem;
   width: 100%;
 }
+.sidenav-logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
 
 .sidenav {
   background: linear-gradient(to bottom, #1b1f22, #343a40);
@@ -112,10 +116,9 @@
     box-shadow: none;
   }
 
-  .content-area {
-  }
-
-  .shop-main {
+  .sidenav-logo {
+    width: 100px;
+    margin-bottom: 10px;
   }
 }
 
