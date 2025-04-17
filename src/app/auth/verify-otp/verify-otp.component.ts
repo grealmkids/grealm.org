@@ -14,11 +14,13 @@ import { Router } from '@angular/router';
 })
 export class VerifyOtpComponent {
   message: string = '';
+  isLoading: boolean = false; // Added isLoading property
 
   constructor(private albumService: AlbumService, private router: Router) {}
 
   verifyOtp(data: any) {
     console.log('Verifying OTP with data:', data);
+    this.isLoading = true; // Set isLoading to true when the process starts
     this.albumService.verifyOtp(data).subscribe(
       response => {
         console.log('API response:', response);
@@ -47,9 +49,11 @@ export class VerifyOtpComponent {
         } else {
           console.log('OTP verification failed:', response.message);
         }
+        this.isLoading = false; // Set isLoading to false when the process ends
       },
       error => {
         console.error('Error during OTP verification:', error);
+        this.isLoading = false; // Set isLoading to false in case of error
       }
     );
   }

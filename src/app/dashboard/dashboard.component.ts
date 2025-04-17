@@ -32,4 +32,11 @@ export class DashboardComponent implements OnInit {
   toggleSidenav(): void {
     this.isSidenavVisible = !this.isSidenavVisible;
   }
+
+  logout(): void {
+    console.log('Logging out...');
+    localStorage.clear(); // Clear all local storage
+    sessionStorage.clear(); // Clear all session storage
+    this.router.navigate(['/']); // Redirect to the homepage
+  }
 }
