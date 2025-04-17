@@ -10,6 +10,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PurchasedAlbumsComponent } from './client/purchased-albums/purchased-albums.component';
 import { SchoolsComponent } from './schools/schools.component';
+import { AuthGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
     
@@ -40,7 +41,7 @@ export const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'verify', loadComponent: () => import('./auth/verify-otp/verify-otp.component').then(m => m.VerifyOtpComponent) },
-  { path: 'dashboard', component: DashboardComponent, children: [
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], children: [
     { path: 'purchased-albums', component: PurchasedAlbumsComponent }
   ] },
   { path: 'schools', component: SchoolsComponent },
