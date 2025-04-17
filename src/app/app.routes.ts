@@ -9,6 +9,7 @@ import { StoryBooksComponent } from './shop/categories/story-books/story-books.c
 import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PurchasedAlbumsComponent } from './client/purchased-albums/purchased-albums.component';
+import { SchoolsComponent } from './schools/schools.component';
 
 export const routes: Routes = [
     
@@ -42,6 +43,7 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, children: [
     { path: 'purchased-albums', component: PurchasedAlbumsComponent }
   ] },
+  { path: 'schools', component: SchoolsComponent },
   { path: '', redirectTo: 'shop', pathMatch: 'full' }
 
 
