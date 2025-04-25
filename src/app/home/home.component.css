@@ -2,7 +2,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  min-height: 100vh; /* Ensure it takes at least full viewport height */
+  min-height: 40vh; /* Adjusted to cover half of the viewport height */
 }
 
 .cover-background {
@@ -38,8 +38,7 @@
 
 .foreground-image {
   padding-top: 100px;
-  max-width: 50%;
-  max-height: 50%;
+  max-height: 250px;
   object-fit: contain;
 }
 
@@ -48,7 +47,7 @@
   top: 20px;
   width: 100%;
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: 16px;
   color: white;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 10; /* Ensure it stays on top of other elements */
@@ -58,10 +57,51 @@
 
 @media screen and (max-width: 768px) {
   .top-text {
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    font-size: 16px; /* Adjust font size for smaller screens */
   }
   .foreground-image {
     padding-top: 150px;
     max-width: 100%;
   }
+}
+.servicebg {
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+.servicebg button {
+  min-width: 50%;
+}
+.kids {
+  background-color: #cffdaa;
+}
+.school {
+  background-color: #b5fffd;
+}
+.school button {
+  background-color: #0f4c75;
+  color: rgb(255, 255, 255);
+}
+.business {
+  background-color: #fbd6d6;
+}
+.business button {
+  background-color: #9f2323;
+  color: rgb(255, 255, 255);
+}
+.kids button {
+  background-color: #538e10;
+  color: rgb(255, 255, 255);
+}
+.servicebg img {
+  width: 40%;
+}
+.ourservices {
+  text-align: center;
+  padding: 20px;
+  color: #538e10;
+  font-size: 33px;
+  font-weight: 800;
 }

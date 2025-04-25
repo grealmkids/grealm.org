@@ -12,6 +12,8 @@ import { SendOtpComponent } from './auth/send-otp/send-otp.component';
 import { VerifyOtpComponent } from './auth/verify-otp/verify-otp.component';
 import { AllAlbumsComponent } from './client/all-albums/all-albums.component';
 import { PurchasedAlbumsComponent } from './client/purchased-albums/purchased-albums.component';
+import { AcademyComponent } from './academy/academy.component';
+
 
 
 
@@ -31,7 +33,8 @@ import { PurchasedAlbumsComponent } from './client/purchased-albums/purchased-al
     UpdateAlbumComponent,
     DeleteAlbumComponent,
     PurchasedAlbumsComponent,
-    AllAlbumsComponent
+    AllAlbumsComponent,
+    AcademyComponent
   ],
   providers: [],
   bootstrap: []

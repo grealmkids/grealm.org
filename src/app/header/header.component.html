@@ -16,9 +16,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto d-flex align-items-center">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['about']">
-            <i class="bi bi-info-circle me-1"></i> About us
-          </a>
+          <a class="nav-link" [routerLink]="['']"> Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['about']"> About us </a>
         </li>
         <li class="nav-item dropdown">
           <!-- Dropdown for Services -->
@@ -30,14 +31,17 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <i class="bi bi-list me-1"></i> Services
+            Services
           </a>
           <ul
             class="dropdown-menu services-menu"
             aria-labelledby="servicesDropdown"
           >
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a
+                class="dropdown-item d-flex align-items-center"
+                [routerLink]="['/academy']"
+              >
                 <i class="bi bi-mortarboard-fill text-primary me-2"></i> Academy
               </a>
             </li>
@@ -56,6 +60,15 @@
                 Packages
               </a>
             </li>
+            <li>
+              <a
+                class="dropdown-item d-flex align-items-center"
+                [routerLink]="['/businesses']"
+              >
+                <i class="bi bi-briefcase-fill text-primary me-2"></i> Business
+                Services
+              </a>
+            </li>
             <li class="d-none">
               <a class="dropdown-item d-flex align-items-center" href="#">
                 <i class="bi bi-pen-fill text-primary me-2"></i> Graphic Design
@@ -66,7 +79,7 @@
 
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/shop']">
-            <i class="bi bi-cart me-1"></i> Shop
+            <i class="bi bi-cart me-1"></i> Kids' World
           </a>
         </li>
         <li class="nav-item">

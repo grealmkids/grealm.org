@@ -11,6 +11,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PurchasedAlbumsComponent } from './client/purchased-albums/purchased-albums.component';
 import { SchoolsComponent } from './schools/schools.component';
 import { AuthGuard } from './auth/auth.guard';
+import { BusinessesComponent } from './businesses/businesses.component';
+import { AcademyComponent } from './academy/academy.component';
+import { KidsComponent } from './kids/kids.component';
 
 export const routes: Routes = [
     
@@ -45,6 +48,9 @@ export const routes: Routes = [
     { path: 'purchased-albums', component: PurchasedAlbumsComponent }
   ] },
   { path: 'schools', component: SchoolsComponent },
+  { path: 'academy', component: AcademyComponent },
+  { path: 'businesses', component: BusinessesComponent },
+  { path: 'kids', component: KidsComponent },
   { path: '', redirectTo: 'shop', pathMatch: 'full' }
 
 

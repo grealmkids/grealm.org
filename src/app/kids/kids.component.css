@@ -1,0 +1,23 @@
+/* Kids-themed video styling */
+video {
+  border: 10px solid lightgreen; /* Light green border */
+  padding: 2px; /* Padding around the video */
+  background-color: rgb(71, 198, 36);
+}
+
+.kidsbg {
+  background-color: rgb(255, 228, 232); /* Pink background for the container */
+}
+
+video::-webkit-media-controls {
+  color: lightgreen; /* Light green controls */
+}
+.photo {
+  margin-bottom: 20px;
+}
+.abouttext {
+  padding: 20px;
+  background-color: rgb(255, 255, 255) !important;
+  border-radius: 10px;
+  font-size: 26px;
+}
