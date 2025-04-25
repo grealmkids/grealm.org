@@ -12,72 +12,66 @@
       </div>
     </div>
     <div class="col-md-6">
-      <div class="abouttext">
+      <div class="abouttext mx-md-5">
         <h1 class="text-danger fw-bold p-3">About us</h1>
 
         <p class="p-3">
-          <span class="text-dark fw-bold">G-Realm Kids</span> creates
-          captivating 3D animated videos to boost literacy among children in
-          Uganda and Africa. Our mission is to make learning fun, accessible,
-          and transformative, empowering young minds for a brighter future. We
-          also incorporate original African music compositions to celebrate and
-          preserve the rich cultural heritage of the continent.
+          <span class="text-dark fw-bold">G-Realm Kids' Project</span> entails
+          creating captivating 3D animated videos to boost literacy among
+          children in Uganda and Africa. Our mission is to make learning fun,
+          accessible, and transformative, empowering young minds for a brighter
+          future. We also incorporate original African music compositions to
+          celebrate and preserve the rich cultural heritage of the continent.
         </p>
       </div>
     </div>
   </div>
   <h1 class="text-dark fw-bold text-center p-3">Gallery</h1>
 
-  <p class="p-3">
-    We create high-quality educational content that entertains and educates.
-    Through captivating music, stories, and animations, we aim to inspire and
-    empower African youth, making learning an exciting adventure.
+  <p class="p-3 gallerytext text-center">
+    See below some photos from one of our Album recording sessions with the
+    kids.
   </p>
 
-  <div class="row px-md-5 px-3 pb-5">
-    <div class="col-md-4">
+  <div class="row px-md-5 px-3 pb-5 g-3" id="photo-gallery">
+    <div class="col-6 col-md-4" *ngFor="let image of galleryImages">
       <div class="photo">
-        <img src="/assets/gallery/1.jpg" class="img-fluid" alt="" srcset="" />
+        <img
+          [src]="image"
+          class="img-fluid gallery-item"
+          alt="Gallery Image"
+          (click)="openImageModal(image)"
+        />
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="photo">
-        <img src="/assets/gallery/2.jpg" class="img-fluid" alt="" srcset="" />
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="photo">
-        <img src="/assets/gallery/3.jpg" class="img-fluid" alt="" srcset="" />
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="photo">
-        <img src="/assets/gallery/4.jpg" class="img-fluid" alt="" srcset="" />
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="photo">
-        <img src="/assets/gallery/5.jpg" class="img-fluid" alt="" srcset="" />
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="photo">
-        <img src="/assets/gallery/6.jpg" class="img-fluid" alt="" srcset="" />
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="photo">
-        <img src="/assets/gallery/7.jpg" class="img-fluid" alt="" srcset="" />
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="photo">
-        <img src="/assets/gallery/8.jpg" class="img-fluid" alt="" srcset="" />
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="photo">
-        <img src="/assets/gallery/9.jpg" class="img-fluid" alt="" srcset="" />
+  </div>
+
+  <!-- Modal for Image Preview -->
+  <div
+    class="modal fade show"
+    tabindex="-1"
+    role="dialog"
+    [ngClass]="{ 'd-block': selectedImage }"
+    *ngIf="selectedImage"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <img
+            [src]="selectedImage"
+            class="img-fluid w-100"
+            alt="Preview Image"
+          />
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="closeImageModal()"
+          >
+            Close
+          </button>
+        </div>
       </div>
     </div>
   </div>

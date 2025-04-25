@@ -1,11 +1,26 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-kids',
-  imports: [],
   templateUrl: './kids.component.html',
-  styleUrl: './kids.component.css'
+  styleUrls: ['./kids.component.css'],
+  imports: [CommonModule],
+  standalone: true
 })
-export class KidsComponent {
+export class KidsComponent implements OnInit {
+  selectedImage: string | null = null;
+  galleryImages: string[] = Array.from({ length: 12 }, (_, i) => `/assets/gallery/${i + 1}.jpg`);
 
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  openImageModal(imageSrc: string): void {
+    this.selectedImage = imageSrc;
+  }
+
+  closeImageModal(): void {
+    this.selectedImage = null;
+  }
 }

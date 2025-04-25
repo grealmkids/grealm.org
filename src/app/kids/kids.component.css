@@ -21,3 +21,17 @@ video::-webkit-media-controls {
   border-radius: 10px;
   font-size: 26px;
 }
+.gallerytext {
+  padding: 20px;
+
+  font-size: 26px;
+}
+
+/* Add hover effect for gallery images */
+.gallery-item {
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.1);
+}
