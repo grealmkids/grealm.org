@@ -23,4 +23,20 @@ export class KidsComponent implements OnInit {
   closeImageModal(): void {
     this.selectedImage = null;
   }
+
+  showPreviousImage(): void {
+    if (this.selectedImage) {
+      const currentIndex = this.galleryImages.indexOf(this.selectedImage);
+      const previousIndex = (currentIndex - 1 + this.galleryImages.length) % this.galleryImages.length;
+      this.selectedImage = this.galleryImages[previousIndex];
+    }
+  }
+
+  showNextImage(): void {
+    if (this.selectedImage) {
+      const currentIndex = this.galleryImages.indexOf(this.selectedImage);
+      const nextIndex = (currentIndex + 1) % this.galleryImages.length;
+      this.selectedImage = this.galleryImages[nextIndex];
+    }
+  }
 }

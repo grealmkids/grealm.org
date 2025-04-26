@@ -8,6 +8,10 @@ video {
 .kidsbg {
   background-color: rgb(255, 228, 232); /* Pink background for the container */
 }
+.kidsheader {
+  color: rgb(255, 255, 255);
+  background-color: rgb(106, 182, 13);
+}
 
 video::-webkit-media-controls {
   color: lightgreen; /* Light green controls */
