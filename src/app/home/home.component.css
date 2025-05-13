@@ -44,9 +44,9 @@
 
 .top-text {
   position: absolute;
-  top: 20px;
+  top: 0px;
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   font-size: 16px;
   color: white;
   background-color: rgba(0, 0, 0, 0.3);
