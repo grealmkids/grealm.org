@@ -7,10 +7,15 @@ import { Component } from '@angular/core';
   styleUrl: './schools.component.css'
 })
 export class SchoolsComponent {
-  downloadCatalog(): void {
+  downloadCatalog(type: 'national' | 'international'): void {
     const link = document.createElement('a');
-    link.href = '/assets/docs/school-catalog.pdf';
-    link.download = 'school-catalog.pdf';
+    if (type === 'national') {
+      link.href = '/assets/docs/school-catalog.pdf';
+      link.download = 'school-catalog.pdf';
+    } else {
+      link.href = '/assets/docs/int-school-catalog.pdf';
+      link.download = 'int-school-catalog.pdf';
+    }
     link.click();
   }
 }

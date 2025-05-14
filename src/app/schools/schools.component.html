@@ -1,21 +1,90 @@
 <div class="container my-5 p-3">
   <div class="row align-items-center">
+    <!-- National Curriculum Schools -->
     <div class="col-md-6 text-center p-3 p-md-5">
-      <img src="/assets/schools.png" alt="School Services" class="img-fluid" />
+      <img
+        src="/assets/schools.png"
+        alt="National Curriculum School Services"
+        class="img-fluid"
+      />
     </div>
     <div class="col-md-6 text-left">
-      <h2 class="fw-bold display-3 text-success">School Services Catalog</h2>
+      <h2 class="fw-bold display-3 text-success">
+        National Curriculum School Services
+      </h2>
+
+      <!-- Download Button -->
+      <button
+        class="btn btn-lg btn-success mt-3 mb-4"
+        (click)="downloadCatalog('national')"
+      >
+        <i class="bi bi-arrow-down me-2"></i> Download National Catalog
+      </button>
+      <p class="mt-4 text-success">
+        This catalog provides a comprehensive overview of G-Realm Studio
+        services and pricing tailored for national curriculum schools.
+      </p>
+
+      <!-- List of Services -->
+      <ul class="list-unstyled">
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i> School
+          Documentary
+        </li>
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i> Students’
+          Year Book & Movie
+        </li>
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i> Students’
+          Tech Skilling (3D, AI, Graphic Design)
+        </li>
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i> Staff Tech
+          Skilling (Google Suite & AI Tools)
+        </li>
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i> Printing
+          High-Quality Student IDs
+        </li>
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i> School
+          Office Digitalization
+        </li>
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i> Intro to
+          Music Production for Students
+        </li>
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i> AI & Tech
+          Consultation
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-5">
+    <!-- International Schools -->
+    <div class="col-md-6 text-center p-3 p-md-5">
+      <img
+        src="/assets/schools-int.png"
+        alt="International School Services"
+        class="img-fluid"
+      />
+    </div>
+    <div class="col-md-6 text-left">
+      <h2 class="fw-bold display-3">International School Services</h2>
 
       <!-- Download Button -->
       <button
         class="btn btn-lg btn-danger mt-3 mb-4"
-        (click)="downloadCatalog()"
+        (click)="downloadCatalog('international')"
       >
-        <i class="bi bi-arrow-down me-2"></i> Download
+        <i class="bi bi-arrow-down me-2"></i> Download International Catalog
       </button>
       <p class="mt-4 text-danger">
-        This catalog provides a comprehensive overview of studio services and
-        pricing tailored for schools.
+        This catalog provides a comprehensive overview of G-Realm Studio
+        services and pricing tailored for international schools.
       </p>
 
       <!-- List of Services -->
