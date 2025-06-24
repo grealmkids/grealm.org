@@ -37,7 +37,7 @@
             class="dropdown-menu services-menu"
             aria-labelledby="servicesDropdown"
           >
-            <li>
+            <li class="d-none">
               <a
                 target="_blank"
                 class="dropdown-item d-flex align-items-center"
@@ -46,8 +46,11 @@
                 <i class="bi bi-mortarboard-fill text-primary me-2"></i> Academy
               </a>
             </li>
-            <li class="d-none">
-              <a class="dropdown-item d-flex align-items-center" href="#">
+            <li class="">
+              <a
+                class="dropdown-item d-flex align-items-center"
+                [routerLink]="['/kids']"
+              >
                 <i class="bi bi-camera-video-fill text-primary me-2"></i>
                 Animation Studio
               </a>
