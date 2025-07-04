@@ -1,18 +1,17 @@
 .cover-section {
   width: 100%;
   position: relative;
-  overflow: hidden;
-  min-height: 40vh; /* Adjusted to cover half of the viewport height */
+  overflow: hidden; /* Adjusted to cover half of the viewport height */
+  height: 100vh;
 }
 
 .cover-background {
-  background-size: cover;
-  background-position: center;
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
+  object-fit: cover; /* Ensure the video covers the entire screen */
   z-index: 1;
 }
 
@@ -38,7 +37,7 @@
 
 .foreground-image {
   padding-top: 100px;
-  max-height: 250px;
+  max-height: 450px;
   object-fit: contain;
 }
 

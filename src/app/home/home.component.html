@@ -5,18 +5,25 @@
       <span class="greentext">is LORD</span>
     </p>
 
-    <!-- Background Image -->
-    <div
+    <!-- Background Video -->
+    <video
+      #backgroundVideo
+      autoplay
+      muted
+      loop
+      playsinline
       class="cover-background"
-      style="background-image: url('/assets/bg.jpg')"
-    ></div>
+    >
+      <source src="/assets/videos/video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
 
     <!-- Black Overlay -->
     <div class="cover-overlay"></div>
 
     <!-- Foreground Content (Image + Button) -->
     <div class="cover-content">
-      <img src="/assets/grealmstudio.png" alt="" class="foreground-image" />
+      <img src="/assets/code.png" alt="" class="foreground-image" />
 
       <p class="text-center py-3 px-3 d-none">
         <a class="btn btnlarge" href="/shop">See Albums</a>

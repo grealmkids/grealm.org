@@ -5,7 +5,10 @@
   </h2>
 
   <div class="container mx-auto row justify-content-center mt-4">
-    <div class="col-12 col-sm-6 col-md-4" *ngFor="let album of albums">
+    <div
+      class="col-12 col-sm-6 col-md-4 bg-light rounded-3 mb-3"
+      *ngFor="let album of albums"
+    >
       <a
         [routerLink]="['/shop/albums', album.id]"
         class="text-decoration-none text-dark"

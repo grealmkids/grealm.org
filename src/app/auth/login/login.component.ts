@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlbumService } from '../../services/album.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -15,8 +16,13 @@ export class LoginComponent {
   emailOrPhone: string = '';
   message: string = '';
   loading: boolean = false;
+  googleLoading: boolean = false;
 
-  constructor(private albumService: AlbumService, private router: Router) {}
+  constructor(
+    private albumService: AlbumService, 
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   sendOtp() {
     this.loading = true;
@@ -29,8 +35,25 @@ export class LoginComponent {
       },
       (error) => {
         this.loading = false;
-        this.message = 'Failed to send OTP. Please try again.';
+        this.message = 'Error sending OTP. Please try again.';
+        console.error('OTP Error:', error);
       }
     );
+  }
+
+  async signInWithGoogle() {
+    this.googleLoading = true;
+    try {
+      const result = await this.authService.signInWithGoogle();
+      console.log('Google Sign-In Successful:', result.user);
+      this.message = 'Google Sign-In successful!';
+      // Redirect to dashboard or desired page
+      this.router.navigate(['/dashboard']);
+    } catch (error) {
+      console.error('Google Sign-In Error:', error);
+      this.message = 'Google Sign-In failed. Please try again.';
+    } finally {
+      this.googleLoading = false;
+    }
   }
 }

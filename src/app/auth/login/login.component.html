@@ -6,10 +6,35 @@
       >Order for a service or product</a
     >
   </p>
+
+  <!-- Google Sign-In Button -->
+  <div class="text-center mb-4">
+    <button
+      type="button"
+      class="btn btn-outline-danger btn-lg w-100 mb-3"
+      (click)="signInWithGoogle()"
+      [disabled]="googleLoading"
+    >
+      <i class="bi bi-google me-2"></i>
+      <span *ngIf="!googleLoading">Continue with Google</span>
+      <span *ngIf="googleLoading">Signing in...</span>
+    </button>
+  </div>
+
+  <!-- Divider -->
+  <div class="text-center mb-4">
+    <div class="d-flex align-items-center">
+      <hr class="flex-grow-1" />
+      <span class="px-3 text-muted">OR</span>
+      <hr class="flex-grow-1" />
+    </div>
+  </div>
+
+  <!-- Email/Phone Login Form -->
   <form (ngSubmit)="sendOtp()" class="mb-5">
     <input
       type="text"
-      class="text-center"
+      class="form-control text-center mb-3"
       id="emailOrPhone"
       [(ngModel)]="emailOrPhone"
       name="emailOrPhone"
@@ -17,10 +42,17 @@
       required
     />
 
-    <button type="submit" [disabled]="loading">
+    <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
       <span *ngIf="!loading">Send OTP</span>
       <span *ngIf="loading">Sending...</span>
     </button>
   </form>
-  <p>{{ message }}</p>
+
+  <p
+    class="text-center"
+    [class.text-success]="message.includes('successful')"
+    [class.text-danger]="!message.includes('successful')"
+  >
+    {{ message }}
+  </p>
 </div>
