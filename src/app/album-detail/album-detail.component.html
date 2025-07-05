@@ -1,95 +1,126 @@
-<div class="container py-5" *ngIf="album">
-  <h2 class="d-flex justify-content-between">
-    <a [routerLink]="['/shop/kindergarten']" class="btn btn-dark ms-auto">
-      <i class="bi bi-arrow-left me-2"></i> Shop
-    </a>
-  </h2>
+<!-- Album Detail Page -->
+<div class="album-detail-container" *ngIf="album">
+  <!-- Header with Back Button -->
+  <div class="detail-header">
+    <button [routerLink]="['/shop/kindergarten']" class="back-btn">
+      <i class="bi bi-arrow-left me-2"></i>Back to Shop
+    </button>
+  </div>
 
-  <div class="row mt-4">
-    <div class="col-md-12">
-      <h2 class="text-dark fw-bold align-items-center text-uppercase">
-        Title: <span class="mx-2 text-primary">{{ album.title }}</span>
-      </h2>
-    </div>
-    <div class="col-md-6 text-center">
-      <img
-        [src]="album.image"
-        [alt]="album.title"
-        class="img-fluid w-100 shadow-lg"
-      />
-    </div>
-
-    <div class="col-md-6">
-      <div class="bg-light h-100 p-3 p-md-5">
-        <div class="table-responsive">
-          <table class="table table-bordered align-middle fw-bold">
-            <tbody>
-              <tr>
-                <td>Songs</td>
-                <td class="text-pink text-left fw-bold">{{ album.songs }}</td>
-              </tr>
-              <tr>
-                <td>HD Video</td>
-                <td class="text-pink text-left fw-bold">{{ album.video }}</td>
-              </tr>
-              <tr>
-                <td>MP3 Audio</td>
-                <td class="text-pink text-left fw-bold">{{ album.audio }}</td>
-              </tr>
-              <tr>
-                <td>Pictures for Coloring</td>
-                <td class="text-pink text-left fw-bold">
-                  {{ album.coloringPics }}
-                </td>
-              </tr>
-              <tr>
-                <td>Colored pictures</td>
-                <td class="text-pink text-left fw-bold">
-                  {{ album.coloredPics }}
-                </td>
-              </tr>
-              <tr>
-                <td>UGX</td>
-                <td class="text-left fw-bold">
-                  UGX <span class="text-pink">{{ album.ugx }}</span>
-                </td>
-              </tr>
-              <tr>
-                <td>USD</td>
-                <td class="text-left fw-bold">
-                  USD <span class="text-pink">{{ album.usd }}</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="text-center mt-3">
-          <button class="btn btn-danger fw-bold px-4 py-2">BUY ALBUM</button>
+  <!-- Album Content -->
+  <div class="album-content">
+    <!-- Album Cover with Play Button -->
+    <div class="album-cover-section">
+      <div class="cover-container">
+        <img
+          [src]="album.image"
+          [alt]="album.title"
+          class="album-cover-image"
+        />
+        <!-- Play Button Overlay -->
+        <div class="play-overlay" (click)="playPreview()">
+          <button class="play-button" [title]="'Preview ' + album.title">
+            <i class="bi bi-play-fill"></i>
+          </button>
+          <span class="preview-text">Preview</span>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="mt-5 ps-md-4">
-    <h5 class="text-primary fw-bold">INSIDE THIS ALBUM</h5>
-    <ol class="fw-semibold text-dark">
-      <li *ngFor="let item of album.contents">{{ item }}</li>
-    </ol>
-  </div>
+    <!-- Album Information -->
+    <div class="album-info-section">
+      <div class="album-header">
+        <h1 class="album-title">{{ album.title }}</h1>
+        <div class="album-prices">
+          <span class="price-ugx">UGX {{ album.ugx }}</span>
+          <span class="price-usd">${{ album.usd }}</span>
+        </div>
+      </div>
 
-  <div class="mt-4">
-    <a [routerLink]="['/shop/kindergarten']" class="btn btn-outline-primary"
-      >Shop</a
-    >
+      <!-- Album Stats -->
+      <div class="album-stats">
+        <div class="stat-item">
+          <i class="bi bi-music-note-beamed"></i>
+          <span>{{ album.songs }} Songs</span>
+        </div>
+        <div class="stat-item">
+          <i class="bi bi-play-circle"></i>
+          <span>{{ album.video }} Videos</span>
+        </div>
+        <div class="stat-item">
+          <i class="bi bi-file-earmark-music"></i>
+          <span>{{ album.audio }} Audio</span>
+        </div>
+        <div class="stat-item">
+          <i class="bi bi-palette"></i>
+          <span>{{ album.coloringPics }} Coloring</span>
+        </div>
+        <div class="stat-item">
+          <i class="bi bi-images"></i>
+          <span>{{ album.coloredPics }} Pictures</span>
+        </div>
+      </div>
+
+      <!-- Purchase Button -->
+      <div class="purchase-section">
+        <button class="purchase-btn">
+          <i class="bi bi-cart-plus me-2"></i>Buy Album
+        </button>
+      </div>
+
+      <!-- Album Contents -->
+      <div class="album-contents">
+        <h3 class="contents-title">What's Inside</h3>
+        <ul class="contents-list">
+          <li *ngFor="let item of album.contents" class="content-item">
+            <i class="bi bi-check-circle-fill"></i>
+            {{ item }}
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 
-<div *ngIf="!album" class="text-center py-5">
-  <h1 class="alert alert-danger m-3">Album not found.</h1>
-  <a [routerLink]="['/shop']" class="btn btn-outline-primary">Shop</a>
-</div>
-
-<div *ngIf="!album">
+<!-- Loading State -->
+<div *ngIf="!album && !albumNotFound" class="loading-state">
+  <div class="loading-spinner">
+    <i class="bi bi-arrow-repeat spinning"></i>
+  </div>
   <p>Loading album details...</p>
+</div>
+
+<!-- Album Not Found -->
+<div *ngIf="albumNotFound" class="error-state">
+  <div class="error-content">
+    <i class="bi bi-exclamation-triangle"></i>
+    <h2>Album Not Found</h2>
+    <p>The album you're looking for doesn't exist or has been removed.</p>
+    <button [routerLink]="['/shop']" class="btn-back-to-shop">
+      <i class="bi bi-shop me-2"></i>Back to Shop
+    </button>
+  </div>
+</div>
+
+<!-- Video Modal -->
+<div class="video-modal" *ngIf="showVideoModal" (click)="closeVideoModal()">
+  <div class="video-modal-content" (click)="$event.stopPropagation()">
+    <div class="video-modal-header">
+      <h3 class="video-modal-title">{{ album?.title }} - Preview</h3>
+      <button class="video-modal-close" (click)="closeVideoModal()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    <div class="video-container">
+      <iframe
+        *ngIf="safeVideoUrl"
+        [src]="safeVideoUrl"
+        class="video-iframe"
+        frameborder="0"
+        allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      >
+      </iframe>
+    </div>
+  </div>
 </div>

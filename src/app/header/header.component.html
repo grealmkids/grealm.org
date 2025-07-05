@@ -87,10 +87,62 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/kids']"> Kids' World </a>
         </li>
-        <li class="nav-item">
+
+        <!-- Show Login button when NOT authenticated -->
+        <li class="nav-item" *ngIf="!isAuthenticated">
           <button class="btn loginbtn ms-3" [routerLink]="['/login']">
             <i class="bi bi-person-circle me-1"></i> Login
           </button>
+        </li>
+
+        <!-- Show User Profile when authenticated -->
+        <li class="nav-item dropdown" *ngIf="isAuthenticated && userProfile">
+          <button
+            class="btn btn-outline-light dropdown-toggle d-flex align-items-center ms-3"
+            type="button"
+            id="userDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              *ngIf="userProfile.photoURL; else defaultAvatar"
+              [src]="userProfile.photoURL"
+              [alt]="userProfile.displayName || 'User'"
+              class="rounded-circle me-2"
+              width="24"
+              height="24"
+            />
+            <ng-template #defaultAvatar>
+              <i class="bi bi-person-circle me-2"></i>
+            </ng-template>
+            <span class="d-none d-md-inline">{{
+              userProfile.displayName || "User"
+            }}</span>
+          </button>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="userDropdown"
+          >
+            <li>
+              <div class="dropdown-item-text">
+                <div class="fw-bold">
+                  {{ userProfile.displayName || "User" }}
+                </div>
+                <small class="text-muted">{{ userProfile.email }}</small>
+              </div>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/dashboard']">
+                <i class="bi bi-speedometer2 me-2"></i>Dashboard
+              </a>
+            </li>
+            <li>
+              <button class="dropdown-item text-danger" (click)="logout()">
+                <i class="bi bi-box-arrow-right me-2"></i>Logout
+              </button>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>

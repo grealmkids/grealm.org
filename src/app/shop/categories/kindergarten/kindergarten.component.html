@@ -1,27 +1,54 @@
-<section class="new-albums text-center py-5">
-  <h2 class="display-2">
-    <span class="text-pink">Kindergarten </span>
-    <span class="text-primary"> Albums</span>
-  </h2>
+<!-- Kindergarten Albums Section -->
+<section class="albums-section">
+  <div class="section-header">
+    <h2 class="section-title">Kindergarten Albums</h2>
+    <p class="section-description">
+      Educational content for kindergarten students
+    </p>
+  </div>
 
-  <div class="container mx-auto row justify-content-center mt-4">
-    <div
-      class="col-12 col-sm-6 col-md-4 bg-light rounded-3 mb-3"
-      *ngFor="let album of albums"
-    >
-      <a
-        [routerLink]="['/shop/albums', album.id]"
-        class="text-decoration-none text-dark"
-      >
-        <div class="album-card mb-4 p-3">
-          <img [src]="album.image" [alt]="album.title" class="img-fluid mb-2" />
-          <h4 class="album-title text-primary text-uppercase">
-            {{ album.title }}
-          </h4>
-          <h5 class="text-pink fw-bold">{{ album.songs }} Songs</h5>
-          <button class="btn btn-primary w-50 fw-bold">DETAILS</button>
+  <div class="albums-grid" *ngIf="albums && albums.length > 0; else noAlbums">
+    <div class="album-card" *ngFor="let album of albums">
+      <a [routerLink]="['/shop/albums', album.id]" class="album-link">
+        <div class="album-image">
+          <img [src]="album.image" [alt]="album.title" />
+        </div>
+        <div class="album-content">
+          <h3 class="album-title">{{ album.title }}</h3>
+          <div class="album-stats">
+            <div class="stat-item">
+              <i class="bi bi-music-note"></i>
+              <span>{{ album.songs }} Songs</span>
+            </div>
+            <div class="stat-item" *ngIf="album.video">
+              <i class="bi bi-play-circle"></i>
+              <span>{{ album.video }} Videos</span>
+            </div>
+            <div class="stat-item" *ngIf="album.coloringPics">
+              <i class="bi bi-palette"></i>
+              <span>{{ album.coloringPics }} Coloring Pages</span>
+            </div>
+          </div>
+          <div class="album-price" *ngIf="album.ugx || album.usd">
+            <span class="price-ugx" *ngIf="album.ugx">UGX {{ album.ugx }}</span>
+            <span class="price-usd" *ngIf="album.usd">• ${{ album.usd }}</span>
+          </div>
+          <button class="album-btn">
+            <i class="bi bi-eye me-2"></i>View Details
+          </button>
         </div>
       </a>
     </div>
   </div>
+
+  <ng-template #noAlbums>
+    <div class="empty-state">
+      <i class="bi bi-collection empty-icon"></i>
+      <h3 class="empty-title">No Albums Available</h3>
+      <p class="empty-description">
+        Kindergarten albums are currently being prepared. Please check back
+        later.
+      </p>
+    </div>
+  </ng-template>
 </section>

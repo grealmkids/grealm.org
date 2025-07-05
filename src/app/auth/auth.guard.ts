@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
@@ -8,10 +9,16 @@ import { AuthService } from '../services/auth.service';
 export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   canActivate(): boolean {
+    // Allow access during SSR (server-side rendering)
+    if (!isPlatformBrowser(this.platformId)) {
+      return true;
+    }
+    
     // Check for Google Sign-In user profile
     const userProfile = localStorage.getItem('userProfile');
     

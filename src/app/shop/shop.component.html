@@ -1,36 +1,101 @@
-<p class="p-1">
-  <button class="toggle-sidenav-btn btn btn-dark" (click)="toggleSidenav()">
-    <i class="bi bi-list me-2"></i>{{ isSidenavVisible ? "Hide Menu" : "Menu" }}
-  </button>
-</p>
-
-<div class="shop-layout">
-  <aside class="sidenav" *ngIf="isSidenavVisible">
-    <div class="sidenav-header">
-      <img src="assets/3dmenu.png" alt="" class="sidenav-logo" />
+<!-- Google Cloud Console Style Shop -->
+<div class="gcp-shop">
+  <!-- Left Sidebar Navigation -->
+  <aside class="gcp-sidebar" [class.collapsed]="isSidebarCollapsed">
+    <!-- Sidebar Header -->
+    <div class="sidebar-header">
+      <button class="sidebar-toggle-btn" (click)="toggleSidebar()">
+        <i class="bi bi-list"></i>
+      </button>
+      <span class="sidebar-title" *ngIf="!isSidebarCollapsed">Shop</span>
     </div>
-    <ul class="list-group custom-sidebar">
-      <li class="list-group-item">
-        <a routerLink="kindergarten">
-          <i class="bi bi-book-half me-2 icon"></i>Kindergarten Albums
+
+    <!-- Shop Logo Section -->
+    <div class="shop-logo-section" *ngIf="!isSidebarCollapsed">
+      <img src="assets/3dmenu.png" alt="Shop Logo" class="shop-logo" />
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <h6 class="nav-section-title" *ngIf="!isSidebarCollapsed">
+          Categories
+        </h6>
+
+        <button
+          class="nav-item"
+          [class.active]="activeCategory === 'kindergarten'"
+          (click)="navigateToCategory('kindergarten')"
+          [title]="isSidebarCollapsed ? 'Kindergarten Albums' : ''"
+        >
+          <i class="nav-icon bi bi-book-half"></i>
+          <span class="nav-label" *ngIf="!isSidebarCollapsed"
+            >Kindergarten Albums</span
+          >
+        </button>
+
+        <button
+          class="nav-item"
+          [class.active]="activeCategory === 'bibles'"
+          (click)="navigateToCategory('bibles')"
+          [title]="isSidebarCollapsed ? 'Bibles' : ''"
+        >
+          <i class="nav-icon bi bi-journal-richtext"></i>
+          <span class="nav-label" *ngIf="!isSidebarCollapsed">Bibles</span>
+        </button>
+
+        <button
+          class="nav-item"
+          [class.active]="activeCategory === 'story-books'"
+          (click)="navigateToCategory('story-books')"
+          [title]="isSidebarCollapsed ? 'Kids\' Story Books' : ''"
+        >
+          <i class="nav-icon bi bi-book"></i>
+          <span class="nav-label" *ngIf="!isSidebarCollapsed"
+            >Kids' Story Books</span
+          >
+        </button>
+      </div>
+
+      <div class="nav-divider"></div>
+
+      <div class="nav-section">
+        <h6 class="nav-section-title" *ngIf="!isSidebarCollapsed">
+          Quick Links
+        </h6>
+
+        <a href="/" class="nav-item nav-link-external">
+          <i class="nav-icon bi bi-house"></i>
+          <span class="nav-label" *ngIf="!isSidebarCollapsed">Home</span>
+          <i
+            class="external-icon bi bi-box-arrow-up-right"
+            *ngIf="!isSidebarCollapsed"
+          ></i>
         </a>
-      </li>
-      <li class="list-group-item">
-        <a routerLink="bibles">
-          <i class="bi bi-journal-richtext me-2 icon"></i>Bibles
-        </a>
-      </li>
-      <li class="list-group-item">
-        <a routerLink="story-books">
-          <i class="bi bi-book me-2 icon"></i>Kids' Story Books
-        </a>
-      </li>
-    </ul>
+      </div>
+    </nav>
   </aside>
 
-  <main class="shop-main">
+  <!-- Main Content Area -->
+  <main class="gcp-main-content" [class.sidebar-collapsed]="isSidebarCollapsed">
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="page-header-content">
+        <h1 class="page-title">Shop</h1>
+        <p class="page-subtitle">Educational albums and resources</p>
+      </div>
+    </div>
+
+    <!-- Shop Content -->
     <section class="shop-content">
       <router-outlet></router-outlet>
     </section>
   </main>
 </div>
+
+<!-- Sidebar Overlay for Mobile -->
+<div
+  class="sidebar-overlay"
+  [class.show]="!isSidebarCollapsed && isMobile"
+  (click)="closeSidebarOnMobile()"
+></div>

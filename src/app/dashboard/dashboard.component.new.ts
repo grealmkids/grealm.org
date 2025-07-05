@@ -1,6 +1,5 @@
-import { Component, OnInit, HostListener, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common';
 import { AuthService } from '../services/auth.service';
 import { PurchasedAlbumsComponent } from '../client/purchased-albums/purchased-albums.component';
 import { BillingAddressComponent } from './billing-address/billing-address.component';
@@ -32,8 +31,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    private authService: AuthService
   ) {}
 
   @HostListener('window:resize', ['$event'])
@@ -68,10 +66,6 @@ export class DashboardComponent implements OnInit {
   }
 
   private loadUserProfile(): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return; // Skip localStorage operations during SSR
-    }
-    
     const savedProfile = localStorage.getItem('userProfile');
     if (savedProfile) {
       this.userProfile = JSON.parse(savedProfile);
@@ -95,7 +89,7 @@ export class DashboardComponent implements OnInit {
   }
 
   private saveUserProfile(): void {
-    if (isPlatformBrowser(this.platformId) && this.userProfile) {
+    if (this.userProfile) {
       localStorage.setItem('userProfile', JSON.stringify(this.userProfile));
     }
   }
@@ -179,12 +173,10 @@ export class DashboardComponent implements OnInit {
       // Sign out from Firebase
       await this.authService.signOut();
       
-      // Clear local storage (only in browser)
-      if (isPlatformBrowser(this.platformId)) {
-        localStorage.removeItem('userProfile');
-        localStorage.clear();
-        sessionStorage.clear();
-      }
+      // Clear local storage
+      localStorage.removeItem('userProfile');
+      localStorage.clear();
+      sessionStorage.clear();
       
       // Reset component state
       this.userProfile = null;
