@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://grealm.org',
+  apiUrl: 'https://backend.grealm.org',
   firebase: {
     apiKey: "AIzaSyA0AbzKiOicCS-mGYWy1BcHG5UYJFQfuMg",
     authDomain: "grealmstudio-5e431.firebaseapp.com",

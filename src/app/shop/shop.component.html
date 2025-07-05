@@ -55,6 +55,21 @@
       <div class="nav-divider"></div>
 
       <div class="nav-section">
+        <h6 class="nav-section-title" *ngIf="!isSidebarCollapsed">Account</h6>
+
+        <a href="/dashboard" class="nav-item nav-link-external">
+          <i class="nav-icon bi bi-speedometer2"></i>
+          <span class="nav-label" *ngIf="!isSidebarCollapsed">Dashboard</span>
+          <i
+            class="external-icon bi bi-box-arrow-up-right"
+            *ngIf="!isSidebarCollapsed"
+          ></i>
+        </a>
+      </div>
+
+      <div class="nav-divider"></div>
+
+      <div class="nav-section">
         <h6 class="nav-section-title" *ngIf="!isSidebarCollapsed">
           Quick Links
         </h6>
