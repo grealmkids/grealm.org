@@ -176,9 +176,9 @@
 
 /* Page Header */
 .page-header {
-  background: linear-gradient(135deg, #28a745 0%, #ffc107 100%);
+  background-color: #282828;
   color: white;
-  padding: 32px;
+  padding: 10px;
   border-bottom: 1px solid #e8eaed;
 }
 
@@ -190,6 +190,7 @@
   font-size: 28px;
   font-weight: 400;
   margin: 0 0 8px 0;
+  color: #ffd905;
 }
 
 .page-subtitle {
@@ -244,7 +245,7 @@
   }
 
   .page-header {
-    padding: 24px 16px;
+    padding: 10px;
   }
 
   .shop-content {
@@ -258,7 +259,7 @@
   }
 
   .page-header {
-    padding: 20px 12px;
+    padding: 10px;
   }
 
   .shop-content {
