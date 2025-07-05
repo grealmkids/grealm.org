@@ -11,7 +11,7 @@
   <div class="text-center mb-4">
     <button
       type="button"
-      class="btn btn-outline-danger btn-lg w-100 mb-3"
+      class="btn btn-success btn-lg mb-3"
       (click)="signInWithGoogle()"
       [disabled]="googleLoading"
     >
@@ -42,7 +42,7 @@
       required
     />
 
-    <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
+    <button type="submit" class="button w-100" [disabled]="loading">
       <span *ngIf="!loading">Send OTP</span>
       <span *ngIf="loading">Sending...</span>
     </button>

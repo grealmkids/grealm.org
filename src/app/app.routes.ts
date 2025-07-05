@@ -16,18 +16,15 @@ import { AcademyComponent } from './academy/academy.component';
 import { KidsComponent } from './kids/kids.component';
 
 export const routes: Routes = [
-    
-     {
-          path: '',
-          component: HomeComponent
-        },
-      
-        {
-          path: 'about',
-          component: AboutComponent
-        },
-    // app-routing.module.ts or shop-routing.module.ts
-
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
+  },
+  // app-routing.module.ts or shop-routing.module.ts
   {
     path: 'shop',
     component: ShopComponent, // this is the layout
@@ -51,7 +48,5 @@ export const routes: Routes = [
   { path: 'academy', component: AcademyComponent },
   { path: 'businesses', component: BusinessesComponent },
   { path: 'kids', component: KidsComponent },
-  { path: '', redirectTo: 'shop', pathMatch: 'full' }
-
-
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];

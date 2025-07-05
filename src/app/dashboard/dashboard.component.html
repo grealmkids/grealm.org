@@ -5,31 +5,429 @@
   </button>
 </p>
 
-<div class="dashboard-layout">
-  <aside class="sidenav" *ngIf="isSidenavVisible">
-    <div class="sidenav-header">
-      <img src="assets/3dmenu.png" alt="" class="sidenav-logo" />
+<!-- Top Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container-fluid">
+    <button class="btn btn-outline-light me-3" (click)="toggleSidenav()">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <div class="navbar-brand d-flex align-items-center">
+      <img src="assets/logo.png" alt="G-Realm" height="32" class="me-2" />
+      <span class="fw-bold">G-Realm Studio</span>
     </div>
-    <nav class="sidenav-menu">
-      <a href="/dashboard" class="sidenav-link">Purchased Albums</a>
-      <a href="/dashboard/settings" class="sidenav-link">Settings</a>
-      <a href="javascript:void(0)" class="sidenav-link" (click)="logout()"
-        >Logout</a
-      >
+
+    <!-- User Profile Section -->
+    <div class="d-flex align-items-center" *ngIf="userProfile">
+      <div class="dropdown">
+        <button
+          class="btn btn-outline-light dropdown-toggle d-flex align-items-center"
+          type="button"
+          id="userDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <div *ngIf="userProfile" class="d-flex align-items-center">
+            <img
+              *ngIf="userProfile.photoURL; else defaultAvatar"
+              [src]="userProfile.photoURL"
+              [alt]="userProfile.displayName || 'User'"
+              class="rounded-circle me-2"
+              width="32"
+              height="32"
+            />
+            <ng-template #defaultAvatar>
+              <div
+                class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-2"
+                style="width: 32px; height: 32px"
+              >
+                <i class="bi bi-person-fill text-white"></i>
+              </div>
+            </ng-template>
+            <span class="d-none d-md-inline">{{
+              userProfile.displayName || "User"
+            }}</span>
+          </div>
+        </button>
+        <ul
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="userDropdown"
+        >
+          <li>
+            <div class="dropdown-item-text">
+              <div class="fw-bold">{{ userProfile.displayName || "User" }}</div>
+              <small class="text-muted">{{ userProfile.email }}</small>
+            </div>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <a class="dropdown-item" href="/dashboard/settings"
+              ><i class="bi bi-gear me-2"></i>Settings</a
+            >
+          </li>
+          <li>
+            <button class="dropdown-item text-danger" (click)="logout()">
+              <i class="bi bi-box-arrow-right me-2"></i>Logout
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="dashboard-layout">
+  <!-- Sidebar -->
+  <aside class="sidenav shadow-lg" [class.show]="isSidenavVisible">
+    <div class="sidenav-header p-4 border-bottom">
+      <div class="text-center" *ngIf="userProfile">
+        <img
+          *ngIf="userProfile.photoURL; else sidebarDefaultAvatar"
+          [src]="userProfile.photoURL"
+          [alt]="userProfile.displayName || 'User'"
+          class="rounded-circle mb-3"
+          width="80"
+          height="80"
+        />
+        <ng-template #sidebarDefaultAvatar>
+          <div
+            class="rounded-circle bg-light d-flex align-items-center justify-content-center mb-3 mx-auto"
+            style="width: 80px; height: 80px"
+          >
+            <i
+              class="bi bi-person-fill text-secondary"
+              style="font-size: 2rem"
+            ></i>
+          </div>
+        </ng-template>
+        <h6 class="mb-1 fw-bold">{{ userProfile.displayName || "Welcome" }}</h6>
+        <small class="text-muted">{{ userProfile.email }}</small>
+        <div class="mt-2">
+          <span class="badge bg-success">{{ getGreeting() }}</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="sidenav-menu p-3">
+      <div class="nav-section mb-4">
+        <h6
+          class="nav-section-title text-muted text-uppercase small fw-bold mb-3"
+        >
+          Dashboard
+        </h6>
+        <button
+          class="nav-link"
+          [class.active]="activeView === 'home'"
+          (click)="setActiveView('home')"
+        >
+          <i class="bi bi-house-door me-2"></i>Home
+        </button>
+        <button
+          class="nav-link"
+          [class.active]="activeView === 'albums'"
+          (click)="setActiveView('albums')"
+        >
+          <i class="bi bi-collection-play me-2"></i>My Albums
+        </button>
+        <a href="/shop" class="nav-link">
+          <i class="bi bi-shop me-2"></i>Shop
+        </a>
+      </div>
+
+      <div class="nav-section mb-4">
+        <h6
+          class="nav-section-title text-muted text-uppercase small fw-bold mb-3"
+        >
+          Account
+        </h6>
+        <button
+          class="nav-link"
+          [class.active]="activeView === 'billing'"
+          (click)="setActiveView('billing')"
+        >
+          <i class="bi bi-credit-card me-2"></i>Billing Address
+        </button>
+        <button
+          class="nav-link"
+          [class.active]="activeView === 'settings'"
+          (click)="setActiveView('settings')"
+        >
+          <i class="bi bi-gear me-2"></i>Settings
+        </button>
+        <button
+          class="nav-link"
+          [class.active]="activeView === 'profile'"
+          (click)="setActiveView('profile')"
+        >
+          <i class="bi bi-person me-2"></i>Profile
+        </button>
+      </div>
+
+      <div class="nav-section">
+        <button
+          class="nav-link text-danger border-0 bg-transparent w-100 text-start"
+          (click)="logout()"
+        >
+          <i class="bi bi-box-arrow-right me-2"></i>Logout
+        </button>
+      </div>
     </nav>
+
+    <!-- Login Info -->
+    <div class="sidenav-footer p-3 border-top mt-auto">
+      <small class="text-muted">
+        <i class="bi bi-clock me-1"></i>
+        Logged in {{ getLoginDuration() }}
+      </small>
+    </div>
   </aside>
 
+  <!-- Main Content -->
   <main class="dashboard-main">
-    <section class="dashboard-content">
-      <div *ngIf="role === 'client'">
-        <app-purchased-albums></app-purchased-albums>
+    <!-- Welcome Header -->
+    <div class="welcome-header bg-gradient p-4 mb-4">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h2 class="mb-1 text-white">
+              {{ getGreeting() }},
+              {{ (userProfile?.displayName || "User").split(" ")[0] }}! 👋
+            </h2>
+            <p class="mb-0 text-white-50">
+              Welcome back to your G-Realm Studio dashboard
+            </p>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <div class="text-white-50">
+              <i class="bi bi-calendar3 me-2"></i>{{ currentTime }}
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-content p-4">
+      <!-- Home View -->
+      <div *ngIf="activeView === 'home' && role === 'client'">
+        <!-- Quick Stats Cards -->
+        <div class="row mb-4">
+          <div class="col-md-4 mb-3">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body text-center">
+                <div class="text-primary mb-2">
+                  <i class="bi bi-collection-play" style="font-size: 2rem"></i>
+                </div>
+                <h6 class="card-title">My Albums</h6>
+                <p class="card-text text-muted">View your purchased content</p>
+                <button
+                  class="btn btn-outline-primary btn-sm"
+                  (click)="setActiveView('albums')"
+                >
+                  View Albums
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body text-center">
+                <div class="text-success mb-2">
+                  <i class="bi bi-download" style="font-size: 2rem"></i>
+                </div>
+                <h6 class="card-title">Downloads</h6>
+                <p class="card-text text-muted">Access your downloads</p>
+                <button class="btn btn-outline-success btn-sm" disabled>
+                  Coming Soon
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body text-center">
+                <div class="text-warning mb-2">
+                  <i class="bi bi-star" style="font-size: 2rem"></i>
+                </div>
+                <h6 class="card-title">Favorites</h6>
+                <p class="card-text text-muted">Your favorite albums</p>
+                <button class="btn btn-outline-warning btn-sm" disabled>
+                  Coming Soon
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-white border-0">
+            <h5 class="mb-0">
+              <i class="bi bi-lightning me-2"></i>Quick Actions
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="d-grid">
+                  <button
+                    class="btn btn-primary"
+                    (click)="setActiveView('billing')"
+                  >
+                    <i class="bi bi-credit-card me-2"></i>Update Billing Address
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="d-grid">
+                  <a href="/shop" class="btn btn-outline-primary">
+                    <i class="bi bi-shop me-2"></i>Browse Shop
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Albums View -->
+      <div *ngIf="activeView === 'albums' && role === 'client'">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-white border-0">
+            <h5 class="mb-0">
+              <i class="bi bi-collection-play me-2"></i>Your Purchased Albums
+            </h5>
+          </div>
+          <div class="card-body">
+            <app-purchased-albums></app-purchased-albums>
+          </div>
+        </div>
+      </div>
+
+      <!-- Billing Address View -->
+      <div *ngIf="activeView === 'billing'">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-white border-0">
+            <h5 class="mb-0">
+              <i class="bi bi-credit-card me-2"></i>Billing Address
+            </h5>
+            <p class="text-muted mb-0">
+              Manage your billing information and address details
+            </p>
+          </div>
+          <div class="card-body">
+            <app-billing-address></app-billing-address>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings View -->
+      <div *ngIf="activeView === 'settings'">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-white border-0">
+            <h5 class="mb-0"><i class="bi bi-gear me-2"></i>Settings</h5>
+            <p class="text-muted mb-0">Manage your account preferences</p>
+          </div>
+          <div class="card-body">
+            <div class="text-center p-5">
+              <i class="bi bi-gear text-muted mb-3" style="font-size: 3rem"></i>
+              <h6>Settings Panel</h6>
+              <p class="text-muted">
+                Settings functionality will be implemented here.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile View -->
+      <div *ngIf="activeView === 'profile'">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-white border-0">
+            <h5 class="mb-0">
+              <i class="bi bi-person me-2"></i>Profile Information
+            </h5>
+            <p class="text-muted mb-0">View and manage your profile details</p>
+          </div>
+          <div class="card-body">
+            <div *ngIf="userProfile" class="row">
+              <div class="col-md-4 text-center mb-4">
+                <img
+                  *ngIf="userProfile.photoURL; else profileDefaultAvatar"
+                  [src]="userProfile.photoURL"
+                  [alt]="userProfile.displayName || 'User'"
+                  class="rounded-circle mb-3"
+                  width="120"
+                  height="120"
+                />
+                <ng-template #profileDefaultAvatar>
+                  <div
+                    class="rounded-circle bg-light d-flex align-items-center justify-content-center mb-3 mx-auto"
+                    style="width: 120px; height: 120px"
+                  >
+                    <i
+                      class="bi bi-person-fill text-secondary"
+                      style="font-size: 3rem"
+                    ></i>
+                  </div>
+                </ng-template>
+                <h6 class="mb-1">{{ userProfile.displayName || "User" }}</h6>
+                <small class="text-muted">{{ userProfile.email }}</small>
+              </div>
+              <div class="col-md-8">
+                <div class="row mb-3">
+                  <div class="col-sm-4"><strong>Display Name:</strong></div>
+                  <div class="col-sm-8">
+                    {{ userProfile.displayName || "Not provided" }}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-4"><strong>Email:</strong></div>
+                  <div class="col-sm-8">
+                    {{ userProfile.email || "Not provided" }}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-4"><strong>Provider:</strong></div>
+                  <div class="col-sm-8">
+                    <span class="badge bg-primary">{{
+                      userProfile.providerId || "Unknown"
+                    }}</span>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-4"><strong>Login Time:</strong></div>
+                  <div class="col-sm-8">{{ getLoginDuration() }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin View -->
       <div *ngIf="role !== 'client'">
-        <p>
-          Welcome to the admin dashboard. Role-specific content will be added
-          here.
-        </p>
+        <div class="card border-0 shadow-sm">
+          <div class="card-body text-center p-5">
+            <i
+              class="bi bi-shield-lock text-muted mb-3"
+              style="font-size: 3rem"
+            ></i>
+            <h5>Admin Dashboard</h5>
+            <p class="text-muted">
+              Welcome to the admin dashboard. Role-specific content will be
+              added here.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 </div>
+
+<!-- Sidebar Overlay for Mobile -->
+<div
+  class="sidenav-overlay"
+  [class.show]="isSidenavVisible"
+  (click)="toggleSidenav()"
+></div>

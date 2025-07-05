@@ -20,7 +20,7 @@ input {
   border: 1px solid #ccc;
 }
 
-button {
+.button {
   width: 100%;
   padding: 10px;
   background-color: #007bff;
@@ -30,7 +30,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.button:hover {
   background-color: #0056b3;
 }
 

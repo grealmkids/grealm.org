@@ -1,74 +1,236 @@
-/* Placeholder styles for the Dashboard component */
-
-/* General layout styling */
+/* Dashboard Layout */
 .dashboard-layout {
   display: flex;
-  height: 100vh;
-  font-family: "Arial", sans-serif;
+  min-height: calc(100vh - 76px); /* Adjust for navbar height */
+  position: relative;
 }
 
-/* Sidenav styling */
+/* Sidebar Styles */
 .sidenav {
-  width: 250px;
-  background-color: #1e1e1e;
+  width: 280px;
+  background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
   color: #fff;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  position: fixed;
+  top: 76px; /* Navbar height */
+  left: 0;
+  height: calc(100vh - 76px);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidenav.show {
+  transform: translateX(0);
 }
 
 .sidenav-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.sidenav-logo {
-  width: 100px;
-  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .sidenav-menu {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.nav-section-title {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem !important;
+}
+
+.nav-link {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.sidenav-link {
-  color: #fff;
+  align-items: center;
+  padding: 12px 16px;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  font-size: 16px;
-  padding: 10px;
-  transition: background-color 0.3s;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
 }
 
-.sidenav-link:hover {
-  background-color: #333;
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: translateX(4px);
 }
 
-/* Main content styling */
+.nav-link.active {
+  background-color: rgba(52, 152, 219, 0.2);
+  color: #3498db;
+  border-left: 3px solid #3498db;
+}
+
+.sidenav-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;
+}
+
+/* Main Content */
 .dashboard-main {
   flex: 1;
-  padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #f8f9fa;
+  transition: margin-left 0.3s ease-in-out;
+  min-height: calc(100vh - 76px);
 }
 
-.dashboard-header {
-  text-align: center;
-  margin-bottom: 30px;
+/* Welcome Header */
+.welcome-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 0 0 15px 15px;
+  margin: -1rem -1rem 2rem -1rem;
 }
 
-.dashboard-header h1 {
-  font-size: 24px;
-  color: #333;
+/* Cards */
+.card {
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.dashboard-header p {
-  font-size: 16px;
-  color: #666;
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
 }
 
-.dashboard-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+/* Navbar Styles */
+.navbar {
+  z-index: 1001;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  margin-top: 8px;
+}
+
+.dropdown-item {
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin: 2px 8px;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Mobile Overlay */
+.sidenav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.sidenav-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidenav {
+    width: 280px;
+  }
+
+  .dashboard-main {
+    margin-left: 0;
+  }
+
+  .welcome-header .col-md-4 {
+    text-align: center !important;
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .sidenav-overlay {
+    display: none;
+  }
+}
+
+/* Custom scrollbar for sidebar */
+.sidenav-menu::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidenav-menu::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.sidenav-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.sidenav-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Animation for stats cards */
+.card .bi {
+  transition: transform 0.2s ease;
+}
+
+.card:hover .bi {
+  transform: scale(1.1);
+}
+
+/* Enhanced Button Styles */
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* View transition animations */
+.dashboard-content > div {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced card styling for different views */
+.card-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Toggle button styling */
+.toggle-sidenav-btn {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.toggle-sidenav-btn:hover {
+  transform: scale(1.05);
 }

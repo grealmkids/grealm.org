@@ -1,0 +1,295 @@
+<div class="billing-address-container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white border-0 pb-0">
+          <h4 class="mb-0">
+            <i class="bi bi-credit-card me-2 text-primary"></i>
+            Billing Address
+          </h4>
+          <p class="text-muted mb-0">
+            Manage your billing information for purchases
+          </p>
+        </div>
+
+        <div class="card-body">
+          <!-- Success Message -->
+          <div
+            *ngIf="saveMessage"
+            class="alert alert-success alert-dismissible fade show"
+            role="alert"
+          >
+            <i class="bi bi-check-circle me-2"></i>{{ saveMessage }}
+          </div>
+
+          <!-- Error Message -->
+          <div
+            *ngIf="errorMessage"
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <i class="bi bi-exclamation-triangle me-2"></i>{{ errorMessage }}
+          </div>
+
+          <!-- Loading State -->
+          <div
+            *ngIf="isLoading && !saveMessage && !errorMessage"
+            class="text-center mb-3"
+          >
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="text-muted mt-2 mb-0">Loading billing information...</p>
+          </div>
+
+          <form [formGroup]="billingForm" (ngSubmit)="onSubmit()">
+            >
+            <!-- Store Information -->
+            <div class="row mb-4">
+              <div class="col-12">
+                <h6 class="text-muted text-uppercase small fw-bold mb-3">
+                  <i class="bi bi-shop me-2"></i>Store Information
+                </h6>
+              </div>
+              <div class="col-md-6">
+                <label for="branch" class="form-label"
+                  >Branch/Store Name <span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="branch"
+                  formControlName="branch"
+                  placeholder="e.g., Store Name - HQ"
+                  [class.is-invalid]="getFieldError('branch')"
+                />
+                <div class="invalid-feedback">
+                  {{ getFieldError("branch") }}
+                </div>
+              </div>
+            </div>
+
+            <!-- Personal Information -->
+            <div class="row mb-4">
+              <div class="col-12">
+                <h6 class="text-muted text-uppercase small fw-bold mb-3">
+                  <i class="bi bi-person me-2"></i>Personal Information
+                </h6>
+              </div>
+              <div class="col-md-4">
+                <label for="first_name" class="form-label"
+                  >First Name <span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="first_name"
+                  formControlName="first_name"
+                  placeholder="John"
+                  [class.is-invalid]="getFieldError('first_name')"
+                />
+                <div class="invalid-feedback">
+                  {{ getFieldError("first_name") }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="middle_name" class="form-label">Middle Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="middle_name"
+                  formControlName="middle_name"
+                  placeholder="Optional"
+                />
+              </div>
+              <div class="col-md-4">
+                <label for="last_name" class="form-label"
+                  >Last Name <span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="last_name"
+                  formControlName="last_name"
+                  placeholder="Doe"
+                  [class.is-invalid]="getFieldError('last_name')"
+                />
+                <div class="invalid-feedback">
+                  {{ getFieldError("last_name") }}
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="row mb-4">
+              <div class="col-12">
+                <h6 class="text-muted text-uppercase small fw-bold mb-3">
+                  <i class="bi bi-telephone me-2"></i>Contact Information
+                </h6>
+              </div>
+              <div class="col-md-6">
+                <label for="email_address" class="form-label"
+                  >Email Address <span class="text-danger">*</span></label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email_address"
+                  formControlName="email_address"
+                  placeholder="john.doe@example.com"
+                  [class.is-invalid]="getFieldError('email_address')"
+                />
+                <div class="invalid-feedback">
+                  {{ getFieldError("email_address") }}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="country_code" class="form-label"
+                  >Country <span class="text-danger">*</span></label
+                >
+                <select
+                  class="form-select"
+                  id="country_code"
+                  formControlName="country_code"
+                >
+                  <option value="KE">Kenya (KE)</option>
+                  <option value="UG">Uganda (UG)</option>
+                  <option value="TZ">Tanzania (TZ)</option>
+                  <option value="RW">Rwanda (RW)</option>
+                  <option value="US">United States (US)</option>
+                  <option value="UK">United Kingdom (UK)</option>
+                  <option value="CA">Canada (CA)</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="phone_number" class="form-label"
+                  >Phone Number <span class="text-danger">*</span></label
+                >
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="phone_number"
+                  formControlName="phone_number"
+                  placeholder="0723xxxxxx"
+                  [class.is-invalid]="getFieldError('phone_number')"
+                />
+                <div class="invalid-feedback">
+                  {{ getFieldError("phone_number") }}
+                </div>
+              </div>
+            </div>
+
+            <!-- Address Information -->
+            <div class="row mb-4">
+              <div class="col-12">
+                <h6 class="text-muted text-uppercase small fw-bold mb-3">
+                  <i class="bi bi-geo-alt me-2"></i>Address Information
+                </h6>
+              </div>
+              <div class="col-12">
+                <label for="line_1" class="form-label"
+                  >Address Line 1 <span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="line_1"
+                  formControlName="line_1"
+                  placeholder="e.g., Pesapal Limited, Building Name, Street"
+                  [class.is-invalid]="getFieldError('line_1')"
+                />
+                <div class="invalid-feedback">
+                  {{ getFieldError("line_1") }}
+                </div>
+              </div>
+              <div class="col-12 mt-3">
+                <label for="line_2" class="form-label">Address Line 2</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="line_2"
+                  formControlName="line_2"
+                  placeholder="Apartment, suite, unit, building, floor, etc."
+                />
+              </div>
+            </div>
+
+            <!-- Location Details -->
+            <div class="row mb-4">
+              <div class="col-md-3">
+                <label for="city" class="form-label">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  formControlName="city"
+                  placeholder="Nairobi"
+                />
+              </div>
+              <div class="col-md-3">
+                <label for="state" class="form-label">State/Region</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="state"
+                  formControlName="state"
+                  placeholder="Nairobi County"
+                />
+              </div>
+              <div class="col-md-3">
+                <label for="postal_code" class="form-label">Postal Code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="postal_code"
+                  formControlName="postal_code"
+                  placeholder="00100"
+                />
+              </div>
+              <div class="col-md-3">
+                <label for="zip_code" class="form-label">ZIP Code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="zip_code"
+                  formControlName="zip_code"
+                  placeholder="12345"
+                />
+              </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="row">
+              <div class="col-12">
+                <hr class="my-4" />
+                <div class="d-flex justify-content-end gap-3">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    (click)="resetForm()"
+                    [disabled]="isLoading"
+                  >
+                    <i class="bi bi-arrow-clockwise me-2"></i>Reset
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    [disabled]="isLoading || billingForm.invalid"
+                  >
+                    <span
+                      *ngIf="isLoading"
+                      class="spinner-border spinner-border-sm me-2"
+                      role="status"
+                    ></span>
+                    <i *ngIf="!isLoading" class="bi bi-check-lg me-2"></i>
+                    {{ isLoading ? "Saving..." : "Save Billing Address" }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

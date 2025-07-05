@@ -46,9 +46,27 @@ export class LoginComponent {
     try {
       const result = await this.authService.signInWithGoogle();
       console.log('Google Sign-In Successful:', result.user);
-      this.message = 'Google Sign-In successful!';
-      // Redirect to dashboard or desired page
-      this.router.navigate(['/dashboard']);
+      
+      // Create user profile object
+      const userProfile = {
+        uid: result.user.uid,
+        displayName: result.user.displayName,
+        email: result.user.email,
+        photoURL: result.user.photoURL,
+        providerId: result.user.providerData[0]?.providerId || 'google.com',
+        loginTime: new Date().toISOString()
+      };
+      
+      // Save to localStorage
+      localStorage.setItem('userProfile', JSON.stringify(userProfile));
+      
+      this.message = 'Google Sign-In successful! Redirecting...';
+      
+      // Redirect to dashboard after a short delay
+      setTimeout(() => {
+        this.router.navigate(['/dashboard']);
+      }, 1000);
+      
     } catch (error) {
       console.error('Google Sign-In Error:', error);
       this.message = 'Google Sign-In failed. Please try again.';
