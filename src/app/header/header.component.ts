@@ -33,9 +33,23 @@ export class HeaderComponent implements OnInit {
     
     // Listen for auth state changes
     this.authService.currentUser$.subscribe(user => {
-      this.isAuthenticated = !!user || !!this.getUserProfileFromStorage();
-      if (this.isAuthenticated) {
-        this.userProfile = this.getUserProfileFromStorage();
+      if (user) {
+        // User is authenticated with Firebase
+        this.isAuthenticated = true;
+        // Try to get profile from storage, or create from Firebase user
+        this.userProfile = this.getUserProfileFromStorage() || {
+          uid: user.uid,
+          displayName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          providerId: 'firebase',
+          loginTime: new Date().toISOString()
+        };
+      } else {
+        // User is not authenticated with Firebase
+        const savedProfile = this.getUserProfileFromStorage();
+        this.isAuthenticated = !!savedProfile;
+        this.userProfile = savedProfile;
       }
     });
   }

@@ -158,16 +158,8 @@
         <div class="welcome-text">
           <h1 class="welcome-title">
             {{ getGreeting() }},
-            {{ (userProfile?.displayName || "User").split(" ")[0] }}! 👋
+            {{ (userProfile?.displayName || "User").split(" ")[0] }}
           </h1>
-          <p class="welcome-subtitle">
-            Welcome back to your G-Realm Studio dashboard
-          </p>
-        </div>
-        <div class="welcome-info">
-          <div class="current-time">
-            <i class="bi bi-calendar3 me-2"></i>{{ currentTime }}
-          </div>
         </div>
       </div>
     </div>

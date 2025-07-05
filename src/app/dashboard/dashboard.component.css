@@ -102,6 +102,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-transform: none !important;
 }
 
 .user-email {
@@ -260,7 +261,7 @@
 
 /* Welcome Header */
 .welcome-header {
-  background: linear-gradient(135deg, #28a745 0%, #ffc107 100%);
+  background-color: #202124;
   color: white;
   padding: 32px;
   margin-bottom: 24px;
@@ -453,6 +454,7 @@
   font-weight: 500;
   color: #202124;
   margin: 0 0 8px 0;
+  text-transform: none !important;
 }
 
 .profile-email {
