@@ -144,12 +144,12 @@
 .price-ugx {
   font-size: 24px;
   font-weight: 600;
-  color: #137333;
+  color: #c43a3a;
 }
 
 .price-usd {
   font-size: 18px;
-  color: #5f6368;
+  color: #1c5395;
 }
 
 /* Album Stats */
@@ -188,7 +188,7 @@
 
 .purchase-btn {
   padding: 16px 32px;
-  background: linear-gradient(135deg, #28a745 0%, #ffc107 100%);
+  background-color: #c03939;
   color: white;
   border: none;
   border-radius: 8px;
@@ -196,14 +196,14 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(40, 167, 69, 0.3);
+  box-shadow: 0 4px 16px rgba(54, 54, 54, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .purchase-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(40, 167, 69, 0.4);
+  box-shadow: 0 6px 24px rgba(57, 57, 57, 0.4);
 }
 
 /* Album Contents */
