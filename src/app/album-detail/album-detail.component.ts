@@ -27,6 +27,7 @@ export class AlbumDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     console.log('Album ID from route:', id);
     if (id) {
+      console.log('Making API call to:', `${this.albumService['baseUrl']}/api/client/albums/${id}`);
       this.albumService.getAlbumById(id).subscribe(
         album => {
           if (album) {
@@ -39,6 +40,10 @@ export class AlbumDetailComponent implements OnInit {
         },
         error => {
           console.error('Error fetching album details:', error);
+          console.error('Error status:', error.status);
+          console.error('Error message:', error.message);
+          console.error('Error url:', error.url);
+          console.error('Full error object:', JSON.stringify(error, null, 2));
           this.albumNotFound = true;
         }
       );
