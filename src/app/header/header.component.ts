@@ -83,11 +83,32 @@ export class HeaderComponent implements OnInit {
       this.userProfile = null;
       this.isAuthenticated = false;
       
+      // Collapse navbar after logout
+      this.collapseNavbar();
+      
       // Redirect to homepage
       this.router.navigate(['/']);
       
     } catch (error) {
       console.error('Error during logout:', error);
+    }
+  }
+
+  // Method to collapse the navbar
+  collapseNavbar(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const navbarCollapse = document.getElementById('navbarNav');
+      if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+        // Use Bootstrap's collapse method if available
+        const bsCollapse = (window as any).bootstrap?.Collapse;
+        if (bsCollapse) {
+          const collapse = new bsCollapse(navbarCollapse);
+          collapse.hide();
+        } else {
+          // Fallback: manually remove 'show' class
+          navbarCollapse.classList.remove('show');
+        }
+      }
     }
   }
 }
