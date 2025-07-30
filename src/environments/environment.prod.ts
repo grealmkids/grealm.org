@@ -1,6 +1,9 @@
 export const environment = {
   production: true,
+  // Online API URL (use this for production deployment)
   apiUrl: 'https://backend.grealm.org',
+  // Local API URL (uncomment for local development)
+  // apiUrl: 'http://localhost:3000',
   firebase: {
     apiKey: "AIzaSyA0AbzKiOicCS-mGYWy1BcHG5UYJFQfuMg",
     authDomain: "grealmstudio-5e431.firebaseapp.com",

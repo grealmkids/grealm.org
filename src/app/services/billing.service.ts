@@ -49,7 +49,7 @@ export interface SaveBillingResponse {
   providedIn: 'root'
 })
 export class BillingService {
-  private apiUrl = environment.production ? 'https://your-api-domain.com' : 'http://localhost:5000';
+  private apiUrl = environment.production ? 'https://backend.grealm.org' : 'http://localhost:5000';
 
   constructor(private http: HttpClient) {}
 

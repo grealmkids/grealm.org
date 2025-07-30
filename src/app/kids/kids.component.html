@@ -1,118 +1,78 @@
-<div class="kidsbg">
-  <h1 class="kidsheader fw-bold text-center p-3 mb-5">G-Realm Kids' Project</h1>
-  <div class="row d-flex justify-content-center align-items-center">
-    <div class="col-lg-6 px-md-5 text-center">
-      <div class="">
-        <video class="w-100" controls>
-          <source src="/assets/videos/reading.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
+<div class="kids-container">
+  <h1 class="kids-header">G-Realm Kids' Project</h1>
 
-    <div class="col-lg-6">
-      <div class="abouttext mx-md-5">
-        <h1 class="text-danger fw-bold p-3">About the project</h1>
-
-        <p class="p-3">
-          <span class="text-dark fw-bold">G-Realm Kids' Project</span> entails
-          creating captivating 3D animated videos to boost literacy among
-          children in Uganda and Africa. Our mission is to raise God-fearing
-          children and to empower empower their young minds for a brighter
-          future by making learning fun, accessible, and transformative. We also
-          incorporate original African music compositions to celebrate and
-          preserve the rich cultural heritage of the continent.
-          <!-- </p -->
-        </p>
-      </div>
+  <div class="about-section">
+    <img src="/assets/logo.png" alt="G-Realm Logo" />
+    <div class="about-text">
+      <p>
+        The
+        <span style="color: var(--kids-secondary)">G-Realm Kids' Project</span>
+        creates fun 3D animated videos to help kids in Uganda and Africa learn
+        to read. We want to make learning a joyful adventure!
+      </p>
     </div>
   </div>
 
-  <h1 class="kidsheader mt-5 fw-bold text-center p-3">Sample Videos</h1>
+  <h2 class="section-title">Watch Our Videos!</h2>
 
-  <div class="row d-flex justify-content-center align-items-center">
-    <div class="col-md-6 p-3 mb-4 p-md-5">
-      <div class="ratio ratio-16x9">
-        <iframe
-          src="https://www.youtube.com/embed/-BRxfj0szlQ"
-          title="YouTube video"
-          allowfullscreen
-        ></iframe>
-      </div>
+  <!-- New button for YouTube Channel -->
+  <div class="text-center mb-4">
+    <a
+      href="https://www.youtube.com/channel/UC8twODp1kJ1sc5n9F_GM5IA"
+      target="_blank"
+      class="btn btn-danger btn-lg"
+    >
+      <i class="bi bi-youtube me-2"></i>Our YouTube Channel
+    </a>
+  </div>
+  <div class="video-gallery">
+    <div class="video-item">
+      <iframe
+        src="https://www.youtube.com/embed/WSs2fUP-gZk"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
     </div>
-    <div class="col-md-6 p-3 mb-4 p-md-5">
-      <div class="ratio ratio-16x9">
-        <iframe
-          src="https://www.youtube.com/embed/yU-jk2j9dJ0"
-          title="YouTube video"
-          allowfullscreen
-        ></iframe>
-      </div>
+    <div class="video-item">
+      <iframe
+        src="https://www.youtube.com/embed/rjDy0za0Kzo"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
     </div>
   </div>
 
-  <h1 class="kidsheader mt-5 fw-bold text-center p-3">Gallery</h1>
+  <h2 class="section-title">Photo Gallery</h2>
 
-  <p class="p-3 gallerytext text-center">
-    See below some photos from one of our Album recording sessions with the
-    kids.
-  </p>
-
-  <div class="row px-md-5 px-3 pb-5 g-3" id="photo-gallery">
-    <div class="col-6 col-md-4" *ngFor="let image of galleryImages">
-      <div class="photo">
-        <img
-          [src]="image"
-          class="img-fluid gallery-item"
-          alt="Gallery Image"
-          (click)="openImageModal(image)"
-        />
-      </div>
-    </div>
+  <div class="image-gallery">
+    <img
+      *ngFor="let image of galleryImages"
+      [src]="image"
+      class="gallery-image"
+      alt="Gallery Image"
+      (click)="openImageModal(image)"
+    />
   </div>
 
   <!-- Modal for Image Preview -->
-  <div
-    class="modal fade show"
-    tabindex="-1"
-    role="dialog"
-    [ngClass]="{ 'd-block': selectedImage }"
-    *ngIf="selectedImage"
-    style="background-color: rgba(0, 0, 0, 0.8)"
-  >
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-body p-0">
-          <img
-            [src]="selectedImage"
-            class="img-fluid w-100"
-            alt="Preview Image"
-          />
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            (click)="showPreviousImage()"
-          >
-            Previous
-          </button>
-          <button
-            type="button"
-            class="btn btn-secondary"
-            (click)="closeImageModal()"
-          >
-            Close
-          </button>
-          <button
-            type="button"
-            class="btn btn-secondary"
-            (click)="showNextImage()"
-          >
-            Next
-          </button>
-        </div>
-      </div>
+  <div class="image-modal" *ngIf="selectedImage" (click)="closeImageModal()">
+    <div class="modal-content">
+      <span class="close-modal" (click)="closeImageModal()">&times;</span>
+      <img [src]="selectedImage" class="modal-image" alt="Preview Image" />
+      <button
+        class="modal-nav prev-btn"
+        (click)="$event.stopPropagation(); showPreviousImage()"
+      >
+        &#10094;
+      </button>
+      <button
+        class="modal-nav next-btn"
+        (click)="$event.stopPropagation(); showNextImage()"
+      >
+        &#10095;
+      </button>
     </div>
   </div>
 </div>
