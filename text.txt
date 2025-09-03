@@ -1,93 +1,43 @@
+RewriteEngine On
 
+# Handle Angular Router - redirect all requests to index.csr.html (except existing files and directories)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ /index.csr.html [L]
 
-▲ [WARNING] All "@import" rules must come first [plugin angular-compiler] [invalid-@import]
+# Set index.csr.html as default file
+DirectoryIndex index.csr.html
 
-    src/app/kids/kids.component.css:11:0:
-      11 │ @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&...
-         ╵ ~~~~~~~
+# Prevent directory browsing
+Options -Indexes
 
-  This rule cannot come before an "@import" rule
+# Enable GZIP compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
 
-    src/app/kids/kids.component.css:2:0:
-      2 │ :root {
-        ╵ ^
+# Set proper MIME types
+<IfModule mod_mime.c>
+    AddType application/javascript .js
+    AddType text/css .css
+</IfModule>
 
-
-X [ERROR] NG5002: Unexpected closing tag "button". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags [plugin angular-compiler]
-
-    src/app/kids/kids.component.html:66:10:
-      66 │           </button>
-         ╵           ~~~~~~~~~
-
-  Error occurs in the template of component KidsComponent.
-
-    src/app/kids/kids.component.ts:6:15:
-      6 │   templateUrl: './kids.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~
-
-
-X [ERROR] NG5002: Unexpected closing tag "div". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags [plugin angular-compiler]
-
-    src/app/kids/kids.component.html:67:8:
-      67 │         </div>
-         ╵         ~~~~~~
-
-  Error occurs in the template of component KidsComponent.
-
-    src/app/kids/kids.component.ts:6:15:
-      6 │   templateUrl: './kids.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~
-
-
-X [ERROR] NG5002: Unexpected closing tag "div". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags [plugin angular-compiler]
-
-    src/app/kids/kids.component.html:68:6:
-      68 │       </div>
-         ╵       ~~~~~~
-
-  Error occurs in the template of component KidsComponent.
-
-    src/app/kids/kids.component.ts:6:15:
-      6 │   templateUrl: './kids.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~
-
-
-X [ERROR] NG5002: Unexpected closing tag "div". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags [plugin angular-compiler]
-
-    src/app/kids/kids.component.html:69:4:
-      69 │     </div>
-         ╵     ~~~~~~
-
-  Error occurs in the template of component KidsComponent.
-
-    src/app/kids/kids.component.ts:6:15:
-      6 │   templateUrl: './kids.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~
-
-
-X [ERROR] NG5002: Unexpected closing tag "div". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags [plugin angular-compiler]
-
-    src/app/kids/kids.component.html:70:2:
-      70 │   </div>
-         ╵   ~~~~~~
-
-  Error occurs in the template of component KidsComponent.
-
-    src/app/kids/kids.component.ts:6:15:
-      6 │   templateUrl: './kids.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~
-
-
-X [ERROR] NG5002: Unexpected closing tag "div". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags [plugin angular-compiler]
-
-    src/app/kids/kids.component.html:71:0:
-      71 │ </div>
-         ╵ ~~~~~~
-
-  Error occurs in the template of component KidsComponent.
-
-    src/app/kids/kids.component.ts:6:15:
-      6 │   templateUrl: './kids.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~
-
-
+# Cache static assets
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>

@@ -3,7 +3,7 @@ RewriteEngine On
 # Handle Angular Router - redirect all requests to index.csr.html (except existing files and directories)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ /index.csr.html [L]
+RewriteRule ^ index.csr.html [L]
 
 # Set index.csr.html as default file
 DirectoryIndex index.csr.html
