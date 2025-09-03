@@ -1,28 +1,37 @@
 .cover-section {
   width: 100%;
   position: relative;
-  overflow: hidden; /* Adjusted to cover half of the viewport height */
-  height: 100vh;
+  overflow: hidden;
+  height: auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .cover-background {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  height: 80%;
+  width: 80%;
   object-fit: cover; /* Ensure the video covers the entire screen */
   z-index: 1;
 }
 
 .cover-overlay {
-  background-color: rgba(0, 0, 0, 0.71); /* black layer with 0.5 opacity */
+  background: linear-gradient(
+    to bottom,
+    rgb(255, 255, 255),
+    rgb(255, 255, 255)
+  ); /* Gradient from light green to light pink to white */
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
   z-index: 2;
+}
+.bg-what {
+  background-color: #9fff3f;
 }
 
 .cover-content {
@@ -36,7 +45,7 @@
 }
 
 .foreground-image {
-  padding-top: 100px;
+  padding-top: 30px;
   max-height: 450px;
   object-fit: contain;
 }
@@ -74,17 +83,17 @@
   min-width: 50%;
 }
 .kids {
-  background-color: #cffdaa;
+  background-color: #b7ffa1;
 }
 .school {
-  background-color: #b5fffd;
+  background-color: #fff6a4;
 }
 .school button {
   background-color: #0f4c75;
   color: rgb(255, 255, 255);
 }
 .business {
-  background-color: #fbd6d6;
+  background-color: #ffffff;
 }
 .business button {
   background-color: #9f2323;
@@ -109,4 +118,18 @@
 }
 .text-blue {
   color: #0f4c75;
+}
+.text-pink {
+  color: #ff69b4;
+}
+
+@media screen and (max-width: 600px) {
+  .cover-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .welcome-video-aspect {
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+  }
 }
