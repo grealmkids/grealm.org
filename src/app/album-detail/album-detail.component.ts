@@ -31,6 +31,14 @@ export class AlbumDetailComponent implements OnInit {
       this.albumService.getAlbumById(id).subscribe(
         album => {
           if (album) {
+            // Ensure album.contents is always an array
+            if (album.contents && typeof album.contents === 'string') {
+              try {
+                album.contents = JSON.parse(album.contents);
+              } catch (e) {
+                album.contents = album.contents.split(',');
+              }
+            }
             this.album = album;
             this.albumNotFound = false;
             console.log('Fetched album details:', album);
@@ -105,5 +113,11 @@ export class AlbumDetailComponent implements OnInit {
   // Optional: Method to open video in a modal
   private openVideoModal(videoUrl: string): void {
     // This method is now replaced by the playPreview implementation above
+  }
+
+  openDownloadUrl(): void {
+    if (this.album && this.album.downloadUrl) {
+      window.open(this.album.downloadUrl, '_blank');
+    }
   }
 }
