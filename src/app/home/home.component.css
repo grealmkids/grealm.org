@@ -1,104 +1,434 @@
+/* ========== COVER SECTION WITH VIDEO ========== */
 .cover-section {
   width: 100%;
   position: relative;
   overflow: hidden;
-  height: auto;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.cover-background {
+.background-video {
   position: absolute;
   top: 0;
   left: 0;
-  height: 80%;
-  width: 80%;
-  object-fit: cover; /* Ensure the video covers the entire screen */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   z-index: 1;
 }
 
-.cover-overlay {
-  background: linear-gradient(
-    to bottom,
-    rgb(255, 255, 255),
-    rgb(255, 255, 255)
-  ); /* Gradient from light green to light pink to white */
+.video-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
-  z-index: 2;
-}
-.bg-what {
-  background-color: #f2ffa8;
-}
-
-.cover-content {
-  position: relative;
   height: 100%;
-  z-index: 3;
-  display: flex; /* Use Flexbox */
-  flex-direction: column; /* Stack items vertically */
-  justify-content: center; /* Center the content vertically */
-  align-items: center; /* Center the content horizontally */
-}
-
-.foreground-image {
-  padding-top: 30px;
-  max-height: 450px;
-  object-fit: contain;
+  background: rgba(255, 255, 255, 0.15);
+  z-index: 2;
 }
 
 .top-text {
   position: absolute;
-  top: 0px;
+  top: 20px;
   width: 100%;
-  padding: 5px;
-  font-size: 16px;
+  padding: 10px;
+  font-size: 18px;
   color: white;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 10; /* Ensure it stays on top of other elements */
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 10;
   text-align: center;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
-@media screen and (max-width: 768px) {
-  .top-text {
-    font-size: 16px; /* Adjust font size for smaller screens */
+.greentext {
+  color: #9fff3f;
+  font-weight: 700;
+}
+
+/* ========== ANIMATED STUDIO NAME ========== */
+.studio-name-container {
+  position: relative;
+  z-index: 8;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  perspective: 1000px;
+}
+
+.studio-name {
+  font-size: clamp(40px, 10vw, 110px);
+  font-weight: 900;
+  color: #fff;
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  /* Removed the flicker animation */
+}
+
+.letter {
+  display: inline-block;
+  font-family: "Varela Round", "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+  position: relative;
+  
+  /* 3D Extrusion Effect - Child Friendly Colors */
+  text-shadow: 
+    0 1px 0 #ff69b4,
+    0 2px 0 #ff69b4,
+    0 3px 0 #ff69b4,
+    0 4px 0 #ff69b4,
+    0 5px 0 #ff69b4,
+    0 6px 0 #ff69b4,
+    0 7px 0 #ff69b4,
+    0 8px 7px rgba(0,0,0,0.4),
+    0 8px 1px rgba(0,0,0,0.1);
+    
+  /* Perpetual Float Animation */
+  animation: floatText 3s ease-in-out infinite;
+}
+
+/* Alternate colors for letters for a more playful look */
+.letter:nth-child(2n) {
+  text-shadow: 
+    0 1px 0 #32cd32,
+    0 2px 0 #32cd32,
+    0 3px 0 #32cd32,
+    0 4px 0 #32cd32,
+    0 5px 0 #32cd32,
+    0 6px 0 #32cd32,
+    0 7px 0 #32cd32,
+    0 8px 7px rgba(0,0,0,0.4),
+    0 8px 1px rgba(0,0,0,0.1);
+}
+
+.letter:nth-child(3n) {
+  text-shadow: 
+    0 1px 0 #1e90ff,
+    0 2px 0 #1e90ff,
+    0 3px 0 #1e90ff,
+    0 4px 0 #1e90ff,
+    0 5px 0 #1e90ff,
+    0 6px 0 #1e90ff,
+    0 7px 0 #1e90ff,
+    0 8px 7px rgba(0,0,0,0.4),
+    0 8px 1px rgba(0,0,0,0.1);
+}
+
+.letter-space {
+  display: inline-block;
+  width: 0.5em;
+}
+
+/* ========== LETTER ANIMATIONS ========== */
+@keyframes floatText {
+  0%, 100% {
+    transform: translateY(0);
   }
-  .foreground-image {
-    padding-top: 150px;
-    max-width: 100%;
+  50% {
+    transform: translateY(-15px);
   }
 }
-.servicebg {
-  padding: 5px;
-  border-radius: 10px;
-  border: none;
+
+/* Stagger the animation for a wave effect */
+.letter:nth-child(1) { animation-delay: 0.0s; }
+.letter:nth-child(2) { animation-delay: 0.1s; }
+.letter:nth-child(3) { animation-delay: 0.2s; }
+.letter:nth-child(4) { animation-delay: 0.3s; }
+.letter:nth-child(5) { animation-delay: 0.4s; }
+.letter:nth-child(6) { animation-delay: 0.5s; }
+.letter:nth-child(7) { animation-delay: 0.6s; }
+.letter:nth-child(8) { animation-delay: 0.7s; }
+.letter:nth-child(9) { animation-delay: 0.8s; }
+.letter:nth-child(10) { animation-delay: 0.9s; }
+.letter:nth-child(11) { animation-delay: 1.0s; }
+.letter:nth-child(12) { animation-delay: 1.1s; }
+.letter:nth-child(13) { animation-delay: 1.2s; }
+.letter:nth-child(14) { animation-delay: 1.3s; }
+
+.cover-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.center-logo {
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* ========== WHAT WE DO SECTION ========== */
+.what-we-do-section {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.what-we-do-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #202124;
+  text-align: center;
+  margin-bottom: 60px;
+  letter-spacing: -1px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ========== SERVICE CARDS ========== */
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 30px;
+  border-radius: 24px;
+  text-decoration: none;
+  color: inherit;
+  background: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
-  font-size: 20px;
+  position: relative;
+  overflow: hidden;
 }
-.servicebg button {
-  min-width: 50%;
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 24px;
+  z-index: -1;
 }
-.kids {
-  background-color: #9bff7d;
+
+.service-card:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
 }
-.school {
-  background-color: #5bffd1;
+
+.card-icon {
+  font-size: 56px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
 }
-.school button {
-  background-color: #0f4c75;
-  color: rgb(255, 255, 255);
+
+.card-title {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 12px 0;
+  color: #202124;
 }
-.business {
-  background-color: #ffffff;
+
+.card-description {
+  font-size: 14px;
+  text-align: center;
+  color: #5f6368;
+  margin: 0;
 }
-.business button {
-  background-color: #9f2323;
-  color: rgb(255, 255, 255);
+
+/* ========== ANIMATION CARD ========== */
+.animation-card {
+  background: linear-gradient(135deg, #ffe5f0 0%, #fff0f8 100%);
 }
+
+.animation-card .card-icon {
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  color: white;
+}
+
+.animation-card:hover .card-icon {
+  transform: rotate(20deg) scale(1.1);
+}
+
+/* ========== ACADEMY CARD ========== */
+.academy-card {
+  background: linear-gradient(135deg, #e5f3ff 0%, #f0f8ff 100%);
+}
+
+.academy-card .card-icon {
+  background: linear-gradient(135deg, #1e90ff 0%, #4169e1 100%);
+  color: white;
+}
+
+.academy-card:hover .card-icon {
+  transform: rotate(-20deg) scale(1.1);
+}
+
+/* ========== SCHOOL CARD ========== */
+.school-card {
+  background: linear-gradient(135deg, #e5ffef 0%, #f0fff8 100%);
+}
+
+.school-card .card-icon {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+}
+
+.school-card:hover .card-icon {
+  transform: rotate(20deg) scale(1.1);
+}
+
+/* ========== COMPANY CARD ========== */
+.company-card {
+  background: linear-gradient(135deg, #fff5e5 0%, #fffaf0 100%);
+}
+
+.company-card .card-icon {
+  background: linear-gradient(135deg, #ffa500 0%, #ff8c00 100%);
+  color: white;
+}
+
+.company-card:hover .card-icon {
+  transform: rotate(-20deg) scale(1.1);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .cover-section {
+    height: 60vh;
+  }
+
+  .center-logo {
+    width: 220px;
+  }
+
+  .studio-name {
+    letter-spacing: 4px;
+    text-shadow: 0 0 15px rgba(159, 255, 63, 0.7),
+      0 0 30px rgba(226, 16, 121, 0.5), 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .letter {
+    text-shadow: 0 0 8px rgba(159, 255, 63, 0.8),
+      0 0 15px rgba(226, 16, 121, 0.6);
+  }
+
+  .what-we-do-title {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 30px 20px;
+  }
+
+  .card-icon {
+    font-size: 40px;
+    width: 70px;
+    height: 70px;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  .card-description {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cover-section {
+    height: 50vh;
+  }
+
+  .center-logo {
+    width: 180px;
+  }
+
+  .top-text {
+    font-size: 14px;
+  }
+
+  .studio-name {
+    letter-spacing: 2px;
+    gap: 2px;
+    text-shadow: 0 0 10px rgba(159, 255, 63, 0.6),
+      0 0 20px rgba(226, 16, 121, 0.4), 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .letter {
+    text-shadow: 0 0 6px rgba(159, 255, 63, 0.7),
+      0 0 12px rgba(226, 16, 121, 0.5);
+  }
+
+  .what-we-do-section {
+    padding: 40px 15px;
+  }
+
+  .what-we-do-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .service-card {
+    padding: 25px 15px;
+  }
+
+  .card-icon {
+    font-size: 36px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .card-title {
+    font-size: 16px;
+  }
+}
+
 .kids button {
   background-color: #538e10;
   color: rgb(255, 255, 255);

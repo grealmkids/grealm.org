@@ -3,10 +3,11 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
 import { AlbumService } from '../services/album.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-shop',
-  imports: [CommonModule, RouterOutlet, HttpClientModule],
+  imports: [CommonModule, RouterOutlet, HttpClientModule, FooterComponent],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.css'
 })

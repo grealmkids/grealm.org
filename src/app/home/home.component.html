@@ -1,65 +1,87 @@
-<div class="page-content bg-black">
+<div class="page-content">
   <div class="cover-section position-relative">
+    <!-- Background Video (Full Screen Loop) -->
+    <video class="background-video" autoplay muted loop playsinline>
+      <source src="/assets/video.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Overlay for better image visibility -->
+    <div class="video-overlay"></div>
+
+    <!-- Top Text -->
     <p class="top-text">
       Jesus Christ
       <span class="greentext">is LORD</span>
     </p>
 
-    <!-- Black Overlay -->
-    <div class="cover-overlay"></div>
+    <!-- Animated Studio Name -->
+    <div class="studio-name-container mb-1">
+      <h1 class="studio-name">
+        <span class="letter">G</span>
+        <span class="letter">-</span>
+        <span class="letter">R</span>
+        <span class="letter">E</span>
+        <span class="letter">A</span>
+        <span class="letter">L</span>
+        <span class="letter">M</span>
+        <span class="letter-space"></span>
+        <span class="letter">S</span>
+        <span class="letter">T</span>
+        <span class="letter">U</span>
+        <span class="letter">D</span>
+        <span class="letter">I</span>
+        <span class="letter">O</span>
+      </h1>
+    </div>
 
-    <!-- Foreground Content (Image + Button) -->
+    <!-- Centered Image on Video -->
     <div class="cover-content">
-      <img src="/assets/grealmstudio.png" alt="" class="foreground-image" />
-
-      <p class="text-center py-3 px-3 d-none">
-        <a class="btn btnlarge" href="/shop">See Albums</a>
-      </p>
+      <img src="/assets/code.png" alt="G-Realm Logo" class="center-logo" />
     </div>
   </div>
-  <div class="bg-what">
-    <h3 class="text-center fw-bold p-3 display-3">What we do</h3>
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-10 row mb-5 text-center px-md-5">
-        <div class="col-md-4">
-          <a href="/kids" class="text-decoration-none">
-            <div class="m-1 servicebg kids">
-              <h1 class="text-center">
-                <img src="/assets/toddler.png" alt="" class="" />
-              </h1>
-              <p class="text-center">
-                <button class="btn">Kids' World</button>
-              </p>
-            </div>
-          </a>
+  <!-- What We Do Section -->
+  <div class="what-we-do-section">
+    <h2 class="what-we-do-title">What We Do</h2>
+    <div class="services-grid">
+      <!-- 3D Animation Card -->
+      <a href="/kids" class="service-card animation-card">
+        <div class="card-icon">
+          <i class="bi bi-film"></i>
         </div>
-        <div class="col-md-4">
-          <a href="/schools" class="text-decoration-none">
-            <div class="m-1 servicebg school">
-              <h1 class="text-center">
-                <img src="/assets/teacher2.png" alt="" class="" />
-              </h1>
-              <p class="text-center">
-                <button class="btn">Services for Schools</button>
-              </p>
-            </div>
-          </a>
+        <h3 class="card-title">3D Animation</h3>
+        <p class="card-description">Magical 3D worlds for young minds</p>
+      </a>
+
+      <!-- Academy Card -->
+      <a
+        href="https://academy.grealm.org"
+        target="_blank"
+        class="service-card academy-card"
+      >
+        <div class="card-icon">
+          <i class="bi bi-mortarboard"></i>
         </div>
-        <div class="col-md-4">
-          <a href="/businesses" class="text-decoration-none">
-            <div class="m-1 servicebg business">
-              <h1 class="text-center">
-                <img src="/assets/businessman.png" alt="" class="" />
-              </h1>
-              <p class="text-center">
-                <button class="btn">Services for Businesses</button>
-              </p>
-            </div>
-          </a>
+        <h3 class="card-title">Academy</h3>
+        <p class="card-description">Learn creative coding & design</p>
+      </a>
+
+      <!-- Services for Schools Card -->
+      <a href="/schools" class="service-card school-card">
+        <div class="card-icon">
+          <i class="bi bi-building"></i>
         </div>
-      </div>
-      <div class="col-md-1"></div>
+        <h3 class="card-title">Schools</h3>
+        <p class="card-description">Tech solutions for education</p>
+      </a>
+
+      <!-- Services for Companies Card -->
+      <a href="/businesses" class="service-card company-card">
+        <div class="card-icon">
+          <i class="bi bi-briefcase"></i>
+        </div>
+        <h3 class="card-title">Companies</h3>
+        <p class="card-description">Innovative solutions for business</p>
+      </a>
     </div>
   </div>
   <div class="bg-light">
@@ -71,7 +93,7 @@
     </h1>
     <h3 class="fw-normal text-secondary text-center p-3 pb-5">
       We Leverage
-      <span class="text-pink"> Artificial Intelligence </span> and Modern
+      <span class="text-pink"> Artificial Intelligence </span> and Advanced
       Technology.
     </h3>
   </div>
