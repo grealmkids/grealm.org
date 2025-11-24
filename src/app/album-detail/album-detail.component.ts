@@ -31,33 +31,59 @@ export class AlbumDetailComponent implements OnInit {
       this.albumService.getAlbumById(id).subscribe(
         album => {
           if (album) {
-            // Ensure album.contents is always an array
-            if (album.contents && typeof album.contents === 'string') {
-              try {
-                album.contents = JSON.parse(album.contents);
-              } catch (e) {
-                album.contents = album.contents.split(',');
-              }
-            }
-            this.album = album;
-            this.albumNotFound = false;
-            console.log('Fetched album details:', album);
+            this.processAlbumData(album);
           } else {
-            this.albumNotFound = true;
+            this.attemptFallback(id);
           }
         },
         error => {
-          console.error('Error fetching album details:', error);
-          console.error('Error status:', error.status);
-          console.error('Error message:', error.message);
-          console.error('Error url:', error.url);
-          console.error('Full error object:', JSON.stringify(error, null, 2));
-          this.albumNotFound = true;
+          console.warn('Error fetching album details directly, attempting fallback:', error);
+          this.attemptFallback(id);
         }
       );
     } else {
       this.albumNotFound = true;
     }
+  }
+
+  private attemptFallback(id: string): void {
+    console.log('Attempting fallback: fetching all albums to find ID:', id);
+    this.albumService.getAllAlbums().subscribe(
+      albums => {
+        if (Array.isArray(albums)) {
+          // Loose equality check to handle string vs number ID differences
+          const foundAlbum = albums.find((a: any) => a.id == id || a._id == id);
+          if (foundAlbum) {
+            console.log('Album found via fallback:', foundAlbum);
+            this.processAlbumData(foundAlbum);
+          } else {
+            console.error('Album not found in fallback list');
+            this.albumNotFound = true;
+          }
+        } else {
+          console.error('Fallback response is not an array:', albums);
+          this.albumNotFound = true;
+        }
+      },
+      error => {
+        console.error('Fallback failed:', error);
+        this.albumNotFound = true;
+      }
+    );
+  }
+
+  private processAlbumData(album: any): void {
+    // Ensure album.contents is always an array
+    if (album.contents && typeof album.contents === 'string') {
+      try {
+        album.contents = JSON.parse(album.contents);
+      } catch (e) {
+        album.contents = album.contents.split(',');
+      }
+    }
+    this.album = album;
+    this.albumNotFound = false;
+    console.log('Album loaded successfully:', album);
   }
 
   playPreview(): void {
