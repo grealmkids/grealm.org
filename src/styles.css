@@ -19,13 +19,25 @@ html {
 .bg-primary {
   background-color: var(--primary-color) !important;
 }
+
 .text-primary {
   color: var(--primary-color) !important;
 }
+
 body {
-  font-family: "Inter", sans-serif !important;
+  font-family: "Fredoka", sans-serif !important;
   font-weight: 400;
   background-color: black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Fredoka", sans-serif !important;
+  font-weight: 700 !important;
 }
 
 .greentext {
@@ -44,10 +56,12 @@ body {
 .text-pink {
   color: rgb(209, 0, 105) !important;
 }
+
 .text-success {
   color: #4ec13c !important;
 }
+
 .btn-primary {
-  background-color: -var(--primary-color) !important;
+  background-color: var(--primary-color) !important;
   color: white !important;
 }

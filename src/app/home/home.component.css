@@ -386,6 +386,10 @@
     width: 220px;
   }
 
+  .studio-name-container {
+    margin-top: 80px;
+  }
+
   .studio-name {
     letter-spacing: 4px;
     text-shadow: 0 0 15px rgba(159, 255, 63, 0.7),
@@ -478,11 +482,6 @@
   .card-title {
     font-size: 16px;
   }
-}
-
-.kids button {
-  background-color: #538e10;
-  color: rgb(255, 255, 255);
 }
 
 .servicebg img {
