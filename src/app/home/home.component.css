@@ -82,17 +82,17 @@
   font-family: "Varela Round", "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
   position: relative;
 
-  /* 3D Extrusion Effect - Child Friendly Colors */
+  /* 3D Extrusion Effect - Child Friendly Colors - Diagonal */
   text-shadow:
-    0 1px 0 #ff69b4,
-    0 2px 0 #ff69b4,
-    0 3px 0 #ff69b4,
-    0 4px 0 #ff69b4,
-    0 5px 0 #ff69b4,
-    0 6px 0 #ff69b4,
-    0 7px 0 #ff69b4,
-    0 8px 7px rgba(0, 0, 0, 0.4),
-    0 8px 1px rgba(0, 0, 0, 0.1);
+    1px 1px 0 #ff69b4,
+    2px 2px 0 #ff69b4,
+    3px 3px 0 #ff69b4,
+    4px 4px 0 #ff69b4,
+    5px 5px 0 #ff69b4,
+    6px 6px 0 #ff69b4,
+    7px 7px 0 #ff69b4,
+    8px 8px 7px rgba(0, 0, 0, 0.4),
+    8px 8px 1px rgba(0, 0, 0, 0.1);
 
   /* Perpetual Float Animation */
   animation: floatText 3s ease-in-out infinite;
@@ -101,28 +101,28 @@
 /* Alternate colors for letters for a more playful look */
 .letter:nth-child(2n) {
   text-shadow:
-    0 1px 0 #32cd32,
-    0 2px 0 #32cd32,
-    0 3px 0 #32cd32,
-    0 4px 0 #32cd32,
-    0 5px 0 #32cd32,
-    0 6px 0 #32cd32,
-    0 7px 0 #32cd32,
-    0 8px 7px rgba(0, 0, 0, 0.4),
-    0 8px 1px rgba(0, 0, 0, 0.1);
+    1px 1px 0 #32cd32,
+    2px 2px 0 #32cd32,
+    3px 3px 0 #32cd32,
+    4px 4px 0 #32cd32,
+    5px 5px 0 #32cd32,
+    6px 6px 0 #32cd32,
+    7px 7px 0 #32cd32,
+    8px 8px 7px rgba(0, 0, 0, 0.4),
+    8px 8px 1px rgba(0, 0, 0, 0.1);
 }
 
 .letter:nth-child(3n) {
   text-shadow:
-    0 1px 0 #1e90ff,
-    0 2px 0 #1e90ff,
-    0 3px 0 #1e90ff,
-    0 4px 0 #1e90ff,
-    0 5px 0 #1e90ff,
-    0 6px 0 #1e90ff,
-    0 7px 0 #1e90ff,
-    0 8px 7px rgba(0, 0, 0, 0.4),
-    0 8px 1px rgba(0, 0, 0, 0.1);
+    1px 1px 0 #1e90ff,
+    2px 2px 0 #1e90ff,
+    3px 3px 0 #1e90ff,
+    4px 4px 0 #1e90ff,
+    5px 5px 0 #1e90ff,
+    6px 6px 0 #1e90ff,
+    7px 7px 0 #1e90ff,
+    8px 8px 7px rgba(0, 0, 0, 0.4),
+    8px 8px 1px rgba(0, 0, 0, 0.1);
 }
 
 .letter-space {
