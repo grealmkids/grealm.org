@@ -2,12 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AlbumService } from '../services/album.service';
-import { HttpClientModule } from '@angular/common/http';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-album-detail',
-  imports: [CommonModule, RouterLink, HttpClientModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './album-detail.component.html',
   styleUrl: './album-detail.component.css'
 })
@@ -18,10 +17,10 @@ export class AlbumDetailComponent implements OnInit {
   safeVideoUrl: SafeResourceUrl | null = null;
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private albumService: AlbumService,
     private sanitizer: DomSanitizer
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -29,10 +28,21 @@ export class AlbumDetailComponent implements OnInit {
     if (id) {
       console.log('Making API call to:', `${this.albumService['baseUrl']}/api/client/albums/${id}`);
       this.albumService.getAlbumById(id).subscribe(
-        album => {
-          if (album) {
-            this.processAlbumData(album);
+        (response: any) => {
+          console.log('Raw API Response:', response);
+
+          // Handle different response structures
+          let albumData = response;
+          if (response && response.data) {
+            albumData = response.data;
+          } else if (response && response.album) {
+            albumData = response.album;
+          }
+
+          if (albumData && (albumData.id || albumData._id || albumData.title)) {
+            this.processAlbumData(albumData);
           } else {
+            console.warn('Invalid album data received, attempting fallback');
             this.attemptFallback(id);
           }
         },
@@ -49,8 +59,19 @@ export class AlbumDetailComponent implements OnInit {
   private attemptFallback(id: string): void {
     console.log('Attempting fallback: fetching all albums to find ID:', id);
     this.albumService.getAllAlbums().subscribe(
-      albums => {
-        if (Array.isArray(albums)) {
+      (response: any) => {
+        console.log('Fallback raw response:', response);
+        let albums: any[] = [];
+
+        if (Array.isArray(response)) {
+          albums = response;
+        } else if (response && Array.isArray(response.data)) {
+          albums = response.data;
+        } else if (response && Array.isArray(response.albums)) {
+          albums = response.albums;
+        }
+
+        if (albums.length > 0) {
           // Loose equality check to handle string vs number ID differences
           const foundAlbum = albums.find((a: any) => a.id == id || a._id == id);
           if (foundAlbum) {
@@ -61,7 +82,7 @@ export class AlbumDetailComponent implements OnInit {
             this.albumNotFound = true;
           }
         } else {
-          console.error('Fallback response is not an array:', albums);
+          console.error('Fallback response did not contain an array of albums:', response);
           this.albumNotFound = true;
         }
       },
@@ -128,11 +149,11 @@ export class AlbumDetailComponent implements OnInit {
 
   private extractYouTubeVideoId(url: string): string | null {
     if (!url) return null;
-    
+
     // Handle various YouTube URL formats
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
-    
+
     return (match && match[2].length === 11) ? match[2] : null;
   }
 

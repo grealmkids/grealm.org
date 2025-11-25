@@ -7,14 +7,14 @@ import { AlbumService } from '../services/album.service';
 @Component({
   standalone: true,  // <-- This was missing
   selector: 'app-new-albums',
-  imports: [CommonModule, RouterLink, HttpClientModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './new-albums.component.html',
   styleUrl: './new-albums.component.css'
 })
 export class NewAlbumsComponent {
   albums: any[] = [];
 
-  constructor(private albumService: AlbumService) {}
+  constructor(private albumService: AlbumService) { }
 
   ngOnInit(): void {
     this.albumService.getAllAlbums().subscribe(albums => {
