@@ -2,11 +2,16 @@
 
 /* Playful color palette */
 :root {
-  --kids-primary: #ffcc00; /* Bright Yellow */
-  --kids-secondary: #ff6666; /* Coral Pink */
-  --kids-accent: #66ccff; /* Sky Blue */
-  --kids-background: #f0f8ff; /* Alice Blue */
-  --kids-text: #333333; /* Dark Gray */
+  --kids-primary: #ffcc00;
+  /* Bright Yellow */
+  --kids-secondary: #ff6666;
+  /* Coral Pink */
+  --kids-accent: #66ccff;
+  /* Sky Blue */
+  --kids-background: #f0f8ff;
+  /* Alice Blue */
+  --kids-text: #333333;
+  /* Dark Gray */
 }
 
 .kids-container {
@@ -17,7 +22,8 @@
 }
 
 .kids-header {
-  background-color: #ff5eaf; /* A bright, child-friendly pink */
+  background-color: #ff5eaf;
+  /* A bright, child-friendly pink */
   color: white;
   text-align: center;
   padding: 20px;
@@ -30,10 +36,12 @@
 }
 
 @keyframes bounce {
+
   0%,
   100% {
     transform: translateY(0) rotate(-2deg);
   }
+
   50% {
     transform: translateY(-10px) rotate(-2deg);
   }
@@ -89,20 +97,130 @@
 .video-item {
   background-color: white;
   border-radius: 20px;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .video-item:hover {
   transform: scale(1.05);
 }
 
-.video-item iframe {
+.video-thumbnail-container {
+  position: relative;
   width: 100%;
-  height: 200px;
+  padding-top: 56.25%;
+  /* 16:9 Aspect Ratio */
   border-radius: 15px;
+  overflow: hidden;
   border: 5px solid var(--kids-primary);
+}
+
+.video-thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 0, 0, 0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 30px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.video-item:hover .play-icon {
+  transform: translate(-50%, -50%) scale(1.1);
+  background-color: red;
+}
+
+.video-title {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 1.2em;
+  color: var(--kids-text);
+}
+
+/* Video Modal Styles */
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.video-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  background: black;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.close-video-modal {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  z-index: 2001;
+  transition: transform 0.3s ease;
+}
+
+.video-modal-content:hover .close-video-modal {
+  transform: rotate(90deg);
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .image-gallery {

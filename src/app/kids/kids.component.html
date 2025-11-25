@@ -16,43 +16,50 @@
 
   <!-- New button for YouTube Channel -->
   <div class="text-center mb-4">
-    <a
-      href="https://www.youtube.com/channel/UC8twODp1kJ1sc5n9F_GM5IA"
-      target="_blank"
-      class="btn btn-danger btn-lg"
-    >
+    <a href="https://www.youtube.com/channel/UC8twODp1kJ1sc5n9F_GM5IA" target="_blank" class="btn btn-danger btn-lg">
       <i class="bi bi-youtube me-2"></i>Our YouTube Channel
     </a>
   </div>
   <div class="video-gallery">
-    <div class="video-item">
-      <iframe
-        src="https://www.youtube.com/embed/WSs2fUP-gZk"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+    <div class="video-item" (click)="openVideoModal('WSs2fUP-gZk')">
+      <div class="video-thumbnail-container">
+        <img src="https://img.youtube.com/vi/WSs2fUP-gZk/maxresdefault.jpg" alt="Video Thumbnail"
+          class="video-thumbnail">
+        <div class="play-icon">
+          <i class="bi bi-play-fill"></i>
+        </div>
+      </div>
+      <h3 class="video-title">Fun Learning with G-Realm</h3>
     </div>
-    <div class="video-item">
-      <iframe
-        src="https://www.youtube.com/embed/rjDy0za0Kzo"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+    <div class="video-item" (click)="openVideoModal('rjDy0za0Kzo')">
+      <div class="video-thumbnail-container">
+        <img src="https://img.youtube.com/vi/rjDy0za0Kzo/maxresdefault.jpg" alt="Video Thumbnail"
+          class="video-thumbnail">
+        <div class="play-icon">
+          <i class="bi bi-play-fill"></i>
+        </div>
+      </div>
+      <h3 class="video-title">Adventures in Learning</h3>
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+  <div class="video-modal" *ngIf="showVideoModal" (click)="closeVideoModal()">
+    <div class="video-modal-content" (click)="$event.stopPropagation()">
+      <button class="close-video-modal" (click)="closeVideoModal()">&times;</button>
+      <div class="video-wrapper">
+        <iframe *ngIf="safeVideoUrl" [src]="safeVideoUrl" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 
   <h2 class="section-title">Photo Gallery</h2>
 
   <div class="image-gallery">
-    <img
-      *ngFor="let image of galleryImages"
-      [src]="image"
-      class="gallery-image"
-      alt="Gallery Image"
-      (click)="openImageModal(image)"
-    />
+    <img *ngFor="let image of galleryImages" [src]="image" class="gallery-image" alt="Gallery Image"
+      (click)="openImageModal(image)" />
   </div>
 
   <!-- Modal for Image Preview -->
@@ -60,16 +67,10 @@
     <div class="modal-content">
       <span class="close-modal" (click)="closeImageModal()">&times;</span>
       <img [src]="selectedImage" class="modal-image" alt="Preview Image" />
-      <button
-        class="modal-nav prev-btn"
-        (click)="$event.stopPropagation(); showPreviousImage()"
-      >
+      <button class="modal-nav prev-btn" (click)="$event.stopPropagation(); showPreviousImage()">
         &#10094;
       </button>
-      <button
-        class="modal-nav next-btn"
-        (click)="$event.stopPropagation(); showNextImage()"
-      >
+      <button class="modal-nav next-btn" (click)="$event.stopPropagation(); showNextImage()">
         &#10095;
       </button>
     </div>
